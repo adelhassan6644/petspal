@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5ca2255d-ef42-41d4-b07d-9937de1e39ae" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/../.flutter-plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/../.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/../ios/Podfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../linux/flutter/ephemeral/.plugin_symlinks/connectivity_plus" beforeDir="false" afterPath="$PROJECT_DIR$/../linux/flutter/ephemeral/.plugin_symlinks/connectivity_plus" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../linux/flutter/ephemeral/.plugin_symlinks/device_info_plus" beforeDir="false" afterPath="$PROJECT_DIR$/../linux/flutter/ephemeral/.plugin_symlinks/device_info_plus" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../linux/flutter/ephemeral/.plugin_symlinks/file_picker" beforeDir="false" afterPath="$PROJECT_DIR$/../linux/flutter/ephemeral/.plugin_symlinks/file_picker" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../linux/flutter/ephemeral/.plugin_symlinks/flutter_secure_storage_linux" beforeDir="false" afterPath="$PROJECT_DIR$/../linux/flutter/ephemeral/.plugin_symlinks/flutter_secure_storage_linux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../linux/flutter/ephemeral/.plugin_symlinks/package_info_plus" beforeDir="false" afterPath="$PROJECT_DIR$/../linux/flutter/ephemeral/.plugin_symlinks/package_info_plus" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../linux/flutter/ephemeral/.plugin_symlinks/share_plus" beforeDir="false" afterPath="$PROJECT_DIR$/../linux/flutter/ephemeral/.plugin_symlinks/share_plus" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../linux/flutter/ephemeral/.plugin_symlinks/wakelock_plus" beforeDir="false" afterPath="$PROJECT_DIR$/../linux/flutter/ephemeral/.plugin_symlinks/wakelock_plus" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "MohamedHassan1311"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/MohamedHassan1311/blue-art.git",
+    "accountId": "aaac978b-c017-47b7-b2ba-1d4273160ad5"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2rfcdk1sHi4bn8MuYAaHttzZvqM" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "android.gradle.sync.needed": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "staging",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/user/SimulationTech/blue-art/android",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SwiftWorkspaceSettings">
+    <option name="detectedToolchain" value="true" />
+    <option name="toolchainPathValue" value="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5ca2255d-ef42-41d4-b07d-9937de1e39ae" name="Changes" comment="" />
+      <created>1736953659361</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1736953659361</updated>
+    </task>
+    <servers />
+  </component>
+</project>
