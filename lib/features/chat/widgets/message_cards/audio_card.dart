@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:zurex/app/core/text_styles.dart';
+import 'package:petspal/app/core/text_styles.dart';
 import '../../../../app/core/styles.dart';
 import '../../model/message_model.dart';
 

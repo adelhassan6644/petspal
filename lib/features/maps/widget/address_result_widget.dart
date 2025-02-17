@@ -1,8 +1,8 @@
-import 'package:zurex/app/core/app_state.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/app/core/extensions.dart';
-import 'package:zurex/features/maps/bloc/map_bloc.dart';
-import 'package:zurex/features/maps/models/location_model.dart';
+import 'package:petspal/app/core/app_state.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/app/core/extensions.dart';
+import 'package:petspal/features/maps/bloc/map_bloc.dart';
+import 'package:petspal/features/maps/models/location_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zurex/app/core/dimensions.dart';
+import 'package:petspal/app/core/dimensions.dart';
 
 import '../../../app/core/styles.dart';
 import '../../../components/custom_network_image.dart';

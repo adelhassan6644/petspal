@@ -1,6 +1,6 @@
-import 'package:zurex/app/localization/language_constant.dart';
-import 'package:zurex/features/categories/bloc/categories_bloc.dart';
-import 'package:zurex/features/categories/repo/categories_repo.dart';
+import 'package:petspal/app/localization/language_constant.dart';
+import 'package:petspal/features/categories/bloc/categories_bloc.dart';
+import 'package:petspal/features/categories/repo/categories_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

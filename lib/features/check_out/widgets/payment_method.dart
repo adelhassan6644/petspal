@@ -1,6 +1,6 @@
-import 'package:zurex/app/core/text_styles.dart';
-import 'package:zurex/app/localization/language_constant.dart';
-import 'package:zurex/features/check_out/bloc/check_out_bloc.dart';
+import 'package:petspal/app/core/text_styles.dart';
+import 'package:petspal/app/localization/language_constant.dart';
+import 'package:petspal/features/check_out/bloc/check_out_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

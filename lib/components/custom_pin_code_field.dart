@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/app/core/extensions.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/app/core/extensions.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../app/core/styles.dart';

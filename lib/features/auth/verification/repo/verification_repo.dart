@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:zurex/features/auth/verification/model/verification_model.dart';
+import 'package:petspal/features/auth/verification/model/verification_model.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import '../../../../app/core/app_storage_keys.dart';
 import '../../../../data/api/end_points.dart';

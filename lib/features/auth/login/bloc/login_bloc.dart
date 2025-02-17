@@ -3,8 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:zurex/components/custom_simple_dialog.dart';
-import 'package:zurex/features/auth/verification/model/verification_model.dart';
+import 'package:petspal/components/custom_simple_dialog.dart';
+import 'package:petspal/features/auth/verification/model/verification_model.dart';
 
 import '../../../../app/core/app_core.dart';
 import '../../../../app/core/app_event.dart';
@@ -32,9 +32,10 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
 
   final formKey = GlobalKey<FormState>();
   final FocusNode phoneNode = FocusNode();
-  // final FocusNode passwordNode = FocusNode();
+  final FocusNode passwordNode = FocusNode();
 
-  TextEditingController phoneTEC = TextEditingController();
+  TextEditingController emailTEC = TextEditingController();
+  TextEditingController passwordTEC = TextEditingController();
 
   // final country = BehaviorSubject<String?>();
   // Function(String?) get updateCountry => country.sink.add;
@@ -44,7 +45,8 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
   Stream<bool?> get rememberMeStream => rememberMe.stream.asBroadcastStream();
 
   clear() {
-    phoneTEC.clear();
+    emailTEC.clear();
+    passwordTEC.clear();
     // updateCountry(null);
     updateRememberMe(false);
   }
@@ -58,7 +60,7 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
   Future<void> onClick(Click event, Emitter<AppState> emit) async {
     try {
       emit(Loading());
-      Map<String, dynamic> data = {"phone_number": phoneTEC.text.trim()};
+      Map<String, dynamic> data = {"phone_number": emailTEC.text.trim()};
 
       Either<ServerFailure, Response> response = await repo.logIn(data);
 
@@ -75,13 +77,13 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
           CustomSimpleDialog.parentSimpleDialog(
             canDismiss: false,
             withContentPadding: false,
-            customWidget: ActivationDialog(phone: phoneTEC.text.trim()),
+            customWidget: ActivationDialog(phone: emailTEC.text.trim()),
           );
         } else {
           CustomNavigator.push(
             Routes.verification,
             arguments: VerificationModel(
-              phone: phoneTEC.text.trim(),
+              phone: emailTEC.text.trim(),
               fromRegister: false,
               fromComplete: success.statusCode == 400,
             ),
@@ -107,7 +109,7 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
     Map<String, dynamic>? data = repo.getCredentials();
     if (data != null) {
       // passwordTEC.text = data["password"];
-      phoneTEC.text = data["phone"];
+      emailTEC.text = data["phone"];
       updateRememberMe(data["phone"] != "" && data["password"] != null);
       emit(Done());
     }

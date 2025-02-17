@@ -1,4 +1,4 @@
-import 'package:zurex/app/core/dimensions.dart';
+import 'package:petspal/app/core/dimensions.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../app/core/images.dart';

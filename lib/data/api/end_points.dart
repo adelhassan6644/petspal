@@ -6,7 +6,7 @@ class EndPoints {
   static String apiKey = dotenv.env['API_KEY'] ?? "";
   static chatPort(id) => '${dotenv.env['CHAT_PORT']}$id';
   static String googleMapsBaseUrl = dotenv.env['GOOGLE_MAPS_BASE_URL'] ?? "";
-  static const String generalTopic = 'zurex';
+  static const String generalTopic = 'petspal';
   static specificTopic(id) => '$id';
 
   ///Auth

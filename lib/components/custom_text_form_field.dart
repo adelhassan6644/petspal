@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/app/core/extensions.dart';
-import 'package:zurex/app/core/text_styles.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/app/core/extensions.dart';
+import 'package:petspal/app/core/text_styles.dart';
 import '../app/core/styles.dart';
 import '../app/core/svg_images.dart';
 import 'custom_images.dart';

@@ -1,5 +1,5 @@
-import 'package:zurex/app/core/svg_images.dart';
-import 'package:zurex/components/custom_images.dart';
+import 'package:petspal/app/core/svg_images.dart';
+import 'package:petspal/components/custom_images.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';

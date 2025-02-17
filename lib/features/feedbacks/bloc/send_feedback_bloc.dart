@@ -1,6 +1,6 @@
-import 'package:zurex/app/localization/language_constant.dart';
-import 'package:zurex/features/feedbacks/repo/feedbacks_repo.dart';
-import 'package:zurex/navigation/custom_navigation.dart';
+import 'package:petspal/app/localization/language_constant.dart';
+import 'package:petspal/features/feedbacks/repo/feedbacks_repo.dart';
+import 'package:petspal/navigation/custom_navigation.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';

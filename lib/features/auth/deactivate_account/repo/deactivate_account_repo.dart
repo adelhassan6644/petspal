@@ -5,7 +5,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:zurex/main_repos/base_repo.dart';
+import 'package:petspal/main_repos/base_repo.dart';
 
 import '../../../../app/core/app_storage_keys.dart';
 import '../../../../data/api/end_points.dart';

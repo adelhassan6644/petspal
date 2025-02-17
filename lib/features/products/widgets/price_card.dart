@@ -1,4 +1,4 @@
-import 'package:zurex/app/localization/language_constant.dart';
+import 'package:petspal/app/localization/language_constant.dart';
 import 'package:flutter/material.dart';
 
 import '../../../app/core/styles.dart';

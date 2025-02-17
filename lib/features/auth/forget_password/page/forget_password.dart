@@ -3,10 +3,10 @@ import 'package:country_flags/country_flags.dart';
 import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/components/custom_app_bar.dart';
-import 'package:zurex/features/auth/forget_password/bloc/forget_password_bloc.dart';
-import 'package:zurex/features/auth/forget_password/repo/forget_password_repo.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/components/custom_app_bar.dart';
+import 'package:petspal/features/auth/forget_password/bloc/forget_password_bloc.dart';
+import 'package:petspal/features/auth/forget_password/repo/forget_password_repo.dart';
 import '../../../../app/core/app_event.dart';
 import '../../../../app/core/app_state.dart';
 import '../../../../app/core/styles.dart';
@@ -20,8 +20,8 @@ import '../../../../components/custom_text_form_field.dart';
 import '../../../../data/config/di.dart';
 
 class ForgetPassword extends StatelessWidget {
-  const ForgetPassword({super.key, required this.userType});
-  final String userType;
+  const ForgetPassword({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -174,7 +174,7 @@ class ForgetPassword extends StatelessWidget {
                                           .validate()) {
                                         context
                                             .read<ForgetPasswordBloc>()
-                                            .add(Click(arguments: userType));
+                                            .add(Click());
                                       }
                                     },
                                     isLoading: state is Loading),

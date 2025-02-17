@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zurex/app/core/styles.dart';
-import 'package:zurex/app/localization/language_constant.dart';
-import 'package:zurex/components/custom_app_bar.dart';
-import 'package:zurex/components/shimmer/custom_shimmer.dart';
-import 'package:zurex/features/chats/bloc/chats_bloc.dart';
-import 'package:zurex/main_models/search_engine.dart';
+import 'package:petspal/app/core/styles.dart';
+import 'package:petspal/app/localization/language_constant.dart';
+import 'package:petspal/components/custom_app_bar.dart';
+import 'package:petspal/components/shimmer/custom_shimmer.dart';
+import 'package:petspal/features/chats/bloc/chats_bloc.dart';
+import 'package:petspal/main_models/search_engine.dart';
 
 import '../../../app/core/app_event.dart';
 import '../../../app/core/app_state.dart';

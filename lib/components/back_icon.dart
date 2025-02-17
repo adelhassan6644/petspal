@@ -1,6 +1,6 @@
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
-import 'package:zurex/navigation/custom_navigation.dart';
+import 'package:petspal/navigation/custom_navigation.dart';
 import '../app/core/styles.dart';
 
 class FilteredBackIcon extends StatelessWidget {

@@ -1,5 +1,5 @@
-import 'package:zurex/app/core/app_state.dart';
-import 'package:zurex/components/animated_widget.dart';
+import 'package:petspal/app/core/app_state.dart';
+import 'package:petspal/components/animated_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../app/core/app_event.dart';

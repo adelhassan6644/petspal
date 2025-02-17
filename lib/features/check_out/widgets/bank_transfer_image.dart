@@ -1,6 +1,6 @@
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/app/core/extensions.dart';
-import 'package:zurex/features/check_out/bloc/check_out_bloc.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/app/core/extensions.dart';
+import 'package:petspal/features/check_out/bloc/check_out_bloc.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

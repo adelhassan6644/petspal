@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/app/core/extensions.dart';
-import 'package:zurex/components/custom_images.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/app/core/extensions.dart';
+import 'package:petspal/components/custom_images.dart';
 import '../../navigation/custom_navigation.dart';
 import '../app/core/images.dart';
 import '../app/core/styles.dart';

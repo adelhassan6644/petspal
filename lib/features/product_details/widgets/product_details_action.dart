@@ -1,8 +1,8 @@
-import 'package:zurex/app/core/app_state.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/components/custom_bottom_sheet.dart';
-import 'package:zurex/features/product_details/bloc/product_details_bloc.dart';
-import 'package:zurex/features/product_details/model/product_details_model.dart';
+import 'package:petspal/app/core/app_state.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/components/custom_bottom_sheet.dart';
+import 'package:petspal/features/product_details/bloc/product_details_bloc.dart';
+import 'package:petspal/features/product_details/model/product_details_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

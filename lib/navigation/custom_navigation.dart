@@ -1,11 +1,11 @@
 import 'dart:io';
-import 'package:zurex/features/categories/model/categories_model.dart';
-import 'package:zurex/features/edit_profile/page/edit_profile_page.dart';
-import 'package:zurex/features/maps/models/location_model.dart';
-import 'package:zurex/features/payment/in_app_web_view_page.dart';
-import 'package:zurex/features/product_details/page/package_details_page.dart';
-import 'package:zurex/features/products/page/products_page.dart';
-import 'package:zurex/features/transactions/page/transactions_page.dart';
+import 'package:petspal/features/categories/model/categories_model.dart';
+import 'package:petspal/features/edit_profile/page/edit_profile_page.dart';
+import 'package:petspal/features/maps/models/location_model.dart';
+import 'package:petspal/features/payment/in_app_web_view_page.dart';
+import 'package:petspal/features/product_details/page/package_details_page.dart';
+import 'package:petspal/features/products/page/products_page.dart';
+import 'package:petspal/features/transactions/page/transactions_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../features/chat/page/chat_page.dart';
@@ -16,7 +16,6 @@ import '../features/faqs/page/faqs_page.dart';
 import '../features/feedbacks/view/my_feedbacks_page.dart';
 import '../features/maps/page/pick_map_page.dart';
 import '../features/notifications/page/notifications_page.dart';
-import '../features/who_us/page/who_us_page.dart';
 import '../main.dart';
 import 'routes.dart';
 import '../main_page/page/dashboard.dart';
@@ -56,8 +55,7 @@ abstract class CustomNavigator {
         return _pageRoute(const Register());
 
       case Routes.forgetPassword:
-        return _pageRoute(
-            ForgetPassword(userType: settings.arguments as String));
+        return _pageRoute(const ForgetPassword());
 
       case Routes.resetPassword:
         return _pageRoute(ResetPassword(
@@ -125,9 +123,6 @@ abstract class CustomNavigator {
 
       case Routes.terms:
         return _pageRoute(const Terms());
-
-      case Routes.whoUs:
-        return _pageRoute(const WhoUsPage());
 
       case Routes.faqs:
         return _pageRoute(const FaqsPage());

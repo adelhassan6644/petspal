@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
-import 'package:zurex/app/core/text_styles.dart';
-import 'package:zurex/navigation/custom_navigation.dart';
+import 'package:petspal/app/core/text_styles.dart';
+import 'package:petspal/navigation/custom_navigation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:in_app_update/in_app_update.dart';

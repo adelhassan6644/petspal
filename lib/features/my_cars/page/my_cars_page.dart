@@ -1,8 +1,8 @@
-import 'package:zurex/app/core/extensions.dart';
-import 'package:zurex/components/animated_widget.dart';
-import 'package:zurex/components/custom_app_bar.dart';
-import 'package:zurex/features/my_cars/bloc/my_cars_bloc.dart';
-import 'package:zurex/features/my_cars/widgets/my_car_card.dart';
+import 'package:petspal/app/core/extensions.dart';
+import 'package:petspal/components/animated_widget.dart';
+import 'package:petspal/components/custom_app_bar.dart';
+import 'package:petspal/features/my_cars/bloc/my_cars_bloc.dart';
+import 'package:petspal/features/my_cars/widgets/my_car_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../app/core/app_event.dart';

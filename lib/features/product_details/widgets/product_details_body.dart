@@ -1,7 +1,7 @@
-import 'package:zurex/app/core/app_state.dart';
-import 'package:zurex/app/core/extensions.dart';
-import 'package:zurex/components/shimmer/custom_shimmer.dart';
-import 'package:zurex/features/products/widgets/price_card.dart';
+import 'package:petspal/app/core/app_state.dart';
+import 'package:petspal/app/core/extensions.dart';
+import 'package:petspal/components/shimmer/custom_shimmer.dart';
+import 'package:petspal/features/products/widgets/price_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:readmore/readmore.dart';

@@ -1,4 +1,4 @@
-import 'package:zurex/data/config/mapper.dart';
+import 'package:petspal/data/config/mapper.dart';
 
 class SettingModel extends SingleMapper {
   GeneralModel? general;

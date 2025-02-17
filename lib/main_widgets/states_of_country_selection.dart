@@ -1,7 +1,7 @@
-import 'package:zurex/app/core/app_core.dart';
-import 'package:zurex/app/core/app_state.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/navigation/custom_navigation.dart';
+import 'package:petspal/app/core/app_core.dart';
+import 'package:petspal/app/core/app_state.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/navigation/custom_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../app/core/app_notification.dart';
@@ -13,8 +13,8 @@ import '../../../../../components/custom_bottom_sheet.dart';
 import '../../../../../components/custom_images.dart';
 import '../../../../../main_blocs/country_states_bloc.dart';
 import 'package:country_state_city/models/state.dart' as states_of_country;
-import 'package:zurex/components/animated_widget.dart';
-import 'package:zurex/app/core/extensions.dart';
+import 'package:petspal/components/animated_widget.dart';
+import 'package:petspal/app/core/extensions.dart';
 
 class StatesOfCountrySelection extends StatelessWidget {
   const StatesOfCountrySelection(

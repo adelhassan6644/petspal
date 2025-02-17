@@ -1,4 +1,4 @@
-import 'package:zurex/features/feedbacks/repo/feedbacks_repo.dart';
+import 'package:petspal/features/feedbacks/repo/feedbacks_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';

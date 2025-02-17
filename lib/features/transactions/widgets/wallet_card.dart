@@ -1,10 +1,10 @@
-import 'package:zurex/app/core/app_state.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/app/core/svg_images.dart';
-import 'package:zurex/app/core/text_styles.dart';
-import 'package:zurex/app/localization/language_constant.dart';
-import 'package:zurex/components/custom_images.dart';
-import 'package:zurex/main_blocs/user_bloc.dart';
+import 'package:petspal/app/core/app_state.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/app/core/svg_images.dart';
+import 'package:petspal/app/core/text_styles.dart';
+import 'package:petspal/app/localization/language_constant.dart';
+import 'package:petspal/components/custom_images.dart';
+import 'package:petspal/main_blocs/user_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zurex/navigation/custom_navigation.dart';
-import 'package:zurex/navigation/routes.dart';
+import 'package:petspal/navigation/custom_navigation.dart';
+import 'package:petspal/navigation/routes.dart';
 import 'package:geolocator/geolocator.dart';
 import '../../../app/core/app_event.dart';
 import '../../../app/core/app_state.dart';
@@ -34,17 +34,16 @@ class SplashBloc extends Bloc<AppEvent, AppState> {
           await repo.guestMode();
         }
       }
-      CustomNavigator.push(Routes.dashboard, clean: true, arguments: 0);
 
 
       // if (repo.isFirstTime) {
       //   CustomNavigator.push(Routes.onBoarding, clean: true);
       // } else
-      //   if (!repo.isLogin) {
-      //   CustomNavigator.push(Routes.login, clean: true);
-      // } else {
-      //   CustomNavigator.push(Routes.dashboard, clean: true, arguments: 0);
-      // }
+        if (!repo.isLogin) {
+        CustomNavigator.push(Routes.login, clean: true);
+      } else {
+        CustomNavigator.push(Routes.dashboard, clean: true, arguments: 0);
+      }
       repo.setFirstTime();
     });
   }

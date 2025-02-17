@@ -1,5 +1,5 @@
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/app/core/svg_images.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/app/core/svg_images.dart';
 import 'package:country_codes/country_codes.dart';
 import 'package:country_flags/country_flags.dart';
 import 'package:country_list_pick/country_list_pick.dart';

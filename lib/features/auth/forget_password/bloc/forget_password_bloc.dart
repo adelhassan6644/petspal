@@ -26,7 +26,6 @@ class ForgetPasswordBloc extends Bloc<AppEvent, AppState> {
   final FocusNode emailNode = FocusNode();
 
   TextEditingController mailTEC = TextEditingController();
-
   TextEditingController phoneTEC = TextEditingController();
 
   final country = BehaviorSubject<String?>();
@@ -47,7 +46,6 @@ class ForgetPasswordBloc extends Bloc<AppEvent, AppState> {
         "email": mailTEC.text.trim(),
         // "phone": phoneTEC.text.trim(),
         // "country_code": (country.valueOrNull ?? "sa").toLowerCase(),
-        "user_type": event.arguments as String
       };
       Either<ServerFailure, Response> response =
           await repo.forgetPassword(data);

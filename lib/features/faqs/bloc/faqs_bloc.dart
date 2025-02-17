@@ -3,7 +3,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:zurex/main_models/question_model.dart';
+import 'package:petspal/main_models/question_model.dart';
 import '../../../../../app/core/app_core.dart';
 import '../../../../../app/core/app_event.dart';
 import '../../../../../app/core/app_notification.dart';

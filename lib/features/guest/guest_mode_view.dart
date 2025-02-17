@@ -1,4 +1,4 @@
-import 'package:zurex/main_widgets/guest_mode.dart';
+import 'package:petspal/main_widgets/guest_mode.dart';
 import 'package:flutter/material.dart';
 
 import '../../app/localization/language_constant.dart';

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:zurex/features/products/repo/products_repo.dart';
+import 'package:petspal/features/products/repo/products_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';

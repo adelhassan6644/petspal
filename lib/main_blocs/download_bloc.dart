@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zurex/app/core/app_core.dart';
+import 'package:petspal/app/core/app_core.dart';
 import 'package:open_filex/open_filex.dart';
 
 import '../../../helpers/permissions.dart';
@@ -19,7 +19,7 @@ class DownloadBloc extends Bloc<AppEvent, AppState> {
       String url = event.arguments as String;
       String path = await AppCore.getAppFilePath();
 
-      path = "$path/zurex.${url.split("/").last}";
+      path = "$path/petspal.${url.split("/").last}";
 
       try {
         Response res = await repo.download(

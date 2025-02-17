@@ -1,4 +1,4 @@
-import 'package:zurex/main_repos/base_repo.dart';
+import 'package:petspal/main_repos/base_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';

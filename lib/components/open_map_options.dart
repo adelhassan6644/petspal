@@ -1,7 +1,7 @@
-import 'package:zurex/components/animated_widget.dart';
+import 'package:petspal/components/animated_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:map_launcher/map_launcher.dart';
-import 'package:zurex/components/custom_images.dart';
+import 'package:petspal/components/custom_images.dart';
 
 import '../app/core/dimensions.dart';
 import '../app/core/styles.dart';

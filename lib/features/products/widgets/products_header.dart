@@ -1,8 +1,8 @@
-import 'package:zurex/app/core/app_state.dart';
+import 'package:petspal/app/core/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/features/categories/view/categories_tab_bar.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/features/categories/view/categories_tab_bar.dart';
 
 import '../../../app/core/app_event.dart';
 import '../../../main_models/search_engine.dart';

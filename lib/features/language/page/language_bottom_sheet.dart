@@ -1,8 +1,8 @@
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/components/animated_widget.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/components/animated_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zurex/app/core/app_state.dart';
+import 'package:petspal/app/core/app_state.dart';
 import '../../../components/custom_radio_button.dart';
 import '../bloc/language_bloc.dart';
 

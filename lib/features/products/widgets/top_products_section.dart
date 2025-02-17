@@ -1,9 +1,9 @@
-import 'package:zurex/app/core/app_state.dart';
-import 'package:zurex/app/core/extensions.dart';
-import 'package:zurex/components/shimmer/custom_shimmer.dart';
-import 'package:zurex/navigation/custom_navigation.dart';
+import 'package:petspal/app/core/app_state.dart';
+import 'package:petspal/app/core/extensions.dart';
+import 'package:petspal/components/shimmer/custom_shimmer.dart';
+import 'package:petspal/navigation/custom_navigation.dart';
 import 'package:flutter/material.dart';
-import 'package:zurex/app/localization/language_constant.dart';
+import 'package:petspal/app/localization/language_constant.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../app/core/app_event.dart';

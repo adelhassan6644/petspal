@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:country_list_pick/support/code_country.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -37,9 +38,13 @@ class RegisterBloc extends Bloc<AppEvent, AppState> {
 
   TextEditingController phoneTEC = TextEditingController();
 
-  final country = BehaviorSubject<String?>();
-  Function(String?) get updateCountry => country.sink.add;
-  Stream<String?> get countryStream => country.stream.asBroadcastStream();
+  TextEditingController passwordTEC = TextEditingController();
+
+  TextEditingController confirmPasswordTEC = TextEditingController();
+
+  final country = BehaviorSubject<CountryCode?>();
+  Function(CountryCode?) get updateCountry => country.sink.add;
+  Stream<CountryCode?> get countryStream => country.stream.asBroadcastStream();
 
   final agreeToTerms = BehaviorSubject<bool?>();
   Function(bool?) get updateAgreeToTerms => agreeToTerms.sink.add;
@@ -50,7 +55,9 @@ class RegisterBloc extends Bloc<AppEvent, AppState> {
     nameTEC.clear();
     mailTEC.clear();
     phoneTEC.clear();
-    updateCountry("SA");
+    passwordTEC.clear();
+    confirmPasswordTEC.clear();
+    updateCountry(CountryCode(code: "SA"));
     updateAgreeToTerms(null);
     updateProfileImage(null);
   }
@@ -73,7 +80,8 @@ class RegisterBloc extends Bloc<AppEvent, AppState> {
         "name": nameTEC.text.trim(),
         "email": mailTEC.text.trim(),
         "phone_number": phoneTEC.text.trim(),
-        // "country_code": country.valueOrNull?.toLowerCase() ?? "sa",
+        "country_code": country.valueOrNull?.code?.toLowerCase() ?? "sa",
+        "password": passwordTEC.text.trim(),
       };
 
       if (profileImage.valueOrNull == null) {
@@ -110,7 +118,7 @@ class RegisterBloc extends Bloc<AppEvent, AppState> {
             arguments: VerificationModel(
                 email: mailTEC.text.trim(),
                 phone: phoneTEC.text.trim(),
-                countryCode: (country.valueOrNull ?? "sa").toLowerCase(),
+                countryCode: (country.valueOrNull?.code ?? "sa").toLowerCase(),
                 fromRegister: true));
         clear();
         emit(Done());

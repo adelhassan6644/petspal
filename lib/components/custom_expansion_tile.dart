@@ -1,4 +1,4 @@
-import 'package:zurex/app/core/dimensions.dart';
+import 'package:petspal/app/core/dimensions.dart';
 import 'package:flutter/material.dart';
 
 import '../app/core/styles.dart';

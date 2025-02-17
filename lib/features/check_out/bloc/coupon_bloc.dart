@@ -1,4 +1,4 @@
-import 'package:zurex/features/check_out/repo/check_out_interface_repo.dart';
+import 'package:petspal/features/check_out/repo/check_out_interface_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';

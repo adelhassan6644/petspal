@@ -1,5 +1,5 @@
-import 'package:zurex/app/core/extensions.dart';
-import 'package:zurex/app/core/dimensions.dart';
+import 'package:petspal/app/core/extensions.dart';
+import 'package:petspal/app/core/dimensions.dart';
 import 'package:flutter/cupertino.dart';
 import '../app/core/images.dart';
 import '../app/core/styles.dart';

@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:zurex/app/core/extensions.dart';
+import 'package:petspal/app/core/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 

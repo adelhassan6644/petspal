@@ -1,8 +1,8 @@
-import 'package:zurex/app/core/app_state.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/app/localization/language_constant.dart';
-import 'package:zurex/components/custom_button.dart';
-import 'package:zurex/features/check_out/bloc/coupon_bloc.dart';
+import 'package:petspal/app/core/app_state.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/app/localization/language_constant.dart';
+import 'package:petspal/components/custom_button.dart';
+import 'package:petspal/features/check_out/bloc/coupon_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

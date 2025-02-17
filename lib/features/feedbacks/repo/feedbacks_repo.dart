@@ -1,4 +1,4 @@
-import 'package:zurex/main_models/search_engine.dart';
+import 'package:petspal/main_models/search_engine.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 

@@ -1,13 +1,13 @@
 import 'dart:io';
 
 import 'package:share_plus/share_plus.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/app/localization/language_constant.dart';
-import 'package:zurex/components/custom_app_bar.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/app/localization/language_constant.dart';
+import 'package:petspal/components/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zurex/app/core/app_state.dart';
-import 'package:zurex/components/animated_widget.dart';
+import 'package:petspal/app/core/app_state.dart';
+import 'package:petspal/components/animated_widget.dart';
 import '../../../app/core/app_event.dart';
 import '../../../app/core/styles.dart';
 import '../../../app/core/svg_images.dart';
@@ -161,13 +161,7 @@ class _MoreState extends State<More> {
                               ///Language
                               const LanguageButton(),
 
-                              ///Who us
-                              MoreButton(
-                                title:
-                                    getTranslated("who_us", context: context),
-                                icon: SvgImages.info,
-                                onTap: () => CustomNavigator.push(Routes.whoUs),
-                              ),
+
 
                               ///Contact With Us
                               MoreButton(

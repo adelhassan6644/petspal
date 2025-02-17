@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zurex/features/my_cars/model/cars_model.dart';
+import 'package:petspal/features/my_cars/model/cars_model.dart';
 
 class MyCarCard extends StatelessWidget {
   const MyCarCard({super.key, required this.car});

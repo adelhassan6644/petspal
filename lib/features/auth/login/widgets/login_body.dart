@@ -1,21 +1,26 @@
-import 'package:country_codes/country_codes.dart';
-import 'package:country_flags/country_flags.dart';
+import 'dart:io';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zurex/app/core/app_state.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/components/animated_widget.dart';
+import 'package:petspal/app/core/app_state.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/components/animated_widget.dart';
 import '../../../../app/core/app_event.dart';
 import '../../../../app/core/styles.dart';
+import '../../../../app/core/svg_images.dart';
 import '../../../../app/core/text_styles.dart';
 import '../../../../app/core/validation.dart';
 import '../../../../app/localization/language_constant.dart';
 import '../../../../components/custom_button.dart';
 import '../../../../components/custom_text_form_field.dart';
+import '../../../../data/config/di.dart';
+import '../../../../helpers/social_media_login_helper.dart';
 import '../../../../navigation/custom_navigation.dart';
 import '../../../../navigation/routes.dart';
+import '../../social_media_login/bloc/social_media_bloc.dart';
+import '../../social_media_login/repo/social_media_repo.dart';
 import '../bloc/login_bloc.dart';
 import 'login_header.dart';
 
@@ -37,49 +42,73 @@ class LoginBody extends StatelessWidget {
                   child: AutofillGroup(
                     child: Column(
                       children: [
-                        ///Phone
+                        ///Mail
                         CustomTextField(
-                          controller: context.read<LoginBloc>().phoneTEC,
                           autofillHints: const [
-                            AutofillHints.telephoneNumber,
+                            AutofillHints.email,
                             AutofillHints.username,
                           ],
-                          label: getTranslated("phone"),
-                          hint: getTranslated("enter_your_phone"),
-                          inputType: TextInputType.phone,
-                          validate: Validations.phone,
-                          // pSvgIcon: SvgImages.phoneCallIcon,
-                          prefixWidget: Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 4.w, vertical: 4.h),
-                            decoration: BoxDecoration(
-                                color: Styles.FILL_COLOR,
-                                borderRadius: BorderRadius.circular(4)),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                CountryFlag.fromCountryCode(
-                                  "SA",
-                                  height: 18,
-                                  width: 24,
-                                  shape: const RoundedRectangle(5),
+                          controller: context.read<LoginBloc>().emailTEC,
+                          focusNode: context.read<LoginBloc>().phoneNode,
+                          nextFocus: context.read<LoginBloc>().passwordNode,
+                          label: getTranslated("mail"),
+                          hint: getTranslated("enter_your_mail"),
+                          inputType: TextInputType.emailAddress,
+                          validate: Validations.mail,
+                          pSvgIcon: SvgImages.mailIcon,
+                        ),
+
+                        ///Password
+                        CustomTextField(
+                          autofillHints: const [AutofillHints.password],
+                          controller: context.read<LoginBloc>().passwordTEC,
+                          keyboardAction: TextInputAction.done,
+                          label: getTranslated("password"),
+                          hint: getTranslated("enter_your_password"),
+                          focusNode: context.read<LoginBloc>().passwordNode,
+                          inputType: TextInputType.visiblePassword,
+                          validate: Validations.password,
+                          isPassword: true,
+                          pSvgIcon: SvgImages.lockIcon,
+                        ),
+
+                        ///Forget Password && Remember me
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: Dimensions.paddingSizeExtraSmall.h,
+                              horizontal: Dimensions.paddingSizeExtraSmall.w),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              // StreamBuilder<bool?>(
+                              //   stream:
+                              //       context.read<LoginBloc>().rememberMeStream,
+                              //   builder: (_, snapshot) {
+                              //     return _RememberMe(
+                              //       check: snapshot.data ?? false,
+                              //       onChange: (v) => context
+                              //           .read<LoginBloc>()
+                              //           .updateRememberMe(v),
+                              //     );
+                              //   },
+                              // ),
+                              const Expanded(child: SizedBox()),
+                              InkWell(
+                                onTap: () {
+                                  context.read<LoginBloc>().clear();
+                                  CustomNavigator.push(Routes.forgetPassword);
+                                },
+                                child: Text(
+                                  getTranslated("forget_password"),
+                                  style: AppTextStyles.w500.copyWith(
+                                    color: Styles.PRIMARY_COLOR,
+                                    fontSize: 13,
+                                    decoration: TextDecoration.underline,
+                                    decorationColor: Styles.PRIMARY_COLOR,
+                                  ),
                                 ),
-                                SizedBox(width: 4.w),
-                                Text(
-                                  CountryCodes.detailsForLocale(
-                                        Locale.fromSubtags(countryCode: "SA"),
-                                      ).dialCode ??
-                                      "+966",
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                  style: AppTextStyles.w400.copyWith(
-                                      fontSize: 14,
-                                      height: 1,
-                                      color: Styles.HEADER),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
 
@@ -143,8 +172,7 @@ class LoginBody extends StatelessWidget {
                           ),
                         ),
 
-
-                        /* Padding(
+                        Padding(
                           padding: EdgeInsets.only(
                             left: Dimensions.PADDING_SIZE_DEFAULT.w,
                             right: Dimensions.PADDING_SIZE_DEFAULT.w,
@@ -181,7 +209,7 @@ class LoginBody extends StatelessWidget {
                           ),
                         ),
 
-                         if (Platform.isIOS)
+                        if (Platform.isIOS)
                           BlocProvider(
                             create: (context) =>
                                 SocialMediaBloc(repo: sl<SocialMediaRepo>()),
@@ -241,9 +269,6 @@ class LoginBody extends StatelessWidget {
                           ),
                         ),
 
-
-
-
                         ///Login With Facebook
                         BlocProvider(
                           create: (context) =>
@@ -266,7 +291,7 @@ class LoginBody extends StatelessWidget {
                               );
                             },
                           ),
-                        ),*/
+                        ),
                       ],
                     ),
                   )),

@@ -1,10 +1,10 @@
-import 'package:zurex/features/check_out/repo/check_out_request_repo.dart';
+import 'package:petspal/features/check_out/repo/check_out_request_repo.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:zurex/features/auth/register/repo/register_repo.dart';
+import 'package:petspal/features/auth/register/repo/register_repo.dart';
 import '../../app/theme/theme_provider/theme_provider.dart';
 import '../../features/auth/activation_account/repo/activation_account_repo.dart';
 import '../../features/auth/deactivate_account/repo/deactivate_account_repo.dart';
@@ -25,7 +25,6 @@ import '../../features/edit_profile/repo/edit_profile_repo.dart';
 import '../../features/faqs/repo/faqs_repo.dart';
 import '../../features/my_cars/bloc/my_cars_bloc.dart';
 import '../../features/my_cars/repo/my_cars_repo.dart';
-import '../../features/who_us/repo/who_us_repo.dart';
 import '../../main_blocs/country_states_bloc.dart';
 import '../../main_repos/country_states_repo.dart';
 import '../../features/feedbacks/repo/feedbacks_repo.dart';
@@ -80,9 +79,6 @@ Future<void> init() async {
 
   sl.registerLazySingleton(
       () => FaqsRepo(sharedPreferences: sl(), dioClient: sl()));
-
-  sl.registerLazySingleton(
-      () => WhoUsRepo(sharedPreferences: sl(), dioClient: sl()));
 
   sl.registerLazySingleton(() => DownloadRepo());
 

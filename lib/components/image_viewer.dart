@@ -1,6 +1,6 @@
-import 'package:zurex/app/core/extensions.dart';
-import 'package:zurex/components/custom_app_bar.dart';
-import 'package:zurex/components/custom_network_image.dart';
+import 'package:petspal/app/core/extensions.dart';
+import 'package:petspal/components/custom_app_bar.dart';
+import 'package:petspal/components/custom_network_image.dart';
 import 'package:flutter/material.dart';
 
 class ImageViewer extends StatelessWidget {

@@ -1,7 +1,7 @@
-import 'package:zurex/app/core/extensions.dart';
-import 'package:zurex/features/transactions/bloc/transactions_bloc.dart';
-import 'package:zurex/features/transactions/model/transactions_model.dart';
-import 'package:zurex/features/transactions/repo/transactions_repo.dart';
+import 'package:petspal/app/core/extensions.dart';
+import 'package:petspal/features/transactions/bloc/transactions_bloc.dart';
+import 'package:petspal/features/transactions/model/transactions_model.dart';
+import 'package:petspal/features/transactions/repo/transactions_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../app/core/app_event.dart';

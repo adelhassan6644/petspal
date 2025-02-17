@@ -1,7 +1,7 @@
-import 'package:zurex/app/core/extensions.dart';
-import 'package:zurex/features/notifications/model/notifications_model.dart';
-import 'package:zurex/features/notifications/repo/notifications_repo.dart';
-import 'package:zurex/features/notifications/widgets/notification_card.dart';
+import 'package:petspal/app/core/extensions.dart';
+import 'package:petspal/features/notifications/model/notifications_model.dart';
+import 'package:petspal/features/notifications/repo/notifications_repo.dart';
+import 'package:petspal/features/notifications/widgets/notification_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../app/core/app_event.dart';

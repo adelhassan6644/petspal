@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:zurex/app/localization/language_constant.dart';
-import 'package:zurex/components/animated_widget.dart';
-import 'package:zurex/components/custom_app_bar.dart';
-import 'package:zurex/features/setting/widgets/settings_button.dart';
+import 'package:petspal/app/localization/language_constant.dart';
+import 'package:petspal/components/animated_widget.dart';
+import 'package:petspal/components/custom_app_bar.dart';
+import 'package:petspal/features/setting/widgets/settings_button.dart';
 
 import '../../../app/core/svg_images.dart';
 import '../../../navigation/custom_navigation.dart';

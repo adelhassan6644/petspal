@@ -4,7 +4,7 @@ import 'dart:developer' as print;
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:zurex/app/localization/language_constant.dart';
+import 'package:petspal/app/localization/language_constant.dart';
 
 import '../../../app/core/app_core.dart';
 

@@ -1,6 +1,6 @@
-import 'package:zurex/components/custom_app_bar.dart';
-import 'package:zurex/features/categories/model/categories_model.dart';
-import 'package:zurex/features/products/widgets/products_body.dart';
+import 'package:petspal/components/custom_app_bar.dart';
+import 'package:petspal/features/categories/model/categories_model.dart';
+import 'package:petspal/features/products/widgets/products_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../app/core/app_event.dart';

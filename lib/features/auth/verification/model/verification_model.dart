@@ -11,14 +11,14 @@ class VerificationModel {
     this.countryCode,
     this.fromComplete = false,
     this.fromRegister = true,
-    this.withMail = false,
+    this.withMail = true,
   });
   bool isEmpty() => email == "";
 
   Map<String, dynamic> toJson({bool withCode = true}) => {
         if (withMail) "email": email,
         if (!withMail) "phone_number": phone,
-        // if (!withMail) "country_code": countryCode,
+        if (!withMail) "country_code": countryCode,
         if (withCode) "otp": code,
       };
 }

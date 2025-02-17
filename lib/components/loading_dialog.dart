@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:zurex/app/core/extensions.dart';
+import 'package:petspal/app/core/extensions.dart';
 import '../app/core/dimensions.dart';
 import '../app/core/images.dart';
 import '../app/core/styles.dart';

@@ -1,4 +1,4 @@
-import 'package:zurex/app/core/extensions.dart';
+import 'package:petspal/app/core/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 import '../../../app/core/dimensions.dart';

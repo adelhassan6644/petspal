@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/app/core/svg_images.dart';
-import 'package:zurex/app/core/text_styles.dart';
-import 'package:zurex/components/custom_images.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/app/core/svg_images.dart';
+import 'package:petspal/app/core/text_styles.dart';
+import 'package:petspal/components/custom_images.dart';
 import '../../../app/core/images.dart';
 import '../../../app/core/styles.dart';
 import '../../../app/localization/language_constant.dart';
@@ -74,7 +74,7 @@ class ContactWithUsPage extends StatelessWidget {
                   customContainerSvgIcon(
                       onTap: () => launchUrl(
                           Uri.parse(
-                              "mailto:${sl<SettingBloc>().model?.social?.mail ?? "zurex@gmail.com"}"),
+                              "mailto:${sl<SettingBloc>().model?.social?.mail ?? "petspal@gmail.com"}"),
                           mode: LaunchMode.externalApplication),
                       imageName: SvgImages.mail,
                       backGround: Styles.PRIMARY_COLOR,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/app/core/extensions.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/app/core/extensions.dart';
 import '../../navigation/custom_navigation.dart';
 import '../app/core/styles.dart';
 import '../app/core/text_styles.dart';

@@ -1,14 +1,14 @@
-import 'package:zurex/app/core/extensions.dart';
-import 'package:zurex/app/localization/language_constant.dart';
-import 'package:zurex/components/empty_widget.dart';
-import 'package:zurex/components/grid_list_animator.dart';
-import 'package:zurex/features/categories/bloc/categories_bloc.dart';
-import 'package:zurex/features/categories/model/categories_model.dart';
-import 'package:zurex/features/categories/repo/categories_repo.dart';
-import 'package:zurex/features/categories/widgets/category_card.dart';
+import 'package:petspal/app/core/extensions.dart';
+import 'package:petspal/app/localization/language_constant.dart';
+import 'package:petspal/components/empty_widget.dart';
+import 'package:petspal/components/grid_list_animator.dart';
+import 'package:petspal/features/categories/bloc/categories_bloc.dart';
+import 'package:petspal/features/categories/model/categories_model.dart';
+import 'package:petspal/features/categories/repo/categories_repo.dart';
+import 'package:petspal/features/categories/widgets/category_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zurex/main_widgets/section_title.dart';
+import 'package:petspal/main_widgets/section_title.dart';
 
 import '../../../app/core/app_event.dart';
 import '../../../app/core/app_state.dart';

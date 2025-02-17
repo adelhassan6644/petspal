@@ -1,10 +1,10 @@
-import 'package:zurex/app/core/app_state.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/components/animated_widget.dart';
-import 'package:zurex/components/custom_app_bar.dart';
-import 'package:zurex/features/feedbacks/bloc/feedbacks_bloc.dart';
-import 'package:zurex/features/feedbacks/widgets/feedback_card.dart';
-import 'package:zurex/main_models/search_engine.dart';
+import 'package:petspal/app/core/app_state.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/components/animated_widget.dart';
+import 'package:petspal/components/custom_app_bar.dart';
+import 'package:petspal/features/feedbacks/bloc/feedbacks_bloc.dart';
+import 'package:petspal/features/feedbacks/widgets/feedback_card.dart';
+import 'package:petspal/main_models/search_engine.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

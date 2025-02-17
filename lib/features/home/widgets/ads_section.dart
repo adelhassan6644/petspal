@@ -1,11 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zurex/app/core/app_state.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/app/core/extensions.dart';
-import 'package:zurex/components/shimmer/custom_shimmer.dart';
-import 'package:zurex/features/home/model/ads_model.dart';
+import 'package:petspal/app/core/app_state.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/app/core/extensions.dart';
+import 'package:petspal/components/shimmer/custom_shimmer.dart';
+import 'package:petspal/features/home/model/ads_model.dart';
 
 import '../../../app/core/styles.dart';
 import '../../../components/custom_network_image.dart';

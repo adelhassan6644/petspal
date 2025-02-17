@@ -1,8 +1,8 @@
-import 'package:zurex/data/config/di.dart' as di;
+import 'package:petspal/data/config/di.dart' as di;
 import 'package:flutter_bloc/flutter_bloc.dart' show BlocProvider;
 
 
-import 'package:zurex/main_blocs/user_bloc.dart';
+import 'package:petspal/main_blocs/user_bloc.dart';
 
 import '../../app/core/app_event.dart';
 import '../../features/auth/logout/bloc/logout_bloc.dart';

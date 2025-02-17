@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:zurex/features/my_cars/model/cars_model.dart';
+import 'package:petspal/features/my_cars/model/cars_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';

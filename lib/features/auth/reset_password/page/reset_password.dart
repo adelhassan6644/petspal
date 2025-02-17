@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zurex/app/core/app_state.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/features/auth/reset_password/bloc/reset_password_bloc.dart';
-import 'package:zurex/features/auth/reset_password/repo/reset_password_repo.dart';
+import 'package:petspal/app/core/app_state.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/features/auth/reset_password/bloc/reset_password_bloc.dart';
+import 'package:petspal/features/auth/reset_password/repo/reset_password_repo.dart';
 
 import '../../../../app/core/app_event.dart';
 import '../../../../app/core/svg_images.dart';

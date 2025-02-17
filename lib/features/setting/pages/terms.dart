@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
-import 'package:zurex/app/core/app_state.dart';
-import 'package:zurex/app/localization/language_constant.dart';
-import 'package:zurex/features/setting/model/setting_model.dart';
+import 'package:petspal/app/core/app_state.dart';
+import 'package:petspal/app/localization/language_constant.dart';
+import 'package:petspal/features/setting/model/setting_model.dart';
 import '../../../app/core/dimensions.dart';
 import '../../../components/animated_widget.dart';
 import '../../../components/custom_app_bar.dart';

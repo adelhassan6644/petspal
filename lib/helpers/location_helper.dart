@@ -50,7 +50,7 @@ abstract class LocationHelper {
     showDialog(
         context: CustomNavigator.navigatorState.currentContext!,
         builder: (_) => CupertinoAlertDialog(
-              title: const Text("هل تريد السماح لتطبيق “zurex” باستخدام موقعك؟"),
+              title: const Text("هل تريد السماح لتطبيق “petspal” باستخدام موقعك؟"),
               content: const Text(
                   "لإجراء رحلة مضمونه، يجمع في طريقي بيانات الموقع بداءاً من وقت فتح التطبيق. ويعمل ذلك على تحسين عمليات الالتقاء بالكباتن، ونسب التوافق، وغير ذلك الكثير."),
               actions: [

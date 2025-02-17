@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/app/core/svg_images.dart';
-import 'package:zurex/app/localization/language_constant.dart';
-import 'package:zurex/features/chat/entity/typing_entity.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/app/core/svg_images.dart';
+import 'package:petspal/app/localization/language_constant.dart';
+import 'package:petspal/features/chat/entity/typing_entity.dart';
 import '../../../app/core/app_event.dart';
 import '../../../app/core/styles.dart';
 import '../../../components/custom_images.dart';

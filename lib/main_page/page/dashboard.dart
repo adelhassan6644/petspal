@@ -2,12 +2,12 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:app_links/app_links.dart';
-import 'package:zurex/app/core/app_state.dart';
-import 'package:zurex/features/home/page/home.dart';
+import 'package:petspal/app/core/app_state.dart';
+import 'package:petspal/features/home/page/home.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:zurex/features/more/page/more.dart';
-import 'package:zurex/main_blocs/user_bloc.dart';
+import 'package:petspal/features/more/page/more.dart';
+import 'package:petspal/main_blocs/user_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../app/core/app_event.dart';
 import '../../data/config/di.dart';

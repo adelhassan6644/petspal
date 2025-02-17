@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/features/chat/model/message_model.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/features/chat/model/message_model.dart';
 import '../../../../components/custom_network_image.dart';
 import '../../../../components/image_pop_up_viewer.dart';
 

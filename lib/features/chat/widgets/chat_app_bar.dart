@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/app/core/extensions.dart';
-import 'package:zurex/app/core/styles.dart';
-import 'package:zurex/app/core/text_styles.dart';
-import 'package:zurex/navigation/routes.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/app/core/extensions.dart';
+import 'package:petspal/app/core/styles.dart';
+import 'package:petspal/app/core/text_styles.dart';
+import 'package:petspal/navigation/routes.dart';
 
 import '../../../app/core/svg_images.dart';
 import '../../../components/custom_images.dart';

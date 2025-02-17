@@ -1,8 +1,8 @@
-import 'package:zurex/app/core/app_state.dart';
-import 'package:zurex/app/core/images.dart';
-import 'package:zurex/app/core/text_styles.dart';
-import 'package:zurex/components/custom_images.dart';
-import 'package:zurex/navigation/custom_navigation.dart';
+import 'package:petspal/app/core/app_state.dart';
+import 'package:petspal/app/core/images.dart';
+import 'package:petspal/app/core/text_styles.dart';
+import 'package:petspal/components/custom_images.dart';
+import 'package:petspal/navigation/custom_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

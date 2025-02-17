@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:zurex/app/core/app_state.dart';
-import 'package:zurex/features/chat/repo/chat_repo.dart';
-import 'package:zurex/helpers/pickers/view/image_picker_helper.dart';
+import 'package:petspal/app/core/app_state.dart';
+import 'package:petspal/features/chat/repo/chat_repo.dart';
+import 'package:petspal/helpers/pickers/view/image_picker_helper.dart';
 
 import '../../../../app/core/app_event.dart';
 import '../../../../app/core/styles.dart';

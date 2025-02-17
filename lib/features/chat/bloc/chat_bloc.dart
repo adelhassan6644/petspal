@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zurex/data/api/end_points.dart';
+import 'package:petspal/data/api/end_points.dart';
 import 'package:rxdart/rxdart.dart';
 import '../../../app/core/app_core.dart';
 import '../../../app/core/app_event.dart';

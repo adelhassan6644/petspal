@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/components/shimmer/custom_shimmer.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/components/shimmer/custom_shimmer.dart';
 import '../app/core/text_styles.dart';
 import 'custom_network_image.dart';
 

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:zurex/features/auth/social_media_login/model/social_media_model.dart';
+import 'package:petspal/features/auth/social_media_login/model/social_media_model.dart';
 import '../../../../app/core/app_storage_keys.dart';
 import '../../../../data/api/end_points.dart';
 import '../../../../data/error/api_error_handler.dart';

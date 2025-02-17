@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:motion_toast/motion_toast.dart';
-import 'package:zurex/app/core/dimensions.dart';
-import 'package:zurex/app/core/extensions.dart';
-import 'package:zurex/app/core/text_styles.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/app/core/extensions.dart';
+import 'package:petspal/app/core/text_styles.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 import '../../../navigation/custom_navigation.dart';
@@ -68,10 +68,10 @@ class AppCore {
     String? path;
     if (Platform.isAndroid) {
       path =
-          '${await ExternalPath.getExternalStoragePublicDirectory(ExternalPath.DIRECTORY_DOWNLOADS)}/zurex';
+          '${await ExternalPath.getExternalStoragePublicDirectory(ExternalPath.DIRECTORY_DOWNLOADS)}/petspal';
     } else {
       Directory documents = await getApplicationDocumentsDirectory();
-      path = '${documents.path}/zurex';
+      path = '${documents.path}/petspal';
     }
 
     return path;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zurex/app/core/extensions.dart';
+import 'package:petspal/app/core/extensions.dart';
 
 import '../app/core/styles.dart';
 

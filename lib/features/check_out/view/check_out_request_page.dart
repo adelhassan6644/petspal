@@ -1,7 +1,7 @@
-import 'package:zurex/app/localization/language_constant.dart';
-import 'package:zurex/components/animated_widget.dart';
-import 'package:zurex/components/custom_app_bar.dart';
-import 'package:zurex/features/check_out/repo/check_out_request_repo.dart';
+import 'package:petspal/app/localization/language_constant.dart';
+import 'package:petspal/components/animated_widget.dart';
+import 'package:petspal/components/custom_app_bar.dart';
+import 'package:petspal/features/check_out/repo/check_out_request_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../data/config/di.dart';

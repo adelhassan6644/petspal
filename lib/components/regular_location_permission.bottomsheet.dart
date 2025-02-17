@@ -1,4 +1,4 @@
-import 'package:zurex/navigation/custom_navigation.dart';
+import 'package:petspal/navigation/custom_navigation.dart';
 import 'package:flutter/material.dart';
 import 'custom_button.dart';
 

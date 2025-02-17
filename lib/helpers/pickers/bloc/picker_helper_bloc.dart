@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:zurex/helpers/pickers/repo/picker_helper_repo.dart';
+import 'package:petspal/helpers/pickers/repo/picker_helper_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
