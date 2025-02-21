@@ -1,7 +1,11 @@
+import 'dart:developer';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/components/custom_images.dart';
 import 'package:petspal/navigation/custom_navigation.dart';
 import '../app/core/styles.dart';
+import '../app/core/svg_images.dart';
 
 class FilteredBackIcon extends StatelessWidget {
   const FilteredBackIcon({super.key, this.onTap});
@@ -9,25 +13,18 @@ class FilteredBackIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => onTap?.call() ?? CustomNavigator.pop(),
-      child: ClipRRect(
-        clipBehavior: Clip.antiAlias,
-        borderRadius: BorderRadius.circular(100),
-        child: BackdropFilter(
-          filter: ui.ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-          child: Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(100)),
-            child: const Icon(
-              Icons.arrow_back,
-              size: 20,
-              color: Styles.PRIMARY_COLOR,
-            ),
-          ),
-        ),
-      ),
+    return customContainerSvgIcon(
+      onTap: () {
+        CustomNavigator.pop();
+      },
+      imageName: SvgImages.backArrow,
+      width: 40.w,
+      height: 40.w,
+      padding: 10.w,
+      radius: 16.w,
+      backGround: Styles.WHITE_COLOR,
+      borderColor: Color(0xFFFFF6F1),
+      color: Color(0xFF7E8AA3),
     );
   }
 }

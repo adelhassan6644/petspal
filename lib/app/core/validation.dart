@@ -67,7 +67,7 @@ class Validations {
   }
 
   static String? confirmNewPassword(String? password, String? confirmPassword) {
-    if (confirmPassword == null || confirmPassword.isEmpty) {
+    if (confirmPassword!.isEmpty) {
       return getTranslated("please_enter_valid_confirm_password");
     } else if (confirmPassword.length < 8) {
       return getTranslated("password_length_validation");
@@ -126,7 +126,7 @@ class Validations {
   }
 
   static String? code(String? value) {
-    if (value == null || value.length < 6) {
+    if (value == null || value.length < 4) {
       return getTranslated("please_enter_valid_code");
     } else {
       return null;

@@ -66,8 +66,8 @@ abstract class CustomBottomSheet {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          label ?? "",
-                          style: AppTextStyles.w500.copyWith(
+                          label ,
+                          style: AppTextStyles.w700.copyWith(
                             fontSize: 18,
                           ),
                         ),

@@ -37,8 +37,8 @@ class CountrySelection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          CountriesBloc(repo: sl<CountriesRepo>())..add(Click()),
+      create: (context) => CountriesBloc(repo: sl<CountriesRepo>()),
+      // ..add(Click()),
       child: BlocBuilder<CountriesBloc, AppState>(
         builder: (context, state) {
           return CustomTextField(
@@ -82,6 +82,24 @@ class CountrySelection extends StatelessWidget {
                   message: getTranslated("there_is_no_countries"),
                   backgroundColor: Styles.PENDING,
                 ));
+              } else {
+                CustomBottomSheet.show(
+                  label: getTranslated("select_your_country"),
+                  onConfirm: () => CustomNavigator.pop(),
+                  widget: CustomSingleSelector(
+                    list: [
+                      CustomFieldModel(id: 1, name: "Egypt", code: "EG"),
+                      CustomFieldModel(id: 2, name: "Saudi Arabia", code: "SA"),
+                      CustomFieldModel(id: 3, name: "Kuwait", code: "KU"),
+                      CustomFieldModel(
+                          id: 4, name: "United Arab Emirates", code: "UA"),
+                    ],
+                    initialValue: initialSelection?.id,
+                    onConfirm: (v) {
+                      onSelect.call(v);
+                    },
+                  ),
+                );
               }
             },
             readOnly: true,

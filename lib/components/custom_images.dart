@@ -82,6 +82,7 @@ Widget customContainerSvgIcon(
     Function? onTap,
     Color? color,
     Color? backGround,
+    Color? borderColor,
     bool withShadow = false,
     double? padding,
     double? width,
@@ -100,7 +101,7 @@ Widget customContainerSvgIcon(
       width: width ?? 50,
       padding: EdgeInsets.all(padding ?? 16),
       decoration: BoxDecoration(
-          border: Border.all(color: Styles.LIGHT_BORDER_COLOR),
+          border: Border.all(color: borderColor ?? Colors.transparent),
           color: backGround ?? Styles.PRIMARY_COLOR.withOpacity(0.1),
           borderRadius: BorderRadius.circular(radius ?? 12)),
       child: SvgPicture.asset(

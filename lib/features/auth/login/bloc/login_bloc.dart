@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:petspal/features/auth/login/entity/login_entity.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:petspal/features/auth/verification/model/verification_model.dart';
 
@@ -10,7 +11,6 @@ import '../../../../app/core/app_event.dart';
 import '../../../../app/core/app_notification.dart';
 import '../../../../app/core/app_state.dart';
 import '../../../../app/core/styles.dart';
-import '../../../../app/core/validation.dart';
 import '../../../../app/localization/language_constant.dart';
 import '../../../../components/custom_simple_dialog.dart';
 import '../../../../data/error/failures.dart';
@@ -33,56 +33,47 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
   final FocusNode emailNode = FocusNode();
   final FocusNode passwordNode = FocusNode();
 
-  final email = BehaviorSubject<String?>();
-  Function(String?) get updateEmail => email.sink.add;
-  Stream<String?> get emailStream => email.stream.asBroadcastStream();
+  final loginEntity = BehaviorSubject<LoginEntity?>();
+  Function(LoginEntity?) get updateLoginEntity => loginEntity.sink.add;
+  Stream<LoginEntity?> get loginEntityStream =>
+      loginEntity.stream.asBroadcastStream();
 
-  final password = BehaviorSubject<String?>();
-  Function(String?) get updatePassword => password.sink.add;
-  Stream<String?> get passwordStream => password.stream.asBroadcastStream();
-
-  Stream<bool> get loginStream =>
-      Rx.combineLatest2(emailStream, passwordStream, (n, p) {
-        if (Validations.mail(n as String) == null &&
-            Validations.password(p) == null) {
-          return true;
-        }
+  bool isBodyValid() {
+    for (var entry in (loginEntity.valueOrNull?.toJson() ?? {}).entries) {
+      final value = entry.value;
+      if (value == null || (value is String && value.trim().isEmpty)) {
         return false;
-      });
+      }
+    }
+    return true;
+  }
 
   final rememberMe = BehaviorSubject<bool?>();
   Function(bool?) get updateRememberMe => rememberMe.sink.add;
   Stream<bool?> get rememberMeStream => rememberMe.stream.asBroadcastStream();
 
   clear() {
-    updateEmail(null);
-    updatePassword(null);
+    updateLoginEntity(LoginEntity(
+      email: TextEditingController(),
+      password: TextEditingController(),
+    ));
     updateRememberMe(false);
-  }
-
-  @override
-  Future<void> close() {
-    updateRememberMe(false);
-    return super.close();
   }
 
   Future<void> onClick(Click event, Emitter<AppState> emit) async {
     try {
       emit(Loading());
-      Map<String, dynamic> data = {
-        "email": email.valueOrNull?.trim(),
-        "password": password.valueOrNull?.trim(),
-      };
 
-      Either<ServerFailure, Response> response = await repo.logIn(data);
+      Either<ServerFailure, Response> response =
+          await repo.logIn(loginEntity.valueOrNull!.toJson());
 
       response.fold((fail) {
         if (fail.statusCode == 406) {
           CustomSimpleDialog.parentSimpleDialog(
             canDismiss: false,
             withContentPadding: false,
-            customWidget:
-                ActivationDialog(email: email.valueOrNull?.trim() ?? ""),
+            customWidget: ActivationDialog(
+                email: loginEntity.valueOrNull?.email?.text.trim() ?? ""),
           );
         } else {
           AppCore.showSnackBar(
@@ -95,7 +86,7 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
         emit(Error());
       }, (success) {
         if (rememberMe.valueOrNull == true) {
-          repo.saveCredentials(data);
+          repo.saveCredentials(loginEntity.valueOrNull!.toJson());
         }
 
         if (success.data['data'] != null &&
@@ -103,7 +94,8 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
           CustomNavigator.push(
             Routes.verification,
             arguments: VerificationModel(
-                email: email.valueOrNull?.trim() ?? "", fromRegister: true),
+                email: loginEntity.valueOrNull?.email?.text.trim() ?? "",
+                fromRegister: true),
           );
         } else {
           CustomNavigator.push(Routes.dashboard, clean: true, arguments: 0);
@@ -127,8 +119,10 @@ class LoginBloc extends Bloc<AppEvent, AppState> {
   Future<void> onRemember(Remember event, Emitter<AppState> emit) async {
     Map<String, dynamic>? data = repo.getCredentials();
     if (data != null) {
-      updateEmail(data["email"]);
-      updatePassword(data["password"]);
+      updateLoginEntity(LoginEntity(
+        email: TextEditingController(text: data["email"]),
+        password: TextEditingController(text: data["password"]),
+      ));
       updateRememberMe(data["email"] != "" && data["password"] != null);
       emit(Done());
     }

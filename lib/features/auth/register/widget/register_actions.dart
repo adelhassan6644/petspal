@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:petspal/app/core/app_state.dart';
 import 'package:petspal/app/core/dimensions.dart';
 import 'package:flutter/gestures.dart';
@@ -15,6 +17,7 @@ import '../../../../data/config/di.dart';
 import '../../../../navigation/custom_navigation.dart';
 import '../../../../navigation/routes.dart';
 import '../../../language/bloc/language_bloc.dart';
+import '../../verification/model/verification_model.dart';
 import '../bloc/register_bloc.dart';
 
 class RegisterActions extends StatelessWidget {
@@ -30,36 +33,32 @@ class RegisterActions extends StatelessWidget {
                 stream: context.read<RegisterBloc>().agreeToTermsStream,
                 builder: (context, snapshot) {
                   return _AgreeToTerms(
-                    check: snapshot.data ?? false,
+                    check: snapshot.data ?? true,
                     onChange: context.read<RegisterBloc>().updateAgreeToTerms,
                   );
                 }),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 12.h),
-              child: StreamBuilder<bool>(
-                  stream: context.read<RegisterBloc>().registerStream,
-                  builder: (context, snapshot) {
-                    return CustomButton(
-                        text: getTranslated("signup"),
-                        rIconWidget: RotatedBox(
-                          quarterTurns: sl<LanguageBloc>().isLtr ? 0 : 2,
-                          child: customImageIconSVG(
-                            imageName: SvgImages.forwardArrow,
-                            color: Styles.WHITE_COLOR,
-                          ),
-                        ),
-                        onTap: () {
-                          context
-                              .read<RegisterBloc>()
-                              .formKey
-                              .currentState!
-                              .validate();
-                          if (snapshot.data == true) {
-                            context.read<RegisterBloc>().add(Click());
-                          }
-                        },
-                        isLoading: state is Loading);
-                  }),
+              child: CustomButton(
+                  text: getTranslated("signup"),
+                  rIconWidget: RotatedBox(
+                    quarterTurns: sl<LanguageBloc>().isLtr ? 0 : 2,
+                    child: customImageIconSVG(
+                      imageName: SvgImages.forwardArrow,
+                      color: Styles.WHITE_COLOR,
+                    ),
+                  ),
+                  onTap: () {
+                    context.read<RegisterBloc>().formKey.currentState!.validate();
+                    if (context.read<RegisterBloc>().isBodyValid()) {
+                      context.read<RegisterBloc>().clear();
+                      CustomNavigator.push(Routes.verification,
+                          arguments: VerificationModel(email: "", fromRegister: true));
+                      // context.read<RegisterBloc>().add(Click());
+                    }
+
+                  },
+                  isLoading: state is Loading),
             ),
 
             ///Login up if u have account
@@ -91,7 +90,7 @@ class RegisterActions extends StatelessWidget {
 
 class _AgreeToTerms extends StatelessWidget {
   const _AgreeToTerms({
-    this.check = false,
+    this.check = true,
     required this.onChange,
   });
   final bool check;
@@ -111,9 +110,7 @@ class _AgreeToTerms extends StatelessWidget {
             focusColor: Colors.transparent,
             onTap: () => onChange(!check),
             child: Icon(
-              check
-                  ? Icons.check_box_outline_blank
-                  : Icons.check_box_outline_blank,
+              check ? Icons.check_box : Icons.check_box_outline_blank,
               color: check ? Styles.PRIMARY_COLOR : Styles.DISABLED,
               size: 22,
             ),

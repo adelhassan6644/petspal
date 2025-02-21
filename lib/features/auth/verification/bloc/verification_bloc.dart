@@ -23,6 +23,8 @@ class VerificationBloc extends Bloc<AppEvent, AppState> {
     on<Resend>(onResend);
   }
 
+  final formKey = GlobalKey<FormState>();
+
   TextEditingController codeTEC = TextEditingController();
 
   clear() {
@@ -49,7 +51,7 @@ class VerificationBloc extends Bloc<AppEvent, AppState> {
         if (data.fromRegister) {
           CustomNavigator.push(Routes.dashboard, clean: true, arguments: 0);
         } else {
-          CustomNavigator.push(Routes.resetPassword, arguments: data.email);
+          CustomNavigator.push(Routes.resetPassword, arguments: data);
         }
         AppCore.showSnackBar(
           notification: AppNotification(
