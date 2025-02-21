@@ -8,7 +8,6 @@ import '../../../../app/core/app_notification.dart';
 import '../../../../app/core/app_state.dart';
 import '../../../../app/core/styles.dart';
 import '../../../../data/error/failures.dart';
-import '../../../data/error/api_error_handler.dart';
 import '../model/product_details_model.dart';
 import '../repo/product_details_repo.dart';
 
@@ -28,7 +27,7 @@ class ProductDetailsBloc extends Bloc<AppEvent, AppState> {
       response.fold((fail) {
         AppCore.showSnackBar(
             notification: AppNotification(
-                message: ApiErrorHandler.getMessage(fail),
+                message: fail.error,
                 isFloating: true,
                 backgroundColor: Styles.IN_ACTIVE,
                 borderColor: Colors.transparent));

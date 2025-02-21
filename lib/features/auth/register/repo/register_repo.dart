@@ -6,8 +6,7 @@ import '../../../../data/error/failures.dart';
 import '../../../../main_repos/base_repo.dart';
 
 class RegisterRepo extends BaseRepo {
-  RegisterRepo(
-      {required super.sharedPreferences, required super.dioClient});
+  RegisterRepo({required super.sharedPreferences, required super.dioClient});
 
   Future<Either<ServerFailure, Response>> register(data) async {
     try {
@@ -20,7 +19,7 @@ class RegisterRepo extends BaseRepo {
         return left(ServerFailure(response.data['message']));
       }
     } catch (error) {
-      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
+      return left(ApiErrorHandler.getServerFailure(error));
     }
   }
 }

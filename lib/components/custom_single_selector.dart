@@ -68,8 +68,8 @@ class _CustomSingleSelectorState extends State<CustomSingleSelector> {
                 Expanded(
                   child: Text(
                     widget.withTranslate == true
-                        ? getTranslated(widget.list[index].question ?? "")
-                        : widget.list[index].question ?? "",
+                        ? getTranslated(widget.list[index].name ?? "")
+                        : widget.list[index].name ?? "",
                     style: AppTextStyles.w600.copyWith(
                       fontSize: 16,
                       overflow: TextOverflow.ellipsis,

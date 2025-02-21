@@ -130,18 +130,22 @@ flutter:
   fonts:
     - family: en
       fonts:
-        - asset: assets/fonts/en/Roboto-Thin.ttf
+        - asset: assets/fonts/en/thin.ttf
+          weight: 200
+        - asset: assets/fonts/en/light.ttf
           weight: 300
-        - asset: assets/fonts/en/Roboto-Regular.ttf
+        - asset: assets/fonts/en/regular.ttf
+          weight: 400
+        - asset: assets/fonts/en/medium.ttf
           weight: 500
-        - asset: assets/fonts/en/Roboto-Medium.ttf
+        - asset: assets/fonts/en/semi_bold.ttf
           weight: 600
-        - asset: assets/fonts/en/Roboto-Light.ttf
-          weight: 600
-        - asset: assets/fonts/en/Roboto-Bold.ttf
+        - asset: assets/fonts/en/bold.ttf
           weight: 700
-        - asset: assets/fonts/en/Roboto-Black.ttf
+        - asset: assets/fonts/en/extra_bold.ttf
           weight: 800
+        - asset: assets/fonts/en/black.ttf
+          weight: 900
 
     - family: ar
       fonts:

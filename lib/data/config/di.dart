@@ -23,10 +23,7 @@ import '../../features/change_password/repo/change_password_repo.dart';
 import '../../features/check_out/repo/check_out_product_repo.dart';
 import '../../features/edit_profile/repo/edit_profile_repo.dart';
 import '../../features/faqs/repo/faqs_repo.dart';
-import '../../features/my_cars/bloc/my_cars_bloc.dart';
-import '../../features/my_cars/repo/my_cars_repo.dart';
-import '../../main_blocs/country_states_bloc.dart';
-import '../../main_repos/country_states_repo.dart';
+import '../../features/countries/repo/countries_repo.dart';
 import '../../features/feedbacks/repo/feedbacks_repo.dart';
 import '../../features/home/bloc/home_ads_bloc.dart';
 import '../../features/home/repo/home_repo.dart';
@@ -83,7 +80,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => DownloadRepo());
 
   sl.registerLazySingleton(
-      () => CountryStatesRepo(sharedPreferences: sl(), dioClient: sl()));
+      () => CountriesRepo(sharedPreferences: sl(), dioClient: sl()));
 
   sl.registerLazySingleton(
       () => PickerHelperRepo(sharedPreferences: sl(), dioClient: sl()));
@@ -169,23 +166,17 @@ Future<void> init() async {
       () => FeedbacksRepo(sharedPreferences: sl(), dioClient: sl()));
 
   sl.registerLazySingleton(
-      () => MyCarsRepo(sharedPreferences: sl(), dioClient: sl()));
-
-  sl.registerLazySingleton(
       () => TransactionsRepo(sharedPreferences: sl(), dioClient: sl()));
 
   //provider
   sl.registerLazySingleton(() => LanguageBloc(repo: sl()));
   sl.registerLazySingleton(() => ThemeProvider(sharedPreferences: sl()));
-  sl.registerLazySingleton(() => CountryStatesBloc(repo: sl()));
   sl.registerLazySingleton(() => SettingBloc(repo: sl()));
   sl.registerLazySingleton(() => DashboardBloc());
   sl.registerLazySingleton(() => ProfileBloc(repo: sl()));
   sl.registerLazySingleton(() => UserBloc(repo: sl()));
   sl.registerLazySingleton(
       () => HomeAdsBloc(repo: sl(), internetConnection: sl()));
-  sl.registerLazySingleton(
-      () => MyCarsBloc(repo: sl(), internetConnection: sl()));
   sl.registerLazySingleton(() => ChatsBloc(repo: sl()));
 
   ///Log out

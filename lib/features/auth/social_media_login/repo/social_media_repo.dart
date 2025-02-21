@@ -69,11 +69,12 @@ class SocialMediaRepo extends BaseRepo {
           saveUserToken(response.data['data']["token"]);
           return Right(response);
         } else {
-          return left(ServerFailure(response.data['message']));
+          return left(
+              ApiErrorHandler.getServerFailure(response.data['message']));
         }
       });
     } catch (error) {
-      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
+      return left(ApiErrorHandler.getServerFailure(error));
     }
   }
 }

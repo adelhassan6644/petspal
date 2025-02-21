@@ -42,10 +42,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        image: DecorationImage(
-          image: AssetImage(Images.appBarBG),
-          fit: BoxFit.cover,
-        ),
       ),
       child: SafeArea(
         top: withSafeArea,
@@ -76,6 +72,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize =>
-      Size(CustomNavigator.navigatorState.currentContext!.width, height ?? 120.h);
+  Size get preferredSize => Size(
+      CustomNavigator.navigatorState.currentContext!.width, height ?? 120.h);
 }

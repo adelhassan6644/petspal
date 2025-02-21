@@ -25,17 +25,12 @@ class ForgetPasswordBloc extends Bloc<AppEvent, AppState> {
   final formKey = GlobalKey<FormState>();
   final FocusNode emailNode = FocusNode();
 
-  TextEditingController mailTEC = TextEditingController();
-  TextEditingController phoneTEC = TextEditingController();
-
-  final country = BehaviorSubject<String?>();
-  Function(String?) get updateCountry => country.sink.add;
-  Stream<String?> get countryStream => country.stream.asBroadcastStream();
+  final email = BehaviorSubject<String?>();
+  Function(String?) get updateEmail => email.sink.add;
+  Stream<String?> get emailStream => email.stream.asBroadcastStream();
 
   clear() {
-    mailTEC.clear();
-    phoneTEC.clear();
-    updateCountry(null);
+    updateEmail(null);
   }
 
   Future<void> onClick(Click event, Emitter<AppState> emit) async {
@@ -43,9 +38,7 @@ class ForgetPasswordBloc extends Bloc<AppEvent, AppState> {
       emit(Loading());
 
       Map<String, dynamic> data = {
-        "email": mailTEC.text.trim(),
-        // "phone": phoneTEC.text.trim(),
-        // "country_code": (country.valueOrNull ?? "sa").toLowerCase(),
+        "email": email.valueOrNull,
       };
       Either<ServerFailure, Response> response =
           await repo.forgetPassword(data);
@@ -62,10 +55,7 @@ class ForgetPasswordBloc extends Bloc<AppEvent, AppState> {
         CustomNavigator.push(Routes.verification,
             replace: true,
             arguments: VerificationModel(
-                email: mailTEC.text.trim(),
-                // phone: phoneTEC.text.trim(),
-                // countryCode: (country.valueOrNull ?? "sa").toLowerCase(),
-                fromRegister: false));
+                email: email.valueOrNull, fromRegister: false));
         clear();
         emit(Done());
       });

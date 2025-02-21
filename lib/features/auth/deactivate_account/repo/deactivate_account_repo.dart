@@ -28,7 +28,7 @@ class DeactivateAccountRepo extends BaseRepo {
         return left(ServerFailure(response.data['message']));
       }
     } catch (error) {
-      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
+      return left(ApiErrorHandler.getServerFailure(error));
     }
   }
 

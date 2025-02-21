@@ -50,10 +50,10 @@ class VerificationRepo extends BaseRepo {
       if (response.statusCode == 200) {
         return Right(response);
       } else {
-        return left(ServerFailure(response.data['message']));
+        return left(ApiErrorHandler.getServerFailure(response.data['message']));
       }
     } catch (error) {
-      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
+      return left(ApiErrorHandler.getServerFailure(error));
     }
   }
 
@@ -62,18 +62,18 @@ class VerificationRepo extends BaseRepo {
     try {
       Response response =
           await dioClient.post(uri: EndPoints.verifyOtp, data: model.toJson());
+
       if (response.statusCode == 200) {
-        if (response.data['data']["token"] != null) {
+        if (model.fromRegister && response.data['data'] != null) {
           saveUserToken(response.data["data"]["token"]);
           saveUserData(response.data["data"]["user"]);
         }
-
         return Right(response);
       } else {
-        return left(ServerFailure(response.data['message']));
+        return left(ApiErrorHandler.getServerFailure(response.data['message']));
       }
     } catch (error) {
-      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
+      return left(ApiErrorHandler.getServerFailure(error));
     }
   }
 }

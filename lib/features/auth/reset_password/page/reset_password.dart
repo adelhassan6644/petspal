@@ -6,6 +6,8 @@ import 'package:petspal/features/auth/reset_password/bloc/reset_password_bloc.da
 import 'package:petspal/features/auth/reset_password/repo/reset_password_repo.dart';
 
 import '../../../../app/core/app_event.dart';
+import '../../../../app/core/images.dart';
+import '../../../../app/core/styles.dart';
 import '../../../../app/core/svg_images.dart';
 import '../../../../app/core/text_styles.dart';
 import '../../../../app/core/validation.dart';
@@ -13,6 +15,7 @@ import '../../../../app/localization/language_constant.dart';
 import '../../../../components/animated_widget.dart';
 import '../../../../components/custom_app_bar.dart';
 import '../../../../components/custom_button.dart';
+import '../../../../components/custom_images.dart';
 import '../../../../components/custom_text_form_field.dart';
 import '../../../../data/config/di.dart';
 import '../../verification/model/verification_model.dart';
@@ -47,17 +50,35 @@ class _ResetPasswordState extends State<ResetPassword> {
                         vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
                     data: [
                       Center(
-                        child: Text(
-                          getTranslated("reset_password_header"),
-                          textAlign: TextAlign.center,
-                          style: AppTextStyles.w600.copyWith(
-                            fontSize: 24,
-                          ),
+                        child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+                            child: customImageIcon(
+                                imageName: Images.authLogo,
+                                width: 230.w,
+                                height: 130.h)),
+                      ),
+                      Text(
+                        getTranslated("reset_password_header"),
+                        style: AppTextStyles.w700.copyWith(
+                          fontSize: 24,
+                          color: Styles.HEADER,
                         ),
                       ),
-                      SizedBox(
-                        height: Dimensions.PADDING_SIZE_DEFAULT.h,
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 4.h),
+                        child: Text(
+                          getTranslated("reset_password_title"),
+                          style: AppTextStyles.w600
+                              .copyWith(fontSize: 20, color: Styles.TITLE),
+                        ),
                       ),
+                      Text(
+                        getTranslated("reset_password_description"),
+                        style: AppTextStyles.w500.copyWith(
+                            fontSize: 16, color: Styles.DETAILS_COLOR),
+                      ),
+                      SizedBox(height: Dimensions.PADDING_SIZE_SMALL.h),
                       Form(
                           key: _formKey,
                           child: Column(
@@ -68,7 +89,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                                     .read<ResetPasswordBloc>()
                                     .passwordTEC,
                                 label: getTranslated("new_password"),
-                                hint: getTranslated("new_password"),
+                                hint: getTranslated("enter_new_password"),
                                 focusNode: passwordNode,
                                 inputType: TextInputType.visiblePassword,
                                 validate: Validations.firstPassword,
@@ -82,7 +103,8 @@ class _ResetPasswordState extends State<ResetPassword> {
                                     .read<ResetPasswordBloc>()
                                     .confirmPasswordTEC,
                                 label: getTranslated("confirm_new_password"),
-                                hint: getTranslated("confirm_new_password"),
+                                hint:
+                                    getTranslated("enter_confirm_new_password"),
                                 focusNode: confirmPasswordNode,
                                 inputType: TextInputType.visiblePassword,
                                 validate: (v) => Validations.confirmNewPassword(
@@ -102,7 +124,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                                   vertical: 16.h,
                                 ),
                                 child: CustomButton(
-                                    text: getTranslated("submit"),
+                                    text: getTranslated("confirm_password"),
                                     onTap: () {
                                       if (_formKey.currentState!.validate()) {
                                         context

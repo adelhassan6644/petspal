@@ -7,6 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petspal/app/core/app_state.dart';
 import 'package:petspal/app/core/dimensions.dart';
 import 'package:petspal/components/animated_widget.dart';
+import 'package:petspal/components/custom_images.dart';
+import 'package:petspal/features/language/bloc/language_bloc.dart';
 import '../../../../app/core/app_event.dart';
 import '../../../../app/core/styles.dart';
 import '../../../../app/core/svg_images.dart';
@@ -38,263 +40,279 @@ class LoginBody extends StatelessWidget {
             data: [
               LoginHeader(),
               Form(
-                  key: context.read<LoginBloc>().formKey,
-                  child: AutofillGroup(
-                    child: Column(
-                      children: [
-                        ///Mail
-                        CustomTextField(
-                          autofillHints: const [
-                            AutofillHints.email,
-                            AutofillHints.username,
-                          ],
-                          controller: context.read<LoginBloc>().emailTEC,
-                          focusNode: context.read<LoginBloc>().phoneNode,
-                          nextFocus: context.read<LoginBloc>().passwordNode,
-                          label: getTranslated("mail"),
-                          hint: getTranslated("enter_your_mail"),
-                          inputType: TextInputType.emailAddress,
-                          validate: Validations.mail,
-                          pSvgIcon: SvgImages.mailIcon,
-                        ),
+                key: context.read<LoginBloc>().formKey,
+                child: AutofillGroup(
+                  child: Column(
+                    children: [
+                      ///Mail
+                      StreamBuilder<String?>(
+                          stream: context.read<LoginBloc>().emailStream,
+                          builder: (context, snapshot) {
+                            return CustomTextField(
+                              autofillHints: const [
+                                AutofillHints.email,
+                                AutofillHints.username,
+                              ],
+                              onChanged: context.read<LoginBloc>().updateEmail,
+                              focusNode: context.read<LoginBloc>().emailNode,
+                              nextFocus: context.read<LoginBloc>().passwordNode,
+                              label: getTranslated("mail_or_phone_number"),
+                              hint: getTranslated("enter_mail_or_phone_number"),
+                              inputType: TextInputType.emailAddress,
+                              pSvgIcon: SvgImages.user,
+                              validate: (v) {
+                                if ((v) != null) {
+                                  context
+                                      .read<LoginBloc>()
+                                      .email
+                                      .addError(Validations.mail(v) ?? "");
+                                }
+                                return null;
+                              },
+                              errorText: snapshot.error,
+                              customError: snapshot.hasError,
+                            );
+                          }),
 
-                        ///Password
-                        CustomTextField(
-                          autofillHints: const [AutofillHints.password],
-                          controller: context.read<LoginBloc>().passwordTEC,
-                          keyboardAction: TextInputAction.done,
-                          label: getTranslated("password"),
-                          hint: getTranslated("enter_your_password"),
-                          focusNode: context.read<LoginBloc>().passwordNode,
-                          inputType: TextInputType.visiblePassword,
-                          validate: Validations.password,
-                          isPassword: true,
-                          pSvgIcon: SvgImages.lockIcon,
-                        ),
+                      ///Password
+                      StreamBuilder<String?>(
+                          stream: context.read<LoginBloc>().passwordStream,
+                          builder: (context, snapshot) {
+                            return CustomTextField(
+                              autofillHints: const [AutofillHints.password],
+                              onChanged: context.read<LoginBloc>().updatePassword,
+                              keyboardAction: TextInputAction.done,
+                              label: getTranslated("password"),
+                              hint: getTranslated("enter_your_password"),
+                              focusNode: context.read<LoginBloc>().passwordNode,
+                              inputType: TextInputType.visiblePassword,
+                              isPassword: true,
+                              pSvgIcon: SvgImages.lockIcon,
+                              validate: (v) {
+                                if ((v) != null) {
+                                  context
+                                      .read<LoginBloc>()
+                                      .password
+                                      .addError(Validations.password(v) ?? "");
+                                }
+                                return null;
+                              },
+                              errorText: snapshot.error,
+                              customError: snapshot.hasError,
+                            );
+                          }),
 
-                        ///Forget Password && Remember me
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: Dimensions.paddingSizeExtraSmall.h,
-                              horizontal: Dimensions.paddingSizeExtraSmall.w),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              // StreamBuilder<bool?>(
-                              //   stream:
-                              //       context.read<LoginBloc>().rememberMeStream,
-                              //   builder: (_, snapshot) {
-                              //     return _RememberMe(
-                              //       check: snapshot.data ?? false,
-                              //       onChange: (v) => context
-                              //           .read<LoginBloc>()
-                              //           .updateRememberMe(v),
-                              //     );
-                              //   },
-                              // ),
-                              const Expanded(child: SizedBox()),
-                              InkWell(
-                                onTap: () {
-                                  context.read<LoginBloc>().clear();
-                                  CustomNavigator.push(Routes.forgetPassword);
-                                },
-                                child: Text(
-                                  getTranslated("forget_password"),
-                                  style: AppTextStyles.w500.copyWith(
-                                    color: Styles.PRIMARY_COLOR,
-                                    fontSize: 13,
-                                    decoration: TextDecoration.underline,
-                                    decorationColor: Styles.PRIMARY_COLOR,
-                                  ),
+                      ///Forget Password && Remember me
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: Dimensions.paddingSizeExtraSmall.h,
+                            horizontal: Dimensions.paddingSizeExtraSmall.w),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            // StreamBuilder<bool?>(
+                            //   stream:
+                            //       context.read<LoginBloc>().rememberMeStream,
+                            //   builder: (_, snapshot) {
+                            //     return _RememberMe(
+                            //       check: snapshot.data ?? false,
+                            //       onChange: (v) => context
+                            //           .read<LoginBloc>()
+                            //           .updateRememberMe(v),
+                            //     );
+                            //   },
+                            // ),
+                            const Expanded(child: SizedBox()),
+                            InkWell(
+                              onTap: () {
+                                context.read<LoginBloc>().clear();
+                                CustomNavigator.push(Routes.forgetPassword);
+                              },
+                              child: Text(
+                                getTranslated("forget_password"),
+                                style: AppTextStyles.w500.copyWith(
+                                  color: Styles.PRIMARY_COLOR,
+                                  fontSize: 13,
+                                  // decoration: TextDecoration.underline,
+                                  decorationColor: Styles.PRIMARY_COLOR,
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
+                      ),
 
-                        ///Sign in
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: Dimensions.PADDING_SIZE_DEFAULT.h,
-                          ),
-                          child: CustomButton(
-                              text: getTranslated("login"),
-                              onTap: () {
-                                if (context
-                                    .read<LoginBloc>()
-                                    .formKey
-                                    .currentState!
-                                    .validate()) {
-                                  TextInput.finishAutofillContext();
-                                  context.read<LoginBloc>().add(Click());
-                                }
-                              },
-                              isLoading: state is Loading),
+                      ///Sign in
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+                        child: StreamBuilder<bool>(
+                            stream: context.read<LoginBloc>().loginStream,
+                            builder: (context, snapshot) {
+                              return CustomButton(
+                                  text: getTranslated("sign_in"),
+                                  onTap: () {
+                                    context
+                                        .read<LoginBloc>()
+                                        .formKey
+                                        .currentState!
+                                        .validate();
+                                    if (snapshot.data == true) {
+                                      TextInput.finishAutofillContext();
+                                      context.read<LoginBloc>().add(Click());
+                                    }
+                                  },
+                                  rIconWidget: RotatedBox(
+                                    quarterTurns:
+                                        sl<LanguageBloc>().isLtr ? 0 : 2,
+                                    child: customImageIconSVG(
+                                      imageName: SvgImages.forwardArrow,
+                                      color: Styles.WHITE_COLOR,
+                                    ),
+                                  ),
+                                  isLoading: state is Loading);
+                            }),
+                      ),
+
+                      ///Sign up if don't have account
+                      RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                            text: getTranslated("do_not_have_acc"),
+                            style: AppTextStyles.w400.copyWith(
+                                fontSize: 14, color: Styles.DETAILS_COLOR),
+                            children: [
+                              TextSpan(
+                                  text:
+                                      " ${getTranslated("create_an_account")}",
+                                  style: AppTextStyles.w600.copyWith(
+                                    fontSize: 16,
+                                    color: Styles.PRIMARY_COLOR,
+                                    // decoration: TextDecoration.underline
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () =>
+                                        CustomNavigator.push(Routes.register)),
+                            ]),
+                      ),
+
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: Dimensions.PADDING_SIZE_DEFAULT.w,
+                          right: Dimensions.PADDING_SIZE_DEFAULT.w,
+                          top: Dimensions.PADDING_SIZE_DEFAULT.h,
+                          bottom: Dimensions.PADDING_SIZE_SMALL.h,
                         ),
-
-                        ///Sign up if don't have account
-                        RichText(
-                          textAlign: TextAlign.center,
-                          text: TextSpan(
-                              text: getTranslated("do_not_have_acc"),
-                              style: AppTextStyles.w400.copyWith(
-                                  fontSize: 14, color: Styles.DETAILS_COLOR),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                TextSpan(
-                                    text: " ${getTranslated("signup")}",
-                                    style: AppTextStyles.w600.copyWith(
-                                        fontSize: 16,
-                                        color: Styles.PRIMARY_COLOR,
-                                        decoration: TextDecoration.underline),
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () => CustomNavigator.push(
-                                          Routes.register)),
-                              ]),
+                                Expanded(
+                                    child: Divider(
+                                  color: Styles.HINT_COLOR,
+                                  height: 12.h,
+                                )),
+                                Text(
+                                  "  ${getTranslated("or")}  ",
+                                  style: AppTextStyles.w500.copyWith(
+                                      fontSize: 14, color: Styles.HINT_COLOR),
+                                ),
+                                Expanded(
+                                    child: Divider(
+                                  color: Styles.HINT_COLOR,
+                                  height: 12.h,
+                                )),
+                              ],
+                            ),
+                            SizedBox(height: 8.h),
+                          ],
                         ),
+                      ),
 
-                        ///Guest Mode
-                        GestureDetector(
-                          onTap: () => context.read<LoginBloc>().add(Add()),
-                          child: Container(
-                            margin: EdgeInsets.symmetric(
-                                vertical: Dimensions.paddingSizeMini.h),
+                      Wrap(
+                        runSpacing: 16.w,
+                        spacing: 16.h,
+                        alignment: WrapAlignment.center,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          ///Login With Google
+                          Padding(
                             padding: EdgeInsets.symmetric(
-                                horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                                vertical: Dimensions.paddingSizeMini.h),
-                            decoration: BoxDecoration(
-                                color: Styles.SMOKED_WHITE_COLOR,
-                                borderRadius: BorderRadius.circular(8.w)),
-                            child: Text(
-                              getTranslated("login_as_a_guest"),
-                              style: AppTextStyles.w500
-                                  .copyWith(fontSize: 14, color: Styles.TITLE),
+                                vertical: Dimensions.PADDING_SIZE_SMALL.h),
+                            child: BlocProvider(
+                              create: (context) =>
+                                  SocialMediaBloc(repo: sl<SocialMediaRepo>()),
+                              child: BlocBuilder<SocialMediaBloc, AppState>(
+                                builder: (context, state) {
+                                  return customImageIconSVG(
+                                    imageName: SvgImages.google,
+                                    width: 40.w,
+                                    height: 40.w,
+                                    onTap: () {
+                                      context.read<SocialMediaBloc>().add(Click(
+                                            arguments: {
+                                              "provider":
+                                                  SocialMediaProvider.google
+                                            },
+                                          ));
+                                    },
+                                  );
+                                },
+                              ),
                             ),
                           ),
-                        ),
 
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: Dimensions.PADDING_SIZE_DEFAULT.w,
-                            right: Dimensions.PADDING_SIZE_DEFAULT.w,
-                            top: Dimensions.PADDING_SIZE_DEFAULT.h,
-                            bottom: Dimensions.PADDING_SIZE_SMALL.h,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Expanded(
-                                      child: Divider(
-                                    color: Styles.DETAILS_COLOR,
-                                    height: 12.h,
-                                  )),
-                                  Text(
-                                    "  ${getTranslated("or")}  ",
-                                    style: AppTextStyles.w500.copyWith(
-                                        fontSize: 14,
-                                        color: Styles.DETAILS_COLOR),
-                                  ),
-                                  Expanded(
-                                      child: Divider(
-                                    color: Styles.DETAILS_COLOR,
-                                    height: 12.h,
-                                  )),
-                                ],
-                              ),
-                              SizedBox(height: 8.h),
-                            ],
-                          ),
-                        ),
-
-                        if (Platform.isIOS)
+                          ///Login With Facebook
                           BlocProvider(
                             create: (context) =>
                                 SocialMediaBloc(repo: sl<SocialMediaRepo>()),
                             child: BlocBuilder<SocialMediaBloc, AppState>(
                               builder: (context, state) {
-                                return CustomButton(
-                                  text:
-                                      "${getTranslated("continue_with")} Apple",
-                                  svgIcon: SvgImages.apple,
-                                  backgroundColor: Styles.FILL_COLOR,
-                                  textColor: Styles.TITLE,
-                                  withBorderColor: true,
-                                  borderColor: Styles.LIGHT_BORDER_COLOR,
+                                return customImageIconSVG(
+                                  imageName: SvgImages.faceBook,
+                                  width: 40.w,
+                                  height: 40.w,
                                   onTap: () {
                                     context.read<SocialMediaBloc>().add(Click(
-                                          arguments: {
-                                            "provider":
-                                                SocialMediaProvider.apple
-                                          },
-                                        ));
+                                        arguments:
+                                            SocialMediaProvider.facebook));
                                   },
-                                  isLoading: state is Loading,
                                 );
                               },
                             ),
                           ),
 
-                        ///Login With Google
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                              vertical: Dimensions.PADDING_SIZE_SMALL.h),
-                          child: BlocProvider(
-                            create: (context) =>
-                                SocialMediaBloc(repo: sl<SocialMediaRepo>()),
-                            child: BlocBuilder<SocialMediaBloc, AppState>(
-                              builder: (context, state) {
-                                return CustomButton(
-                                  text:
-                                      "${getTranslated("continue_with")} Google",
-                                  svgIcon: SvgImages.google,
-                                  backgroundColor: Styles.FILL_COLOR,
-                                  textColor: Styles.TITLE,
-                                  withBorderColor: true,
-                                  borderColor: Styles.LIGHT_BORDER_COLOR,
-                                  onTap: () {
-                                    context.read<SocialMediaBloc>().add(Click(
-                                          arguments: {
-                                            "provider":
-                                                SocialMediaProvider.google
-                                          },
-                                        ));
-                                  },
-                                  isLoading: state is Loading,
-                                );
-                              },
-                            ),
-                          ),
-                        ),
-
-                        ///Login With Facebook
-                        BlocProvider(
-                          create: (context) =>
-                              SocialMediaBloc(repo: sl<SocialMediaRepo>()),
-                          child: BlocBuilder<SocialMediaBloc, AppState>(
-                            builder: (context, state) {
-                              return CustomButton(
-                                text:
-                                    "${getTranslated("continue_with")} Facebook",
-                                svgIcon: SvgImages.faceBook,
-                                backgroundColor: Colors.white,
-                                textColor: Styles.TITLE,
-                                withBorderColor: true,
-                                borderColor: Styles.LIGHT_BORDER_COLOR,
-                                onTap: () {
-                                  context.read<SocialMediaBloc>().add(Click(
-                                      arguments: SocialMediaProvider.facebook));
+                          if (Platform.isIOS)
+                            BlocProvider(
+                              create: (context) =>
+                                  SocialMediaBloc(repo: sl<SocialMediaRepo>()),
+                              child: BlocBuilder<SocialMediaBloc, AppState>(
+                                builder: (context, state) {
+                                  return customImageIconSVG(
+                                    imageName: SvgImages.apple,
+                                    width: 40.w,
+                                    height: 40.w,
+                                    onTap: () {
+                                      context.read<SocialMediaBloc>().add(Click(
+                                            arguments: {
+                                              "provider":
+                                                  SocialMediaProvider.apple
+                                            },
+                                          ));
+                                    },
+                                  );
                                 },
-                                isLoading: state is Loading,
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  )),
+                              ),
+                            ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
             ],
           );
         },

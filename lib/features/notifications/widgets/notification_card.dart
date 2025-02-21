@@ -85,7 +85,7 @@ class NotificationCard extends StatelessWidget {
                       backGroundColor: notification?.isRead != true
                           ? Styles.WHITE_COLOR
                           : Styles.PRIMARY_COLOR.withOpacity(0.1),
-                      imageName: Images.logo,
+                      imageName: Images.appLogo,
                       radius: 100,
                       width: 50,
                       height: 50,

@@ -7,8 +7,6 @@ import 'package:petspal/app/core/text_styles.dart';
 import 'package:petspal/app/core/validation.dart';
 import 'package:petspal/app/localization/language_constant.dart';
 import 'package:petspal/components/custom_text_form_field.dart';
-
-import '../../../app/core/svg_images.dart';
 import '../bloc/contact_with_us_bloc.dart';
 
 class ContactWithUsType extends StatelessWidget {
@@ -75,7 +73,6 @@ class ContactWithUsType extends StatelessWidget {
               CustomTextField(
                 controller: context.read<ContactWithUsBloc>().descriptionTEC,
                 hint: getTranslated("please_describe_what_you_want_in_detail"),
-                borderRadius: 12,
                 // pSvgIcon: SvgImages.desc,
                 validate: Validations.field,
                 maxLines: 5,

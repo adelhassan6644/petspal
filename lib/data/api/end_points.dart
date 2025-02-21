@@ -102,7 +102,7 @@ class EndPoints {
   static const String faqs = 'faqs';
   static const String whoUs = 'who-us';
   static const String contactUs = 'contact-us';
-  static const String countryStates = 'country-states';
+  static const String countries = 'countries';
 
   ///Share
   static shareRoute(route, id) => "$baseUrl$route/?id=$id";

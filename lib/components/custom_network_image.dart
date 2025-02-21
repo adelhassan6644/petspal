@@ -52,7 +52,7 @@ class CustomNetworkImage {
                 vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
         child: Center(
             child: Image.asset(
-          defaultImage ?? Images.logo,
+          defaultImage ?? Images.appLogo,
           fit: fit ?? BoxFit.contain,
         )),
       ),
@@ -132,7 +132,7 @@ class CustomNetworkImage {
           radius: radius,
           backgroundColor: backGroundColor ?? Colors.white,
           child: Image.asset(
-            Images.logo,
+            Images.appLogo,
             fit: BoxFit.contain,
           ),
         ),

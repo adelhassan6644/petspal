@@ -12,7 +12,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../app/core/app_event.dart';
 import '../../data/config/di.dart';
 import '../../data/internet_connection/internet_connection.dart';
-import '../../features/my_cars/page/my_cars_page.dart';
 import '../../features/profile/bloc/profile_bloc.dart';
 import '../../helpers/check_on_the_version.dart';
 import '../../navigation/custom_navigation.dart';
@@ -91,7 +90,7 @@ class _DashBoardState extends State<DashBoard> {
       case 0:
         return const Home();
       case 1:
-        return const MyCarsPage();
+        return const SizedBox();
 
       case 2:
         return const SizedBox();

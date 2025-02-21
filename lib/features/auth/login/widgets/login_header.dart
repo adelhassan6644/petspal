@@ -19,20 +19,31 @@ class LoginHeader extends StatelessWidget {
               padding: EdgeInsets.symmetric(
                   vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
               child: customImageIcon(
-                  imageName: Images.logo, width: 220.w, height: 70.h)),
+                  imageName: Images.authLogo, width: 230.w, height: 130.h)),
         ),
-        Text(
-          getTranslated("login_header"),
-          style: AppTextStyles.w800
-              .copyWith(fontSize: 32, color: Styles.PRIMARY_COLOR),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              getTranslated("login_header"),
+              style: AppTextStyles.w700
+                  .copyWith(fontSize: 24, color: Styles.HEADER),
+            ),
+            SizedBox(width: 6.w),
+            customImageIcon(
+                imageName: Images.logoWord,
+                height: 24.h,
+                width: 115.w,
+                fit: BoxFit.fitWidth)
+          ],
         ),
-        SizedBox(height: Dimensions.paddingSizeMini.h),
+        SizedBox(height: 4.h),
         Text(
           getTranslated("login_description"),
-          style: AppTextStyles.w400
-              .copyWith(fontSize: 16, color: Styles.DETAILS_COLOR),
+          style: AppTextStyles.w600.copyWith(fontSize: 20, color: Styles.TITLE),
         ),
-        SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT.h),
+        SizedBox(height: Dimensions.PADDING_SIZE_LARGE.h),
       ],
     );
   }

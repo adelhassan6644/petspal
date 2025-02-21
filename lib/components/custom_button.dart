@@ -3,46 +3,36 @@ import 'package:petspal/app/core/extensions.dart';
 import 'package:flutter/material.dart';
 import '../app/core/styles.dart';
 import '../app/core/text_styles.dart';
-import 'custom_images.dart';
 import 'lottie_file.dart';
 
 class CustomButton extends StatelessWidget {
   final void Function()? onTap;
-  final Widget? icon;
   final String? text;
   final double? textSize;
   final Color? textColor;
   final Color? borderColor;
   final Color? backgroundColor;
-  final String? svgIcon;
-  final String? assetIcon;
-  final Color? iconColor;
   final double? width;
   final double? height;
   final double? radius;
-  final double? iconSize;
   final bool isLoading;
   final bool isActive;
   final bool withBorderColor;
   final bool withShadow;
-  final Widget? lIconWidget;
+  final Widget? lIconWidget, rIconWidget;
 
   const CustomButton({
     super.key,
-    this.icon,
     this.onTap,
+    this.rIconWidget,
     this.lIconWidget,
     this.isActive = true,
     this.radius,
     this.height,
-    this.svgIcon,
-    this.assetIcon,
     this.isLoading = false,
     this.textColor,
     this.borderColor,
     this.width,
-    this.iconColor,
-    this.iconSize,
     this.textSize,
     this.withBorderColor = false,
     this.withShadow = false,
@@ -86,11 +76,6 @@ class CustomButton extends StatelessWidget {
                     ? borderColor ?? Styles.PRIMARY_COLOR
                     : Colors.transparent),
             borderRadius: BorderRadius.circular(radius ?? 15),
-            // gradient: backgroundColor != null
-            //     ? null
-            //     : const LinearGradient(
-            //         colors: Styles.kBackgroundGradient,
-            //       ),
           ),
           child: Center(
             child: isLoading
@@ -100,31 +85,15 @@ class CustomButton extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      if (icon != null) icon!,
-                      if (assetIcon != null)
-                        customImageIcon(
-                            imageName: assetIcon!,
-                            color: iconColor,
-                            width: iconSize ?? 20.w,
-                            height: iconSize ?? 20.w),
-                      if (svgIcon != null)
-                        customImageIconSVG(
-                            imageName: svgIcon!,
-                            color: iconColor,
-                            width: iconSize ?? 20.w,
-                            height: iconSize ?? 20.w),
-                      if (assetIcon != null || svgIcon != null || icon != null)
-                        SizedBox(
-                          width: 12.w,
-                        ),
-                      Visibility(
-                          visible: lIconWidget != null,
-                          child: lIconWidget ?? const SizedBox()),
+                      if (lIconWidget != null) ...[
+                        lIconWidget!,
+                        SizedBox(width: 8.w)
+                      ],
                       if (text != null)
                         Flexible(
                           child: Text(
                             text ?? "",
-                            style: AppTextStyles.w500.copyWith(
+                            style: AppTextStyles.w700.copyWith(
                               fontSize: textSize ?? 16,
                               height: 1,
                               overflow: TextOverflow.ellipsis,
@@ -132,6 +101,10 @@ class CustomButton extends StatelessWidget {
                             ),
                           ),
                         ),
+                      if (rIconWidget != null) ...[
+                        SizedBox(width: 8.w),
+                        rIconWidget!,
+                      ],
                     ],
                   ),
           ),

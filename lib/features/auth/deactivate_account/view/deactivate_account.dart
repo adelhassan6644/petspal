@@ -33,7 +33,7 @@ class DeactivateAccount extends StatelessWidget {
             Padding(
                 padding: EdgeInsets.only(bottom: 8.h),
                 child: customImageIcon(
-                    imageName: Images.logo, width: 220.w, height: 70.h)),
+                    imageName: Images.appLogo, width: 220.w, height: 70.h)),
 
             Text(
               getTranslated("deactivate_account"),

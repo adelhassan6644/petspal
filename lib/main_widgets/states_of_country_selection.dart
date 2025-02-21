@@ -11,7 +11,7 @@ import '../../../../../app/core/text_styles.dart';
 import '../../../../../app/localization/language_constant.dart';
 import '../../../../../components/custom_bottom_sheet.dart';
 import '../../../../../components/custom_images.dart';
-import '../../../../../main_blocs/country_states_bloc.dart';
+import '../features/countries/bloc/countries_bloc.dart';
 import 'package:country_state_city/models/state.dart' as states_of_country;
 import 'package:petspal/components/animated_widget.dart';
 import 'package:petspal/app/core/extensions.dart';
@@ -24,7 +24,7 @@ class StatesOfCountrySelection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CountryStatesBloc, AppState>(
+    return BlocBuilder<CountriesBloc, AppState>(
       builder: (context, state) {
         return Padding(
           padding: EdgeInsets.symmetric(vertical: 8.h),

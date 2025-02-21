@@ -13,7 +13,6 @@ import '../../../../app/core/validation.dart';
 import '../../../../app/localization/language_constant.dart';
 import '../../../../components/animated_widget.dart';
 import '../../../../components/count_down.dart';
-import '../../../../components/custom_app_bar.dart';
 import '../../../../components/custom_button.dart';
 import '../../../../components/custom_images.dart';
 import '../../../../components/custom_pin_code_field.dart';
@@ -38,97 +37,107 @@ class _VerificationState extends State<Verification> {
       child: BlocBuilder<VerificationBloc, AppState>(
         builder: (context, state) {
           return Scaffold(
-            appBar: const CustomAppBar(),
-            body: Column(
-              children: [
-                Expanded(
-                  child: ListAnimator(
-                    customPadding: EdgeInsets.symmetric(
-                        horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
-                        vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-                    data: [
-                      Center(
-                        child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
-                            child: customImageIcon(
-                                imageName: Images.logo,
-                                width: 220.w,
-                                height: 70.h)),
-                      ),
-                      Text(
-                        getTranslated(widget.model.withMail
-                            ? "verify_mail"
-                            : "verify_phone"),
-                        style: AppTextStyles.w600.copyWith(
-                          fontSize: 24,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                            vertical: Dimensions.paddingSizeExtraSmall.h),
-                        child: RichText(
-                          text: TextSpan(
-                              text: getTranslated("we_sent"),
-                              style: AppTextStyles.w400.copyWith(
-                                  fontSize: 14, color: Styles.DETAILS_COLOR),
-                              children: [
-                                TextSpan(
-                                  text:
-                                      " ${widget.model.withMail ? widget.model.email : widget.model.phone} ",
-                                  style: AppTextStyles.w500.copyWith(
-                                    fontSize: 14,
-                                    color: Styles.DETAILS_COLOR,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: getTranslated("enter_it_below"),
-                                  style: AppTextStyles.w500.copyWith(
-                                      fontSize: 14,
-                                      color: Styles.DETAILS_COLOR),
-                                ),
-                              ]),
-                        ),
-                      ),
-                      Form(
-                          key: _formKey,
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                  height:
-                                      Dimensions.PADDING_SIZE_EXTRA_LARGE.h),
-                              Directionality(
-                                  textDirection: TextDirection.ltr,
-                                  child: CustomPinCodeField(
-                                      validation: Validations.code,
-                                      controller: context
-                                          .read<VerificationBloc>()
-                                          .codeTEC)),
-                              Padding(
+            body: Container(
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage(Images.authBG),
+              )),
+              child: SafeArea(
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: ListAnimator(
+                        customPadding: EdgeInsets.symmetric(
+                            horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                            vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
+                        data: [
+                          Center(
+                            child: Padding(
                                 padding: EdgeInsets.symmetric(
-                                  vertical: Dimensions.PADDING_SIZE_DEFAULT.h,
-                                ),
-                                child: CustomButton(
-                                    text: getTranslated("submit"),
-                                    onTap: () {
-                                      if (_formKey.currentState!.validate()) {
-                                        context.read<VerificationBloc>().add(
-                                            Click(arguments: widget.model));
-                                      }
-                                    },
-                                    isLoading: state is Loading),
-                              ),
-                              CountDown(
-                                onCount: () => context
-                                    .read<VerificationBloc>()
-                                    .add(Resend(arguments: widget.model)),
-                              ),
-                            ],
-                          )),
-                    ],
-                  ),
+                                    vertical:
+                                        Dimensions.PADDING_SIZE_DEFAULT.h),
+                                child: customImageIcon(
+                                    imageName: Images.authLogo,
+                                    width: 230.w,
+                                    height: 130.h)),
+                          ),
+                          Text(
+                            getTranslated("verify_header"),
+                            style: AppTextStyles.w700.copyWith(
+                              fontSize: 24,
+                              color: Styles.HEADER,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 4.h),
+                            child: Text(
+                              getTranslated("verify_title"),
+                              style: AppTextStyles.w600
+                                  .copyWith(fontSize: 20, color: Styles.TITLE),
+                            ),
+                          ),
+                          RichText(
+                            text: TextSpan(
+                                text: getTranslated("verify_description"),
+                                style: AppTextStyles.w500.copyWith(
+                                    fontSize: 16, color: Styles.SUBTITLE),
+                                children: [
+                                  TextSpan(
+                                    text: " ${widget.model.email} ",
+                                    style: AppTextStyles.w500.copyWith(
+                                      fontSize: 16,
+                                      color: Styles.SUBTITLE,
+                                    ),
+                                  ),
+                                ]),
+                          ),
+                          SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT.h),
+                          Form(
+                              key: _formKey,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(bottom: 6.h),
+                                    child: Directionality(
+                                        textDirection: TextDirection.ltr,
+                                        child: CustomPinCodeField(
+                                            validation: Validations.code,
+                                            controller: context
+                                                .read<VerificationBloc>()
+                                                .codeTEC)),
+                                  ),
+                                  CountDown(
+                                    onCount: () => context
+                                        .read<VerificationBloc>()
+                                        .add(Resend(arguments: widget.model)),
+                                  ),
+                                ],
+                              )),
+                        ],
+                      ),
+                    ),
+
+                    ///Action
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
+                        vertical: Dimensions.paddingSizeMini.h,
+                      ),
+                      child: CustomButton(
+                          text: getTranslated("verify"),
+                          onTap: () {
+                            if (_formKey.currentState!.validate()) {
+                              context
+                                  .read<VerificationBloc>()
+                                  .add(Click(arguments: widget.model));
+                            }
+                          },
+                          isLoading: state is Loading),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           );
         },

@@ -1,7 +1,9 @@
 import 'package:petspal/app/core/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:petspal/components/custom_app_bar.dart';
+import '../../../../app/core/dimensions.dart';
+import '../../../../app/core/images.dart';
+import '../../../../components/animated_widget.dart';
 import '../../../../data/config/di.dart';
 import '../bloc/register_bloc.dart';
 import '../repo/register_repo.dart';
@@ -17,19 +19,33 @@ class Register extends StatelessWidget {
     return BlocProvider(
       create: (context) => RegisterBloc(repo: sl<RegisterRepo>()),
       child: Scaffold(
-        appBar: const CustomAppBar(),
-        body: SafeArea(
-          child: BlocBuilder<RegisterBloc, AppState>(
-            builder: (context, state) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  RegisterHeader(),
-                  RegisterBody(),
-                  RegisterActions(),
-                ],
-              );
-            },
+        body: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+            fit: BoxFit.cover,
+            image: AssetImage(Images.authBG),
+          )),
+          child: SafeArea(
+            child: BlocBuilder<RegisterBloc, AppState>(
+              builder: (context, state) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: ListAnimator(
+                        customPadding: EdgeInsets.symmetric(
+                            horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
+                        data: [
+                          RegisterHeader(),
+                          RegisterBody(),
+                          RegisterActions(),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
           ),
         ),
       ),

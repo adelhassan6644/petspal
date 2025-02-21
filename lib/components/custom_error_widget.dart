@@ -1,24 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:petspal/app/core/dimensions.dart';
+import 'package:petspal/app/core/text_styles.dart';
+
 class CustomErrorWidget extends StatelessWidget {
   final String? error;
-  const CustomErrorWidget({Key? key, this.error}) : super(key: key);
+  const CustomErrorWidget({super.key, this.error});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5.0 , vertical: 1.0),
+      padding: EdgeInsets.only(left: 6.w, right: 6.w, top: 6.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Icon(Icons.info_outline , color: Colors.red, size: 12,),
-          const SizedBox(width: 5,),
+          const Icon(
+            Icons.info_outline,
+            color: Colors.red,
+            size: 16,
+          ),
+          SizedBox(width: 4.w),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(error! , style: const TextStyle(color: Colors.red ,fontWeight: FontWeight.w400, fontSize: 12),),
+                Text(
+                  error!,
+                  style: AppTextStyles.w400
+                      .copyWith(color: Colors.red, fontSize: 12),
+                ),
               ],
             ),
           )

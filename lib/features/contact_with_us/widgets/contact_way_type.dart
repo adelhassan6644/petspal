@@ -117,9 +117,9 @@ class ContactWayType extends StatelessWidget {
       case ContactWays.whatsapp:
         return SvgImages.whatsApp;
       case ContactWays.email:
-        return SvgImages.mailIcon;
+        return SvgImages.mail;
       case ContactWays.phone:
-        return SvgImages.phoneCallIcon;
+        return SvgImages.phone;
     }
   }
 }

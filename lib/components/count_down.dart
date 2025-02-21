@@ -47,18 +47,19 @@ class _CountDownState extends State<CountDown> {
       text: TextSpan(
           text: getTranslated("didn't_receive_the_code"),
           style: AppTextStyles.w500.copyWith(
-              color: Styles.TITLE,
+              color: Styles.DETAILS_COLOR,
               fontSize: 14,
               overflow: TextOverflow.ellipsis),
           children: [
             TextSpan(
                 text: " ${getTranslated("resend_code")}",
                 style: AppTextStyles.w500.copyWith(
-                    fontSize: 14,
-                    color: (_count == 0)
-                        ? Styles.PRIMARY_COLOR
-                        : Styles.HINT_COLOR,
-                    decoration: TextDecoration.underline),
+                  fontSize: 14,
+                  color: (_count == 0)
+                      ? Styles.PRIMARY_COLOR
+                      : Styles.DETAILS_COLOR,
+                  // decoration: TextDecoration.underline,
+                ),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     if (_count == 0) {
@@ -68,14 +69,16 @@ class _CountDownState extends State<CountDown> {
                       }
                     }
                   }),
-            TextSpan(
-                text:
-                    " ${Duration(seconds: _count).inMinutes.remainder(60).toString().padLeft(2, '0')}:${Duration(seconds: _count).inSeconds.remainder(60).toString().padLeft(2, '0')}",
-                style: AppTextStyles.w500.copyWith(
-                    decoration: TextDecoration.underline,
-                    color:
-                        _count == 0 ? Styles.PRIMARY_COLOR : Styles.HINT_COLOR,
-                    fontSize: 14)),
+            if (_count != 0)
+              TextSpan(
+                  text:
+                      " (${Duration(seconds: _count).inMinutes.remainder(60).toString().padLeft(2, '0')}:${Duration(seconds: _count).inSeconds.remainder(60).toString().padLeft(2, '0')})",
+                  style: AppTextStyles.w500.copyWith(
+                      // decoration: TextDecoration.underline,
+                      color: _count == 0
+                          ? Styles.PRIMARY_COLOR
+                          : Styles.DETAILS_COLOR,
+                      fontSize: 14)),
           ]),
     );
   }

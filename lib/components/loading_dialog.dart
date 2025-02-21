@@ -25,7 +25,7 @@ loadingDialog() {
             borderRadius: BorderRadius.circular(20.0)),
         content: Column(mainAxisSize: MainAxisSize.min, children: [
           Image.asset(
-            Images.logo,
+            Images.appLogo,
             height: MediaQuery.of(context).size.width * .25,
             width: MediaQuery.of(context).size.width * .25,
           ),

@@ -1,82 +1,88 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
-
 import '../../app/core/app_event.dart';
 import '../../app/core/app_state.dart';
 import '../../app/localization/language_constant.dart';
 import '../../features/auth/logout/bloc/logout_bloc.dart';
 import '../config/di.dart';
+import 'failures.dart';
 
 class ApiErrorHandler {
-  static dynamic getMessage(error) {
-    dynamic errorDescription = "";
+  static ServerFailure getServerFailure(error) {
+    // ServerFailure failure =
+    //     getServerFailure(getTranslated("something_went_wrong"));
     if (error is Exception) {
       try {
         if (error is DioException) {
           switch (error.type) {
             case DioExceptionType.cancel:
-              errorDescription = "Request to API server was cancelled";
-              break;
+              return getServerFailure("Request to API server was cancelled");
+
             case DioExceptionType.connectionTimeout:
-              errorDescription = "Connection timeout with API server";
-              break;
+              return getServerFailure("Connection timeout with API server");
             case DioExceptionType.unknown:
-              errorDescription =
-                  "Connection to API server failed due to internet connection";
-              break;
+              return getServerFailure(
+                  "Connection to API server failed due to internet connection");
             case DioExceptionType.receiveTimeout:
-              errorDescription =
-                  "Receive timeout in connection with API server";
-              break;
+              return getServerFailure(
+                  "Receive timeout in connection with API server");
+
             case DioExceptionType.badResponse:
               switch (error.response!.statusCode) {
                 case 404:
-                  errorDescription = error.response!.data["message"];
-                  break;
+                  return ServerFailure(
+                      error.response!.data["message"] != ""
+                          ? error.response!.data["message"].trim()
+                          : getTranslated("something_went_wrong"),
+                      statusCode: 404);
                 case 401:
                   if (sl<LogoutBloc>().isLogin &&
                       sl<LogoutBloc>().state is! Loading) {
                     sl<LogoutBloc>().add(Click());
                   }
-                  errorDescription =
-                      getTranslated("your_session_has_been_expired");
-                  break;
+                  return ServerFailure(
+                      getTranslated("your_session_has_been_expired"),
+                      statusCode: 401);
                 case 500:
-                  errorDescription = error.response!.data["message"];
-                  break;
+                  return ServerFailure(
+                      error.response!.data["message"] != ""
+                          ? error.response!.data["message"].trim()
+                          : getTranslated("something_went_wrong"),
+                      statusCode: 500);
                 case 503:
-                  errorDescription = error.response!.statusMessage;
-                  break;
+                  return ServerFailure(
+                      error.response!.statusMessage ??
+                          (error.response!.data["message"] != ""
+                              ? error.response!.data["message"].trim()
+                              : getTranslated("something_went_wrong")),
+                      statusCode: 503);
                 default:
-                  log(error.response!.data.toString());
-
                   try {
-                    errorDescription = error.response!.data["message"];
+                    return ServerFailure(
+                        error.response!.data["message"] ??
+                            getTranslated("something_went_wrong"),
+                        statusCode: error.response!.statusCode);
                   } catch (e) {
-                    errorDescription = error.response!.data['data']["message"];
+                    return ServerFailure(
+                        error.response!.data['data']["message"] ??
+                            getTranslated("something_went_wrong"),
+                        statusCode: error.response!.statusCode);
                   }
               }
-              break;
             case DioExceptionType.sendTimeout:
-              errorDescription = "Send timeout with server";
-              break;
+              return ServerFailure("Send timeout with server");
             case DioExceptionType.badCertificate:
-              errorDescription = "Bad Certificate with server";
-              break;
+              return ServerFailure("Bad Certificate with server");
             case DioExceptionType.connectionError:
-              errorDescription = "Connection Error with server";
-              break;
+              return ServerFailure("Connection Error with server");
           }
         } else {
-          errorDescription = "Unexpected error occurred";
+          return ServerFailure("Unexpected error occurred");
         }
       } on FormatException catch (e) {
-        errorDescription = e.toString();
+        return getServerFailure(getTranslated("something_went_wrong"));
       }
     } else {
-      errorDescription = error.toString();
+      return getServerFailure(getTranslated("something_went_wrong"));
     }
-    return errorDescription;
   }
 }

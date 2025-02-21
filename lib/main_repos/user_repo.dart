@@ -23,7 +23,7 @@ class UserRepo extends BaseRepo {
         return Left(ServerFailure("There is no data in SharedPreference"));
       }
     } catch (error) {
-      return Left(ServerFailure(ApiErrorHandler.getMessage(error)));
+      return left(ApiErrorHandler.getServerFailure(error));
     }
   }
 

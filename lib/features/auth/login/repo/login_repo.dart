@@ -20,6 +20,8 @@ class LoginRepo extends BaseRepo {
     sharedPreferences.setString(AppStorageKey.userId, json["id"].toString());
     sharedPreferences.setString(AppStorageKey.userData, jsonEncode(json));
     sharedPreferences.setBool(AppStorageKey.isLogin, true);
+    sharedPreferences.setString(AppStorageKey.token, json["token"]);
+    dioClient.updateHeader(json["token"]);
   }
 
   saveUserToken(token) {
@@ -59,32 +61,17 @@ class LoginRepo extends BaseRepo {
     try {
       Response response =
           await dioClient.post(uri: EndPoints.logIn, data: data);
-
-      if (response.statusCode != 404) {
-        // if (response.data['data']["email_verified_at"] != null &&
-        //     response.data['data']["token"] != null) {
-        //   saveUserToken(response.data['data']["token"]);
-        //   saveUserData(response.data["data"]);
-        // }
-        // if (response.data['data']["email_verified_at"] != null &&
-        //     response.data['data']["is_complete"] == true) {
-        //   saveUserData(response.data["data"]);
-        //
-        // }
+      if (response.statusCode == 200) {
+        if (response.data['data']["email_verified_at"] != null) {
+          saveUserToken(response.data["data"]["token"]);
+          saveUserData(response.data["data"]["user"]);
+        }
         return Right(response);
       } else {
         return left(ServerFailure(response.data['message']));
       }
     } catch (error) {
-      if (error is DioException) {
-        if (error.response?.statusCode != 404) {
-          return Right(error.response!);
-        } else {
-          return left(ServerFailure(ApiErrorHandler.getMessage(error)));
-        }
-      } else {
-        return left(ServerFailure(ApiErrorHandler.getMessage(error)));
-      }
+      return left(ApiErrorHandler.getServerFailure(error));
     }
   }
 

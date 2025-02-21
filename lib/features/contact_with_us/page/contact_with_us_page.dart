@@ -32,7 +32,7 @@ class ContactWithUsPage extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                       vertical: Dimensions.PADDING_SIZE_DEFAULT.h),
                   child: customImageIcon(
-                      imageName: Images.logo, width: 220.w, height: 70.h)),
+                      imageName: Images.appLogo, width: 220.w, height: 70.h)),
             ),
             Text(
               getTranslated("contact_with_us_description"),
@@ -62,7 +62,7 @@ class ContactWithUsPage extends StatelessWidget {
                           Uri.parse(
                               "tel://${sl<SettingBloc>().model?.social?.phone}"),
                           mode: LaunchMode.externalApplication),
-                      imageName: SvgImages.phoneCallIcon,
+                      imageName: SvgImages.phone,
                       backGround: Styles.PRIMARY_COLOR,
                       color: Styles.WHITE_COLOR,
                       width: 50.w,

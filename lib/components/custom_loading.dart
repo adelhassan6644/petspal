@@ -16,7 +16,7 @@ class CustomLoading extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(
-          Images.logo,
+          Images.appLogo,
           height: MediaQuery.of(context).size.width * .5,
           width: MediaQuery.of(context).size.width * .5,
         ).animate(onPlay: (controller) => controller.repeat()).shimmer(

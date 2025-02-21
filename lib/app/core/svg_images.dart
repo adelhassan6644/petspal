@@ -1,4 +1,5 @@
 class SvgImages {
+  static const String forwardArrow = 'assets/svgs/forward_arrow.svg';
   static const String success = 'assets/svgs/success.svg';
   static const String fillCloseCircle = 'assets/svgs/fill-close-circle.svg';
   static const String cameraIcon = 'assets/svgs/camera.svg';
@@ -39,10 +40,9 @@ class SvgImages {
   static const String fillFav = 'assets/svgs/fill_fav.svg';
   static const String share = 'assets/svgs/share.svg';
   static const String whatsApp = 'assets/svgs/whats_app_icon.svg';
-  static const String faceBook = 'assets/svgs/facebook.svg';
   static const String export = 'assets/svgs/export.svg';
   static const String mail = 'assets/svgs/mail.svg';
-  static const String mailIcon = 'assets/svgs/mail_icon.svg';
+  static const String country = 'assets/svgs/country.svg';
   static const String contactWithUs = 'assets/svgs/contact_with_us.svg';
   static const String info = 'assets/svgs/info.svg';
   static const String aboutUs = 'assets/svgs/about_us.svg';
@@ -52,7 +52,7 @@ class SvgImages {
   static const String lockIcon = 'assets/svgs/lock.svg';
   static const String eyeIcon = 'assets/svgs/eye.svg';
   static const String hiddenEyeIcon = 'assets/svgs/hidden_eye.svg';
-  static const String phoneCallIcon = 'assets/svgs/phone_call.svg';
+  static const String phone = 'assets/svgs/phone.svg';
   static const String arrowRightAlt = 'assets/svgs/arrow_right_alt.svg';
   static const String arrowRight = 'assets/svgs/arrow_right.svg';
   static const String backIcon = 'assets/svgs/back_icon.svg';
@@ -79,10 +79,7 @@ class SvgImages {
   static const String retry = 'assets/svgs/retry.svg';
   static const String apple = 'assets/svgs/apple.svg';
   static const String google = 'assets/svgs/google.svg';
-  static const String rank = 'assets/svgs/rank.svg';
-  static const String cp = 'assets/svgs/cp.svg';
-  static const String activity = 'assets/svgs/activity.svg';
-  static const String medals = 'assets/svgs/medals.svg';
+  static const String faceBook = 'assets/svgs/facebook.svg';
   static const String coins = 'assets/svgs/coins.svg';
   static const String add = 'assets/svgs/add.svg';
   static const String track = 'assets/svgs/track.svg';

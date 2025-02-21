@@ -44,7 +44,7 @@ class EmptyState extends StatelessWidget {
         if (withImage)
           !isSvg
               ? customImageIcon(
-                  imageName: img ?? Images.logo,
+                  imageName: img ?? Images.appLogo,
                   width: imgWidth ?? context.width * 0.45,
                   height: imgHeight ?? context.height * 0.1,
                 ) //width: MediaQueryHelper.width*.8,),

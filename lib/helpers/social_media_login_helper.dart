@@ -58,7 +58,7 @@ class SocialMediaLoginHelper {
     } on FirebaseAuthException catch (error) {
       return left(ServerFailure(error.message ?? ""));
     } catch (error) {
-      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
+      return left(ApiErrorHandler.getServerFailure(error));
     }
   }
 
@@ -98,15 +98,15 @@ class SocialMediaLoginHelper {
           model.printData();
           return Right(model);
         } on FirebaseAuthException catch (error) {
-          return left(ServerFailure(error.message ?? ""));
+          return left(ApiErrorHandler.getServerFailure(error));
         } catch (error) {
-          return left(ServerFailure(ApiErrorHandler.getMessage(error)));
+          return left(ApiErrorHandler.getServerFailure(error));
         }
       } else {
         return left(ServerFailure("${result.message}"));
       }
     } catch (error) {
-      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
+      return left(ApiErrorHandler.getServerFailure(error));
     }
   }
 
@@ -153,7 +153,7 @@ class SocialMediaLoginHelper {
     } on FirebaseAuthException catch (error) {
       return left(ServerFailure(error.message ?? ""));
     } catch (error) {
-      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
+      return left(ApiErrorHandler.getServerFailure(error));
     }
   }
 

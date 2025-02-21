@@ -46,11 +46,10 @@ class VerificationBloc extends Bloc<AppEvent, AppState> {
                 borderColor: Colors.red));
         emit(Error());
       }, (success) {
-        if (data.fromComplete) {
-          CustomNavigator.push(Routes.editProfile,
-              clean: true, arguments: true);
-        } else {
+        if (data.fromRegister) {
           CustomNavigator.push(Routes.dashboard, clean: true, arguments: 0);
+        } else {
+          CustomNavigator.push(Routes.resetPassword, arguments: data.email);
         }
         AppCore.showSnackBar(
           notification: AppNotification(

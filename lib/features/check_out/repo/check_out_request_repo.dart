@@ -27,11 +27,11 @@ class CheckOutRequestRepo extends BaseRepo with CheckOutInterfaceRepo {
       );
       if (response.statusCode == 200) {
         return Right(response);
-      } else {
-        return left(ServerFailure(response.data['message']));
+      }else {
+        return left(ApiErrorHandler.getServerFailure(response.data['message']));
       }
     } catch (error) {
-      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
+      return left(ApiErrorHandler.getServerFailure(error));
     }
   }
 
@@ -49,11 +49,10 @@ class CheckOutRequestRepo extends BaseRepo with CheckOutInterfaceRepo {
       if (response.statusCode == 200) {
         return Right(response);
       } else {
-        return left(ServerFailure(response.data['message'],
-            statusCode: response.statusCode));
+        return left(ApiErrorHandler.getServerFailure(response.data['message']));
       }
     } catch (error) {
-      return left(ServerFailure(ApiErrorHandler.getMessage(error)));
+      return left(ApiErrorHandler.getServerFailure(error));
     }
   }
 }

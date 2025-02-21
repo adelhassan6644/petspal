@@ -10,21 +10,17 @@ import '../../features/chats/bloc/chats_bloc.dart';
 import '../../features/home/bloc/home_ads_bloc.dart';
 import '../../features/language/bloc/language_bloc.dart';
 import '../../features/check_out/bloc/check_out_bloc.dart';
-import '../../features/my_cars/bloc/my_cars_bloc.dart';
 import '../../features/profile/bloc/profile_bloc.dart';
 import '../../features/setting/bloc/setting_bloc.dart';
-import '../../main_blocs/country_states_bloc.dart';
 
 abstract class ProviderList {
   static List<BlocProvider> providers = [
     BlocProvider<LanguageBloc>(
         create: (_) => di.sl<LanguageBloc>()..add(Init())),
-    BlocProvider<CountryStatesBloc>(create: (_) => di.sl<CountryStatesBloc>()),
     BlocProvider<SettingBloc>(create: (_) => di.sl<SettingBloc>()),
     BlocProvider<ProfileBloc>(create: (_) => di.sl<ProfileBloc>()),
     BlocProvider<UserBloc>(create: (_) => di.sl<UserBloc>()),
     BlocProvider<HomeAdsBloc>(create: (_) => di.sl<HomeAdsBloc>()),
-    BlocProvider<MyCarsBloc>(create: (_) => di.sl<MyCarsBloc>()),
 
     ///Requests
     BlocProvider<CheckOutBloc>(create: (_) => di.sl<CheckOutBloc>()),

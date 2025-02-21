@@ -22,45 +22,51 @@ class CustomPinCodeField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PinCodeTextField(
-      validator: validation,
-      cursorColor: Styles.PRIMARY_COLOR,
-      backgroundColor: Colors.transparent,
-      autoDisposeControllers: false,
-      autoDismissKeyboard: true,
-      enableActiveFill: true,
-      controller: controller,
-      enablePinAutofill: true,
-      keyboardType: TextInputType.number,
-      inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9]'))],
-      textStyle: AppTextStyles.w600.copyWith(
-        color: Styles.HEADER,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: context.width * 0.05),
+      child: PinCodeTextField(
+        validator: validation,
+        cursorColor: Styles.PRIMARY_COLOR,
+        backgroundColor: Colors.transparent,
+        autoDisposeControllers: false,
+        autoDismissKeyboard: true,
+        enableActiveFill: true,
+        controller: controller,
+        enablePinAutofill: true,
+        keyboardType: TextInputType.number,
+        inputFormatters: [FilteringTextInputFormatter.allow(RegExp('[0-9]'))],
+        textStyle: AppTextStyles.w600.copyWith(
+          color: Styles.PRIMARY_COLOR,
+        ),
+        pastedTextStyle:
+            AppTextStyles.w600.copyWith(color: Styles.PRIMARY_COLOR),
+        textInputAction: TextInputAction.done,
+        pinTheme: PinTheme(
+          borderWidth: 1,
+          shape: PinCodeFieldShape.box,
+          borderRadius: BorderRadius.circular(16.w),
+          fieldHeight: 60.w,
+          fieldWidth: 60.w,
+          fieldOuterPadding: EdgeInsets.symmetric(horizontal: 4.w),
+          activeColor: Styles.PRIMARY_COLOR,
+          inactiveColor: Styles.LIGHT_BORDER_COLOR,
+          selectedColor: Styles.PRIMARY_COLOR,
+          activeFillColor: Styles.WHITE_COLOR,
+          inactiveFillColor: Styles.WHITE_COLOR,
+          selectedFillColor: Styles.WHITE_COLOR,
+          disabledColor: Styles.LIGHT_BORDER_COLOR,
+          errorBorderColor: Styles.ERORR_COLOR,
+        ),
+        appContext: context,
+        length: 4,
+        onSaved: onSave,
+        onChanged: (v) {
+          onChanged?.call(v);
+        },
+        hintCharacter: "ـــــــ",
+        hintStyle: AppTextStyles.w400.copyWith(color: Styles.HINT_COLOR),
+        errorTextSpace: 20.h,
       ),
-      pastedTextStyle: AppTextStyles.w600.copyWith(color: Styles.HEADER),
-      textInputAction: TextInputAction.done,
-      pinTheme: PinTheme(
-        borderWidth: 1,
-        shape: PinCodeFieldShape.box,
-        borderRadius: BorderRadius.circular(10),
-        fieldHeight: 50.h,
-        fieldWidth: 50.w,
-        fieldOuterPadding: EdgeInsets.symmetric(horizontal: 4.w),
-        activeFillColor: Styles.PRIMARY_COLOR.withOpacity(0.1),
-        activeColor: Styles.PRIMARY_COLOR,
-        inactiveColor: Styles.LIGHT_BORDER_COLOR,
-        inactiveFillColor: Colors.transparent,
-        selectedFillColor: Colors.transparent,
-        selectedColor: Styles.PRIMARY_COLOR,
-        disabledColor: Styles.ERORR_COLOR,
-        errorBorderColor: Styles.ERORR_COLOR,
-      ),
-      appContext: context,
-      length: 6,
-      onSaved: onSave,
-      onChanged: (v) {
-        onChanged?.call(v);
-      },
-      errorTextSpace: (context.width - (5 * 50.w)) / 4,
     );
   }
 }

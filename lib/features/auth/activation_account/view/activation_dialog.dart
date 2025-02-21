@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petspal/app/core/dimensions.dart';
-import 'package:petspal/app/core/extensions.dart';
 import '../../../../app/core/app_event.dart';
 import '../../../../app/core/app_state.dart';
 import '../../../../app/core/images.dart';
@@ -16,9 +15,9 @@ import '../bloc/activation_account_bloc.dart';
 import '../repo/activation_account_repo.dart';
 
 class ActivationDialog extends StatelessWidget {
-  const ActivationDialog({super.key, required this.phone});
+  const ActivationDialog({super.key, required this.email});
 
-  final String phone;
+  final String email;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +34,7 @@ class ActivationDialog extends StatelessWidget {
               Padding(
                   padding: EdgeInsets.only(bottom: 8.h),
                   child: customImageIcon(
-                      imageName: Images.logo, width: 220.w, height: 70.h)),
+                      imageName: Images.appLogo, width: 220.w, height: 70.h)),
               Text(
                 getTranslated("active_account"),
                 textAlign: TextAlign.center,
@@ -79,7 +78,7 @@ class ActivationDialog extends StatelessWidget {
                         isLoading: state is Loading,
                         onTap: () => context
                             .read<ActivationAccountBloc>()
-                            .add(Click(arguments: phone)),
+                            .add(Click(arguments: email)),
                       ),
                     ),
                   ],

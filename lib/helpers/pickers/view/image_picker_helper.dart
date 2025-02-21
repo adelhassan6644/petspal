@@ -112,7 +112,7 @@ abstract class ImagePickerHelper {
         onGet?.call(File(pngImage.path));
       }
     } catch (e) {
-      AppCore.showToast(ApiErrorHandler.getMessage(e));
+      AppCore.showToast(ApiErrorHandler.getServerFailure(e));
     }
   }
 
@@ -127,7 +127,7 @@ abstract class ImagePickerHelper {
         onGet?.call(File(pngImage.path));
       }
     } catch (e) {
-      AppCore.showToast(ApiErrorHandler.getMessage(e));
+      AppCore.showToast(ApiErrorHandler.getServerFailure(e));
     }
   }
 
@@ -141,7 +141,7 @@ abstract class ImagePickerHelper {
       }
       onGet?.call(pngImages);
     } catch (e) {
-      AppCore.showToast(ApiErrorHandler.getMessage(e));
+      AppCore.showToast(ApiErrorHandler.getServerFailure(e));
     }
   }
 }

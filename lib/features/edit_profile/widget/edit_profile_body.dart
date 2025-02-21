@@ -128,7 +128,7 @@ class _RegisterBodyState extends State<EditProfileBody> {
                         hint: getTranslated("enter_your_mail"),
                         inputType: TextInputType.emailAddress,
                         validate: Validations.mail,
-                        pSvgIcon: SvgImages.mailIcon,
+                        pSvgIcon: SvgImages.mail,
                       ),
                     ],
                   )),
