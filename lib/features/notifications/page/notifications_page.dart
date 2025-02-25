@@ -19,38 +19,16 @@ import '../../../data/config/di.dart';
 import '../../../main_models/search_engine.dart';
 import '../bloc/notifications_bloc.dart';
 
-class NotificationsPage extends StatefulWidget {
+class NotificationsPage extends StatelessWidget {
   const NotificationsPage({super.key});
-
-  @override
-  State<NotificationsPage> createState() => _NotificationsPageState();
-}
-
-class _NotificationsPageState extends State<NotificationsPage> {
-  late ScrollController controller;
-
-  @override
-  void initState() {
-    controller = ScrollController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: getTranslated("notifications"),
-      ),
+      appBar: CustomAppBar(title: getTranslated("notifications")),
       body: SafeArea(
         child: BlocProvider(
           create: (context) => NotificationsBloc(repo: sl<NotificationsRepo>())
-            ..customScroll(controller)
             ..add(Get(arguments: SearchEngine())),
           child: BlocBuilder<NotificationsBloc, AppState>(
             builder: (context, state) {
@@ -62,7 +40,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                         SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT.h),
                         ...List.generate(
                           10,
-                          (i) => Container(
+                              (i) => Container(
                             margin: EdgeInsets.symmetric(
                               horizontal: Dimensions.PADDING_SIZE_DEFAULT.w,
                               vertical: Dimensions.paddingSizeMini.h,
@@ -85,7 +63,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
               }
               if (state is Done) {
                 List<NotificationModel> list =
-                    state.list as List<NotificationModel>;
+                state.list as List<NotificationModel>;
                 return RefreshIndicator(
                   color: Styles.PRIMARY_COLOR,
                   onRefresh: () async {
@@ -96,15 +74,19 @@ class _NotificationsPageState extends State<NotificationsPage> {
                   child: Column(
                     children: [
                       Expanded(
-                        child: ListAnimator(controller: controller, data: [
-                          SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT.h),
-                          ...List.generate(
-                              list.length,
-                              (i) => NotificationCard(
+                        child: ListAnimator(
+                            controller:
+                            context.read<NotificationsBloc>().controller,
+                            data: [
+                              SizedBox(
+                                  height: Dimensions.PADDING_SIZE_DEFAULT.h),
+                              ...List.generate(
+                                  list.length,
+                                      (i) => NotificationCard(
                                     notification: list[i],
                                     withBorder: i != (list.length - 1),
                                   )),
-                        ]),
+                            ]),
                       ),
                       CustomLoadingText(
                         loading: state.loading,

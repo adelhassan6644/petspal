@@ -19,14 +19,17 @@ class NotificationsBloc extends Bloc<AppEvent, AppState> {
   final NotificationsRepo repo;
 
   NotificationsBloc({required this.repo}) : super(Start()) {
+    controller = ScrollController();
+    customScroll();
     on<Get>(onGet);
     on<Read>(onRead);
     on<Delete>(onDelete);
   }
 
+  late ScrollController controller;
   late SearchEngine _engine;
 
-  customScroll(ScrollController controller) {
+  customScroll() {
     controller.addListener(() {
       bool scroll = AppCore.scrollListener(
           controller, _engine.maxPages, _engine.currentPage!);
@@ -43,57 +46,57 @@ class NotificationsBloc extends Bloc<AppEvent, AppState> {
 
   Future<void> onGet(Get event, Emitter<AppState> emit) async {
     try {
-    _engine = event.arguments as SearchEngine;
-    if (_engine.currentPage == 0) {
-      _model = [];
-      if (!_engine.isUpdate) {
-        emit(Loading());
-      }
-    } else {
-      emit(Done(list: _model, loading: true));
-    }
-
-    Either<ServerFailure, Response> response =
-        await repo.getNotifications(_engine);
-
-    response.fold((fail) {
-      AppCore.showSnackBar(
-          notification: AppNotification(
-              message: fail.error,
-              isFloating: true,
-              backgroundColor: Styles.IN_ACTIVE,
-              borderColor: Colors.red));
-      emit(Error());
-    }, (success) {
-      NotificationsModel? res = NotificationsModel.fromJson(success.data);
-
+      _engine = event.arguments as SearchEngine;
       if (_engine.currentPage == 0) {
-        _model?.clear();
+        _model = [];
+        if (!_engine.isUpdate) {
+          emit(Loading());
+        }
+      } else {
+        emit(Done(list: _model, loading: true));
       }
 
-      if (res.data != null && res.data!.isNotEmpty) {
-        for (var notification in res.data!) {
-          _model?.removeWhere((e) => e.id == notification.id);
+      Either<ServerFailure, Response> response =
+      await repo.getNotifications(_engine);
 
-          _model?.add(notification);
+      response.fold((fail) {
+        AppCore.showSnackBar(
+            notification: AppNotification(
+                message: fail.error,
+                isFloating: true,
+                backgroundColor: Styles.IN_ACTIVE,
+                borderColor: Colors.red));
+        emit(Error());
+      }, (success) {
+        NotificationsModel? res = NotificationsModel.fromJson(success.data);
+
+        if (_engine.currentPage == 0) {
+          _model?.clear();
         }
 
-        _engine.maxPages = res.meta?.pagesCount ?? 1;
-        _engine.updateCurrentPage(res.meta?.currentPage ?? 1);
-      }
-      if (_model != null && _model!.isNotEmpty) {
-        emit(Done(list: _model, loading: false));
-      } else {
-        emit(Empty());
-      }
-    });
+        if (res.data != null && res.data!.isNotEmpty) {
+          for (var notification in res.data!) {
+            _model?.removeWhere((e) => e.id == notification.id);
+
+            _model?.add(notification);
+          }
+
+          _engine.maxPages = res.meta?.pagesCount ?? 1;
+          _engine.updateCurrentPage(res.meta?.currentPage ?? 1);
+        }
+        if (_model != null && _model!.isNotEmpty) {
+          emit(Done(list: _model, loading: false));
+        } else {
+          emit(Empty());
+        }
+      });
     } catch (e) {
       AppCore.showSnackBar(
           notification: AppNotification(
-        message: e.toString(),
-        backgroundColor: Styles.IN_ACTIVE,
-        borderColor: Styles.RED_COLOR,
-      ));
+            message: e.toString(),
+            backgroundColor: Styles.IN_ACTIVE,
+            borderColor: Styles.RED_COLOR,
+          ));
       emit(Error());
     }
   }
@@ -117,7 +120,7 @@ class NotificationsBloc extends Bloc<AppEvent, AppState> {
     try {
       loadingDialog();
       Either<ServerFailure, Response> response =
-          await repo.deleteNotification(event.arguments as String);
+      await repo.deleteNotification(event.arguments as String);
       CustomNavigator.pop();
 
       response.fold((fail) {
