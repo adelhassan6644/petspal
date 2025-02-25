@@ -1,36 +1,51 @@
-
 import '../../../data/config/mapper.dart';
-import '../../check_out/model/price_details_model.dart';
-import '../../products/model/products_model.dart';
 
 class ProductDetailsModel extends SingleMapper {
-  ProductModel? product;
-  PriceDetailsModel? priceDetails;
+  int? id;
+  String? name;
+  String? description;
+  String? image;
+  double? price;
+  double? priceAfter;
+  double? discount;
+  int? quantity;
 
   ProductDetailsModel({
-    this.product,
-    this.priceDetails,
+    this.id,
+    this.name,
+    this.description,
+    this.image,
+    this.price,
+    this.priceAfter,
+    this.discount,
+    this.quantity,
   });
 
   ProductDetailsModel.fromJson(Map<String, dynamic> json) {
-    product =
-        json['product'] != null ? ProductModel.fromJson(json['product']) : null;
-    priceDetails = json['price_details'] != null
-        ? PriceDetailsModel.fromJson(json['price_details'])
+    id = json["id"];
+    name = json["name"];
+    description = json["desc"];
+    price =
+        json["price"] != null ? double.parse(json["price"].toString()) : null;
+    priceAfter = json["price_after"] != null
+        ? double.parse(json["price_after"].toString())
         : null;
+    image = json["image"];
+    discount = json["discount"];
+    quantity = json["quantity"];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (product != null) {
-      data['product'] = product?.toJson();
-    }
-    if (priceDetails != null) {
-      data['price_details'] = priceDetails?.toJson();
-    }
-
-    return data;
-  }
+  @override
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+        "desc": description,
+        "image": image,
+        "price": price,
+        "price_after": priceAfter,
+        "discount": discount,
+        "quantity": quantity,
+      };
 
   @override
   Mapper fromJson(Map<String, dynamic> json) {

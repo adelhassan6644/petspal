@@ -1,6 +1,7 @@
 import 'package:petspal/app/core/extensions.dart';
 import 'package:petspal/app/core/dimensions.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:petspal/app/core/text_styles.dart';
 import '../app/core/images.dart';
 import '../app/core/styles.dart';
 import '../app/core/svg_images.dart';
@@ -46,22 +47,21 @@ class EmptyState extends StatelessWidget {
               ? customImageIcon(
                   imageName: img ?? Images.appLogo,
                   width: imgWidth ?? context.width * 0.45,
-                  height: imgHeight ?? context.height * 0.1,
+                  height: imgHeight ?? context.height * 0.2,
                 ) //width: MediaQueryHelper.width*.8,),
               : customImageIconSVG(
                   imageName: img ?? SvgImages.appLogo,
                   width: imgWidth ?? context.width * 0.45,
-                  height: imgHeight ?? context.height * 0.19,
+                  height: imgHeight ?? context.height * 0.2,
                 ),
         SizedBox(
-          height: spaceBtw ?? 12.h,
+          height: spaceBtw ?? 16.h,
         ),
         Text(txt ?? getTranslated("there_is_no_data"),
             textAlign: TextAlign.center,
-            style: const TextStyle(
+            style: AppTextStyles.w600.copyWith(
                 fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: Styles.PRIMARY_COLOR,
+                color: Styles.HEADER,
                 decoration: TextDecoration.none)),
         SizedBox(height: 8.h),
         Text(subText ?? "",

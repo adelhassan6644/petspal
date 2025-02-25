@@ -5,7 +5,7 @@ abstract class Styles {
   static const Color PRIMARY_COLOR = Color(0xFFFD7014);
   static const Color SECONDRY_COLOR = Color(0xFFFD7014);
   static const Color APP_BAR_BACKGROUND_COLOR = Color(0xffFFF9F9);
-  static const Color BACKGROUND_COLOR = Color(0xFFFfffff);
+  static const Color BACKGROUND_COLOR = Color(0xFFf9fafe);
   static const Color CONTAINER_BACKGROUND_COLOR = Color(0xffF3F3F3);
   static const Color BLUE_COLOR = Color(0xff3A5ACD);
   static const Color SYSTEM_COLOR = Color(0xff007AFF);
@@ -34,7 +34,7 @@ abstract class Styles {
   static const Color BLACK = Color(0xFF151416);
   static const Color SUBTITLE = Color(0xff44506A);
   static const Color DETAILS_COLOR = Color(0xff6c7a97);
-  static const Color HINT_COLOR = Color(0xffDFE2E8);
+  static const Color HINT_COLOR = Color(0xff7E8AA3);
   static const Color BORDER_COLOR = Color(0xffDFE2E8);
 
   static const Color SPLASH_BACKGROUND_COLOR = Color(0xffFFFFFF);

@@ -1,9 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:petspal/app/core/dimensions.dart';
-import 'package:petspal/app/core/svg_images.dart';
 import 'package:petspal/app/core/text_styles.dart';
 import 'package:petspal/app/localization/language_constant.dart';
-import 'package:petspal/components/custom_images.dart';
 import 'package:petspal/components/custom_network_image.dart';
 import 'package:petspal/navigation/custom_navigation.dart';
 import '../../../app/core/styles.dart';
@@ -11,82 +11,62 @@ import '../../../navigation/routes.dart';
 import '../model/categories_model.dart';
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({super.key, required this.model});
+  const CategoryCard(
+      {super.key, this.height, this.width, this.fontSize, required this.model});
   final CategoryModel model;
+  final double? width, height, fontSize;
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      splashColor: Colors.transparent,
+      focusColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      hoverColor: Colors.transparent,
       onTap: () => CustomNavigator.push(Routes.products, arguments: model),
-      child: Stack(
-        alignment: Alignment.bottomRight,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            padding: EdgeInsets.symmetric(
-                vertical: Dimensions.paddingSizeMini.h,
-                horizontal: Dimensions.paddingSizeMini.w),
-            decoration: BoxDecoration(
-                color: Styles.WHITE_COLOR,
-                border: Border.all(color: Styles.LIGHT_BORDER_COLOR),
-                borderRadius: BorderRadius.circular(12.w)),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
+          ClipRect(
+            child: Stack(
+              alignment: Alignment.center,
               children: [
                 CustomNetworkImage.containerNewWorkImage(
-                  height: 70.h,
-                  width: 70.w,
                   image: model.image ?? "",
+                  width: width ?? 80.w,
+                  height: height ?? 80.w,
+                  radius: 20.w,
+                  borderColor: Styles.LIGHT_BORDER_COLOR,
                 ),
-                SizedBox(height: 12.h),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      vertical: Dimensions.paddingSizeMini.h),
-                  child: Text(
-                    model.name ?? "PetsPal",
-                    style: AppTextStyles.w700.copyWith(
-                      fontSize: 18,
-                      color: Styles.HEADER,
-                    ),
-                  ),
-                ),
-                Row(
-                  children: [
-                    customImageIconSVG(
-                        imageName: SvgImages.clock,
-                        width: 16.w,
-                        height: 16.h,
-                        color: Styles.DETAILS_COLOR),
-                    SizedBox(width: 8.w),
-                    Expanded(
+                if (model.isComingSoon == true)
+                  BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                    child: Container(
+                      width: width ?? 80.w,
+                      height: height ?? 80.w,
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.symmetric(horizontal: 8.w),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Styles.LIGHT_BORDER_COLOR),
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.black.withOpacity(0.2)),
                       child: Text(
-                        getTranslated(model.is24Hr == true
-                            ? "service_24_hr"
-                            : "service_limit_hr"),
-                        style: AppTextStyles.w400.copyWith(
-                          fontSize: 14,
-                          color: Styles.DETAILS_COLOR,
-                        ),
+                        getTranslated("coming_soon"),
+                        textAlign: TextAlign.center,
+                        style: AppTextStyles.w600.copyWith(
+                            fontSize: ((fontSize ?? 14) - 2),
+                            color: Styles.WHITE_COLOR),
                       ),
                     ),
-                    SizedBox(width: 30.w),
-                  ],
-                )
+                  ),
               ],
             ),
           ),
-          Container(
-            margin: EdgeInsets.symmetric(
-                vertical: Dimensions.paddingSizeMini.h,
-                horizontal: Dimensions.paddingSizeMini.w),
-            padding: EdgeInsets.all(6.w),
-            decoration: BoxDecoration(
-                shape: BoxShape.circle, color: Styles.PRIMARY_COLOR),
-            child: Icon(
-              Icons.add,
-              color: Styles.WHITE_COLOR,
-              size: 24,
-            ),
-          )
+          SizedBox(height: 5.h),
+          Text(
+            model.name ?? "Small animal",
+            style: AppTextStyles.w600
+                .copyWith(fontSize: fontSize ?? 14, color: Styles.HEADER),
+          ),
         ],
       ),
     );

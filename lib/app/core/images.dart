@@ -18,7 +18,8 @@ class Images {
   static const String startSearch = 'assets/images/start_search.png';
   static const String success = 'assets/images/success.png';
   static const String ok = 'assets/images/ok.png';
-
+  static const String emptyCart = 'assets/images/empty_cart.png';
+  static const String failCart = 'assets/images/fail_cart.png';
   static const String seatEmpty = 'assets/images/seat_empty.png';
   static const String coloredCoin = 'assets/images/colored_coin.png';
   static const String noInternet = 'assets/images/no_internet.png';
@@ -29,4 +30,5 @@ class Images {
   static const String twitter = 'assets/images/twitter.png';
   static const String tiktok = 'assets/images/tiktok.png';
   static const String snapchat = 'assets/images/snapchat.png';
+  static const String discount = 'assets/images/discount.png';
 }

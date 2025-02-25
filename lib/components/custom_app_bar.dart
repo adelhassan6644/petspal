@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:petspal/app/core/dimensions.dart';
 import 'package:petspal/app/core/extensions.dart';
-import 'package:petspal/components/custom_images.dart';
 import '../../navigation/custom_navigation.dart';
-import '../app/core/images.dart';
 import '../app/core/styles.dart';
-import '../app/core/svg_images.dart';
 import '../app/core/text_styles.dart';
-import '../features/language/bloc/language_bloc.dart';
 import 'back_icon.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -41,7 +37,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         vertical: withVPadding ? Dimensions.PADDING_SIZE_DEFAULT.h : 0,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        gradient: LinearGradient(
+          colors: [
+            Styles.PRIMARY_COLOR.withOpacity(0.28),
+            Color(0XFFFFF6F1).withOpacity(0.2),
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
       ),
       child: SafeArea(
         top: withSafeArea,
@@ -57,7 +60,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             Text(
               title ?? "",
               style: AppTextStyles.w600
-                  .copyWith(color: Styles.WHITE_COLOR, fontSize: 18),
+                  .copyWith(color: Styles.HEADER, fontSize: 18),
             ),
             const Expanded(child: SizedBox()),
             SizedBox(

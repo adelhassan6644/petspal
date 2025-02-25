@@ -39,12 +39,13 @@ class CustomNetworkImage {
         width: width ?? 40.w,
         height: height ?? 40.h,
         decoration: BoxDecoration(
+          border: Border.all(color: borderColor ?? Colors.transparent),
           borderRadius: topEdges
               ? BorderRadius.only(
                   topRight: Radius.circular(radius ?? 12),
                   topLeft: Radius.circular(radius ?? 12))
               : BorderRadius.circular(radius ?? 12),
-          color: Styles.GREY_BORDER,
+          color: Styles.WHITE_COLOR,
         ),
         padding: padding ??
             EdgeInsets.symmetric(
@@ -62,6 +63,7 @@ class CustomNetworkImage {
               width: width ?? 40.w,
               height: height ?? 40.h,
               decoration: BoxDecoration(
+                  border: Border.all(color: borderColor ?? Colors.transparent),
                   borderRadius: topEdges
                       ? BorderRadius.only(
                           topRight: Radius.circular(radius ?? 10),
@@ -133,7 +135,7 @@ class CustomNetworkImage {
           backgroundColor: backGroundColor ?? Colors.white,
           child: Image.asset(
             Images.appLogo,
-            fit: BoxFit.contain,
+            fit: BoxFit.cover,
           ),
         ),
       ),

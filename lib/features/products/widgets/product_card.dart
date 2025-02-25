@@ -1,15 +1,17 @@
-import 'dart:ui';
-
 import 'package:petspal/app/core/dimensions.dart';
 import 'package:petspal/app/core/extensions.dart';
 import 'package:petspal/app/core/text_styles.dart';
+import 'package:petspal/features/language/bloc/language_bloc.dart';
 import 'package:petspal/features/products/widgets/price_card.dart';
 import 'package:petspal/main_blocs/user_bloc.dart';
 import 'package:flutter/material.dart';
 
 import '../../../app/core/styles.dart';
+import '../../../app/core/svg_images.dart';
 import '../../../components/custom_bottom_sheet.dart';
+import '../../../components/custom_images.dart';
 import '../../../components/custom_network_image.dart';
+import '../../../data/config/di.dart';
 import '../../../main_widgets/discount_widget.dart';
 import '../../../main_widgets/guest_mode.dart';
 import '../../../navigation/custom_navigation.dart';
@@ -23,6 +25,8 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment:
+          sl<LanguageBloc>().isLtr ? Alignment.topRight : Alignment.topLeft,
       children: [
         InkWell(
           focusColor: Colors.transparent,
@@ -37,96 +41,95 @@ class ProductCard extends StatelessWidget {
               CustomBottomSheet.show(widget: const GuestMode());
             }
           },
-          child: Stack(
-            alignment: Alignment.bottomCenter,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(bottom: 30.h),
-                child: CustomNetworkImage.containerNewWorkImage(
-                    onTap: () {
-                      if (UserBloc.instance.isLogin) {
-                        CustomNavigator.push(Routes.productDetails,
-                            arguments: product.id);
-                      } else {
-                        CustomBottomSheet.show(widget: const GuestMode());
-                      }
-                    },
-                    radius: 8.w,
+          child: Container(
+            width: 185.w,
+            decoration: BoxDecoration(
+                color: Styles.WHITE_COLOR,
+                border: Border.all(color: Styles.LIGHT_BORDER_COLOR),
+                borderRadius: BorderRadius.circular(20.w)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomNetworkImage.containerNewWorkImage(
+                    radius: 20.w,
                     width: context.width,
-                    height: context.height,
+                    height: 100.h,
                     image: product.image ?? ""),
-              ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12.w),
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 24, sigmaY: 24),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.3),
-                    ),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                product.name ?? "product",
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 12.w, vertical: 18.h),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        product.name ?? "Product",
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        style: AppTextStyles.w600
+                            .copyWith(fontSize: 16, color: Styles.HEADER),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 4.h, bottom: 4.h),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                product.category?.name ?? "Category",
                                 overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
-                                style: AppTextStyles.w700.copyWith(
-                                    fontSize: 16, color: Styles.HEADER),
-                              ),
-                              SizedBox(height: 4.h),
-                              PriceCard(
-                                price: product.price,
-                                priceAfterDiscount: product.priceAfter,
-                                fontSize: 14,
-                                discountFontSize: 12,
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(width: 12.w),
-                        ClipRRect(
-                          clipBehavior: Clip.antiAlias,
-                          borderRadius: BorderRadius.circular(100),
-                          child: BackdropFilter(
-                            filter:
-                                ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-                            child: Container(
-                              padding: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(100)),
-                              child: Transform.rotate(
-                                angle: -0.5,
-                                child: const Icon(
-                                  Icons.arrow_forward,
-                                  size: 20,
-                                  color: Styles.PRIMARY_COLOR,
-                                ),
+                                maxLines: 1,
+                                style: AppTextStyles.w400.copyWith(
+                                    fontSize: 14, color: Styles.SUBTITLE),
                               ),
                             ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 4.w),
+                              child: customImageIconSVG(
+                                  imageName: SvgImages.fillStar,
+                                  width: 16.w,
+                                  height: 16.w),
+                            ),
+                            Text(
+                              "${product.avgRate ?? 0}",
+                              maxLines: 1,
+                              style: AppTextStyles.w600.copyWith(
+                                  fontSize: 14, color: Styles.SUBTITLE),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: PriceCard(
+                              price: product.price ?? 1,
+                              priceAfterDiscount: product.priceAfter ?? 0,
+                              fontSize: 14,
+                              discountFontSize: 12,
+                            ),
                           ),
-                        )
-                      ],
-                    ),
+                          SizedBox(width: 4.w),
+                          customContainerSvgIcon(
+                              onTap: () {},
+                              backGround: Styles.PRIMARY_COLOR,
+                              color: Styles.WHITE_COLOR,
+                              width: 32.w,
+                              height: 32.w,
+                              radius: 12.w,
+                              padding: 8.w,
+                              imageName: SvgImages.addCart),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-        if (product.discount != null)
-          Positioned(
-            top: 12,
-            right: 1,
-            child: DiscountWidget(discount: product.discount),
-          ),
+        // if (product.discount != null)
+        DiscountWidget(discount: product.discount),
       ],
     );
   }

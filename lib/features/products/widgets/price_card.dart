@@ -17,26 +17,26 @@ class PriceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
-        text: "${priceAfterDiscount ?? price ?? 0} ${getTranslated("sar")}",
+        text: "${priceAfterDiscount ?? price ?? 0} ${getTranslated("kwd")}",
         style: AppTextStyles.w600.copyWith(
-            height: 1, fontSize: fontSize ?? 18, color: Styles.PRIMARY_COLOR),
+            height: 1, fontSize: fontSize ?? 18, color: Styles.HEADER),
         children: [
+          // if (priceAfterDiscount != price && priceAfterDiscount != null)
+          //   TextSpan(
+          //     text: "  ${getTranslated("disc")} ",
+          //     style: AppTextStyles.w400.copyWith(
+          //       height: 1,
+          //       fontSize: discountFontSize ?? 14,
+          //       color: Styles.DETAILS_COLOR,
+          //     ),
+          //   ),
           if (priceAfterDiscount != price && priceAfterDiscount != null)
             TextSpan(
-              text: "  ${getTranslated("disc")} ",
+              text: "  $price ${getTranslated("kwd")}",
               style: AppTextStyles.w400.copyWith(
                 height: 1,
                 fontSize: discountFontSize ?? 14,
-                color: Styles.DETAILS_COLOR,
-              ),
-            ),
-          if (priceAfterDiscount != price && priceAfterDiscount != null)
-            TextSpan(
-              text: "$price ${getTranslated("sar")}",
-              style: AppTextStyles.w400.copyWith(
-                height: 1,
-                fontSize: discountFontSize ?? 14,
-                color: Styles.DETAILS_COLOR,
+                color: Styles.ERORR_COLOR,
                 decoration: TextDecoration.lineThrough,
               ),
             ),

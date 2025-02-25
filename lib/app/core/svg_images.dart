@@ -7,10 +7,10 @@ class SvgImages {
   static const String createRoom = 'assets/svgs/create_room.svg';
   static const String homeIcon = 'assets/svgs/home.svg';
   static const String car = 'assets/svgs/car.svg';
-  static const String order = 'assets/svgs/order.svg';
   static const String messages = 'assets/svgs/messages.svg';
   static const String category = 'assets/svgs/category.svg';
   static const String heartIcon = 'assets/svgs/heart.svg';
+  static const String address = 'assets/svgs/address.svg';
   static const String location = 'assets/svgs/location.svg';
   static const String moreIcon = 'assets/svgs/more.svg';
   static const String search = 'assets/svgs/search.svg';
@@ -126,4 +126,15 @@ class SvgImages {
   static const String ticket = 'assets/svgs/ticket.svg';
   static const String coupons = 'assets/svgs/coupons.svg';
   static const String tags = 'assets/svgs/tags.svg';
+  static const String cart = 'assets/svgs/cart.svg';
+  static const String addCart = 'assets/svgs/add_cart.svg';
+  static const String petsgramService = 'assets/svgs/petsgram_service.svg';
+  static const String petsgram = 'assets/svgs/petsgram.svg';
+  static const String marketplaceService = 'assets/svgs/marketplace_service.svg';
+  static const String scanService = 'assets/svgs/scan_service.svg';
+  static const String travelService = 'assets/svgs/travel_service.svg';
+  static const String guidanceService = 'assets/svgs/guidance_service.svg';
+  static const String orderService = 'assets/svgs/order_service.svg';
+  static const String marketplace = 'assets/svgs/marketplace.svg';
+  static const String orders = 'assets/svgs/orders.svg';
 }

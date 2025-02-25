@@ -11,7 +11,7 @@ ThemeData light(fontFamily) => ThemeData(
       brightness: Brightness.light,
       colorScheme: const ColorScheme.light(
           primary: Styles.PRIMARY_COLOR, secondary: Styles.PRIMARY_COLOR),
-      scaffoldBackgroundColor: Colors.white,
+      scaffoldBackgroundColor: Styles.BACKGROUND_COLOR,
       focusColor: const Color(0xFFADC4C8),
       hintColor: Styles.HINT_COLOR,
       disabledColor: Styles.DISABLED,

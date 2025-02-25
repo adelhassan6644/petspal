@@ -33,12 +33,12 @@ class EndPoints {
   static const String myCars = 'user-cars';
 
   ///Categories && Products
-  static const String categories = 'product-categories';
+  static const String vendors = 'vendors';
+  static const String categories = 'categories';
   static const String products = 'products';
+  static const String bestSellers = 'best_sellers';
   static productDetails(id) => 'product/$id';
 
-  static const checkOutProduct = 'check-out';
-  static const applyProductCoupon = 'check-coupon';
 
   ///cities
   static const String cities = 'cities';
@@ -94,8 +94,18 @@ class EndPoints {
   static checkOutByBankTransfer(id) => 'company/orders/$id/pay-by-bank';
   static applyOrderCoupon(id) => 'company/orders/$id/check-coupon';
 
-  ///Notification
+  ///Transactions
   static const String transactions = 'transactions';
+
+  ///Cart
+  static const String cart = 'cart';
+  static const String addToCart = 'cart/add';
+  static const String updateCart = 'update/cart/quantity';
+  static const String removeFromCart = 'cart/remove';
+  static const checkOutProduct = 'check-out';
+  static const applyProductCoupon = 'check-coupon';
+
+
 
   ///Setting
   static const String settings = 'settings';

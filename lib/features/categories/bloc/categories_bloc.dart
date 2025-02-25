@@ -73,7 +73,7 @@ class CategoriesBloc extends HydratedBloc<AppEvent, AppState> {
   AppState? fromJson(Map<String, dynamic> json) {
     try {
       if (json['state'] == "Start") {
-        return Loading();
+        return Start();
       }
       if (json['state'] == "Error") {
         return Error();

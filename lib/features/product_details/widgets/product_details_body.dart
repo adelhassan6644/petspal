@@ -39,7 +39,7 @@ class ProductDetailsBody extends StatelessWidget {
                     width: context.width,
                     height: context.height * 0.25,
                     radius: 12.w,
-                    image: model.product?.image ?? ""),
+                    image: model.image ?? ""),
 
                 ///Product Name
                 Padding(
@@ -47,7 +47,7 @@ class ProductDetailsBody extends StatelessWidget {
                     top: Dimensions.PADDING_SIZE_DEFAULT.h,
                   ),
                   child: Text(
-                    model.product?.name ?? "",
+                    model.name ?? "",
                     style: AppTextStyles.w600
                         .copyWith(fontSize: 22, color: Styles.HEADER),
                   ),
@@ -58,14 +58,14 @@ class ProductDetailsBody extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                       vertical: Dimensions.paddingSizeMini.h),
                   child: PriceCard(
-                    price: model.product?.price,
-                    priceAfterDiscount: model.product?.priceAfter,
+                    price: model.price,
+                    priceAfterDiscount: model.priceAfter,
                   ),
                 ),
 
                 ///Product Description
                 ReadMoreText(
-                  model.product?.description ?? "",
+                  model.description ?? "",
                   style: AppTextStyles.w400
                       .copyWith(fontSize: 16, color: Styles.DETAILS_COLOR),
                   trimLines: 2,

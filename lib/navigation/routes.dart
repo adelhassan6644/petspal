@@ -13,6 +13,9 @@ class Routes {
   static const profile = "PROFILE";
   static const editProfile = "EDIT_PROFILE";
   static const addresses = "ADDRESSES";
+  static const categories = "CATEGORIES";
+  static const vendors = "VENDORS";
+  static const bestSeller = "BEST_SELLER";
   static const checkOut = "CHECK_OUT";
   static const contactWithUs = "CONTACT_WITH_US";
   static const aboutUs = "ABOUT_US";
@@ -36,5 +39,6 @@ class Routes {
   static const payment = "PAYMENT";
   static const products = "PRODUCTS";
   static const productDetails = "PRODUCT_DETAILS";
+  static const cart = "CART";
 
 }

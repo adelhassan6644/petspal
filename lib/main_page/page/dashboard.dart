@@ -91,10 +91,11 @@ class _DashBoardState extends State<DashBoard> {
         return const Home();
       case 1:
         return const SizedBox();
-
       case 2:
         return const SizedBox();
       case 3:
+        return const SizedBox();
+      case 4:
         return const More();
       default:
         return SizedBox();

@@ -49,14 +49,14 @@ class CategoryModel extends SingleMapper {
   String? name;
   String? description;
   String? image;
-  bool? is24Hr;
+  bool? isComingSoon;
 
   CategoryModel({
     this.id,
     this.name,
     this.description,
     this.image,
-    this.is24Hr,
+    this.isComingSoon,
   });
 
   CategoryModel.fromJson(Map<String, dynamic> json) {
@@ -64,7 +64,7 @@ class CategoryModel extends SingleMapper {
     name = json["name"];
     description = json["desc"];
     image = json["image"];
-    is24Hr = json["is_available_all_time"];
+    isComingSoon = json["is_available_all_time"];
   }
 
   @override
@@ -73,7 +73,7 @@ class CategoryModel extends SingleMapper {
         "name": name,
         "desc": description,
         "image": image,
-        "is_available_all_time": is24Hr,
+        "is_available_all_time": isComingSoon,
       };
 
   @override

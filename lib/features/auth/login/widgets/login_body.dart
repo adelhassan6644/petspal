@@ -77,13 +77,11 @@ class LoginBody extends StatelessWidget {
                           context.read<LoginBloc>().updateLoginEntity(
                               snapshot.data?.copyWith(
                                   passwordError:
-                                  Validations.firstPassword(v) ??
-                                      ""));
+                                      Validations.firstPassword(v) ?? ""));
                           return null;
                         },
                         errorText: snapshot.data?.passwordError,
-                        customError:
-                        snapshot.data?.passwordError != null &&
+                        customError: snapshot.data?.passwordError != null &&
                             snapshot.data?.passwordError != "",
                       ),
 
@@ -91,8 +89,7 @@ class LoginBody extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.symmetric(
                             vertical: Dimensions.paddingSizeExtraSmall.h,
-                            horizontal:
-                            Dimensions.paddingSizeExtraSmall.w),
+                            horizontal: Dimensions.paddingSizeExtraSmall.w),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
@@ -112,8 +109,7 @@ class LoginBody extends StatelessWidget {
                             InkWell(
                               onTap: () {
                                 context.read<LoginBloc>().clear();
-                                CustomNavigator.push(
-                                    Routes.forgetPassword);
+                                CustomNavigator.push(Routes.forgetPassword);
                               },
                               child: Text(
                                 getTranslated("forget_password"),
@@ -141,18 +137,17 @@ class LoginBody extends StatelessWidget {
                                   .formKey
                                   .currentState!
                                   .validate();
-                              if (context
-                                  .read<LoginBloc>()
-                                  .isBodyValid()) {
+                              if (context.read<LoginBloc>().isBodyValid()) {
                                 TextInput.finishAutofillContext();
-                                CustomNavigator.push(
-                                    Routes.changePassword);
+                                CustomNavigator.push(Routes.dashboard,
+                                    clean: true, arguments: 0);
+                                // CustomNavigator.push(
+                                //     Routes.changePassword);
                                 // context.read<LoginBloc>().add(Click());
                               }
                             },
                             rIconWidget: RotatedBox(
-                              quarterTurns:
-                              sl<LanguageBloc>().isLtr ? 0 : 2,
+                              quarterTurns: sl<LanguageBloc>().isLtr ? 0 : 2,
                               child: customImageIconSVG(
                                 imageName: SvgImages.forwardArrow,
                                 color: Styles.WHITE_COLOR,
@@ -167,12 +162,11 @@ class LoginBody extends StatelessWidget {
                         text: TextSpan(
                             text: getTranslated("do_not_have_acc"),
                             style: AppTextStyles.w400.copyWith(
-                                fontSize: 14,
-                                color: Styles.DETAILS_COLOR),
+                                fontSize: 14, color: Styles.DETAILS_COLOR),
                             children: [
                               TextSpan(
                                   text:
-                                  " ${getTranslated("create_an_account")}",
+                                      " ${getTranslated("create_an_account")}",
                                   style: AppTextStyles.w600.copyWith(
                                     fontSize: 16,
                                     color: Styles.PRIMARY_COLOR,
@@ -181,8 +175,7 @@ class LoginBody extends StatelessWidget {
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
                                       context.read<LoginBloc>().clear();
-                                      CustomNavigator.push(
-                                          Routes.register);
+                                      CustomNavigator.push(Routes.register);
                                     }),
                             ]),
                       ),
@@ -198,26 +191,24 @@ class LoginBody extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Row(
-                              crossAxisAlignment:
-                              CrossAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Expanded(
                                     child: Divider(
-                                      color: Styles.HINT_COLOR,
-                                      height: 12.h,
-                                    )),
+                                  color: Styles.HINT_COLOR,
+                                  height: 12.h,
+                                )),
                                 Text(
                                   "  ${getTranslated("or")}  ",
                                   style: AppTextStyles.w500.copyWith(
-                                      fontSize: 14,
-                                      color: Styles.HINT_COLOR),
+                                      fontSize: 14, color: Styles.HINT_COLOR),
                                 ),
                                 Expanded(
                                     child: Divider(
-                                      color: Styles.HINT_COLOR,
-                                      height: 12.h,
-                                    )),
+                                  color: Styles.HINT_COLOR,
+                                  height: 12.h,
+                                )),
                               ],
                             ),
                             SizedBox(height: 8.h),
@@ -234,28 +225,23 @@ class LoginBody extends StatelessWidget {
                           ///Login With Google
                           Padding(
                             padding: EdgeInsets.symmetric(
-                                vertical:
-                                Dimensions.PADDING_SIZE_SMALL.h),
+                                vertical: Dimensions.PADDING_SIZE_SMALL.h),
                             child: BlocProvider(
-                              create: (context) => SocialMediaBloc(
-                                  repo: sl<SocialMediaRepo>()),
-                              child:
-                              BlocBuilder<SocialMediaBloc, AppState>(
+                              create: (context) =>
+                                  SocialMediaBloc(repo: sl<SocialMediaRepo>()),
+                              child: BlocBuilder<SocialMediaBloc, AppState>(
                                 builder: (context, state) {
                                   return customImageIconSVG(
                                     imageName: SvgImages.google,
                                     width: 40.w,
                                     height: 40.w,
                                     onTap: () {
-                                      context
-                                          .read<SocialMediaBloc>()
-                                          .add(Click(
-                                        arguments: {
-                                          "provider":
-                                          SocialMediaProvider
-                                              .google
-                                        },
-                                      ));
+                                      context.read<SocialMediaBloc>().add(Click(
+                                            arguments: {
+                                              "provider":
+                                                  SocialMediaProvider.google
+                                            },
+                                          ));
                                     },
                                   );
                                 },
@@ -265,8 +251,8 @@ class LoginBody extends StatelessWidget {
 
                           ///Login With Facebook
                           BlocProvider(
-                            create: (context) => SocialMediaBloc(
-                                repo: sl<SocialMediaRepo>()),
+                            create: (context) =>
+                                SocialMediaBloc(repo: sl<SocialMediaRepo>()),
                             child: BlocBuilder<SocialMediaBloc, AppState>(
                               builder: (context, state) {
                                 return customImageIconSVG(
@@ -274,10 +260,9 @@ class LoginBody extends StatelessWidget {
                                   width: 40.w,
                                   height: 40.w,
                                   onTap: () {
-                                    context.read<SocialMediaBloc>().add(
-                                        Click(
-                                            arguments: SocialMediaProvider
-                                                .facebook));
+                                    context.read<SocialMediaBloc>().add(Click(
+                                        arguments:
+                                            SocialMediaProvider.facebook));
                                   },
                                 );
                               },
@@ -286,25 +271,21 @@ class LoginBody extends StatelessWidget {
 
                           if (Platform.isIOS)
                             BlocProvider(
-                              create: (context) => SocialMediaBloc(
-                                  repo: sl<SocialMediaRepo>()),
-                              child:
-                              BlocBuilder<SocialMediaBloc, AppState>(
+                              create: (context) =>
+                                  SocialMediaBloc(repo: sl<SocialMediaRepo>()),
+                              child: BlocBuilder<SocialMediaBloc, AppState>(
                                 builder: (context, state) {
                                   return customImageIconSVG(
                                     imageName: SvgImages.apple,
                                     width: 40.w,
                                     height: 40.w,
                                     onTap: () {
-                                      context
-                                          .read<SocialMediaBloc>()
-                                          .add(Click(
-                                        arguments: {
-                                          "provider":
-                                          SocialMediaProvider
-                                              .apple
-                                        },
-                                      ));
+                                      context.read<SocialMediaBloc>().add(Click(
+                                            arguments: {
+                                              "provider":
+                                                  SocialMediaProvider.apple
+                                            },
+                                          ));
                                     },
                                   );
                                 },
@@ -316,8 +297,6 @@ class LoginBody extends StatelessWidget {
                   ),
                 ),
               );
-
-
             });
       },
     );

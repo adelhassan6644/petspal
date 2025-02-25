@@ -222,7 +222,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       fontWeight: FontWeight.w600),
                   floatingLabelBehavior: FloatingLabelBehavior.always,
                   hintStyle: AppTextStyles.w600.copyWith(
-                      color: Styles.DETAILS_COLOR,
+                      color: Styles.HINT_COLOR,
                       fontSize: 12,
                       fontWeight: FontWeight.w400),
                   prefixIcon: widget.prefixWidget ??

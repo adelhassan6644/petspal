@@ -10,7 +10,7 @@ import 'package:petspal/components/custom_text_form_field.dart';
 import 'package:petspal/main_models/search_engine.dart';
 import '../../../app/core/app_event.dart';
 import '../../../app/core/app_state.dart';
-import '../../categories/view/categories_view.dart';
+import '../../categories/view/categories_section.dart';
 
 class ProductsFilterBar extends StatefulWidget {
   const ProductsFilterBar({super.key});

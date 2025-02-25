@@ -29,7 +29,6 @@ class _SplashState extends State<Splash> with WidgetsBindingObserver {
 
   @override
   void dispose() {
-    FlutterNativeSplash.remove();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }

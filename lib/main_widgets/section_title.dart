@@ -37,8 +37,9 @@ class SectionTitle extends StatelessWidget {
           Expanded(
               child: Text(
             title,
-            style: AppTextStyles.w900
-                .copyWith(fontSize: 18, ),
+            style: AppTextStyles.w600.copyWith(
+              fontSize: 18,
+            ),
           )),
           if (withView)
             InkWell(
@@ -46,18 +47,18 @@ class SectionTitle extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    "${getTranslated("view_all", context: context)}  ",
-                    style: AppTextStyles.w500
-                        .copyWith(fontSize: 14, color: Styles.PRIMARY_COLOR),
+                    "${getTranslated("see_all", context: context)}  ",
+                    style: AppTextStyles.w600
+                        .copyWith(fontSize: 14, color: Styles.DETAILS_COLOR),
                   ),
-                  RotatedBox(
-                    quarterTurns: sl<LanguageBloc>().isLtr ? 0 : 2,
-                    child: customImageIconSVG(
-                        imageName: SvgImages.arrowRight,
-                        width: 14,
-                        height: 14,
-                        color: Styles.PRIMARY_COLOR),
-                  )
+                  // RotatedBox(
+                  //   quarterTurns: sl<LanguageBloc>().isLtr ? 0 : 2,
+                  //   child: customImageIconSVG(
+                  //       imageName: SvgImages.arrowRight,
+                  //       width: 14,
+                  //       height: 14,
+                  //       color: Styles.PRIMARY_COLOR),
+                  // )
                 ],
               ),
             )

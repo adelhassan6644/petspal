@@ -1,4 +1,3 @@
-import 'package:petspal/features/check_out/repo/check_out_request_repo.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -15,12 +14,15 @@ import '../../features/auth/logout/repo/logout_repo.dart';
 import '../../features/auth/reset_password/repo/reset_password_repo.dart';
 import '../../features/auth/social_media_login/repo/social_media_repo.dart';
 import '../../features/auth/verification/repo/verification_repo.dart';
+import '../../features/best_seller/repo/best_seller_repo.dart';
+import '../../features/cart/bloc/cart_bloc.dart';
+import '../../features/cart/repo/cart_repo.dart';
+import '../../features/categories/bloc/categories_bloc.dart';
 import '../../features/categories/repo/categories_repo.dart';
 import '../../features/chat/repo/chat_repo.dart';
 import '../../features/chats/bloc/chats_bloc.dart';
 import '../../features/chats/repo/chats_repo.dart';
 import '../../features/change_password/repo/change_password_repo.dart';
-import '../../features/check_out/repo/check_out_product_repo.dart';
 import '../../features/edit_profile/repo/edit_profile_repo.dart';
 import '../../features/faqs/repo/faqs_repo.dart';
 import '../../features/countries/repo/countries_repo.dart';
@@ -39,6 +41,7 @@ import '../../features/setting/bloc/setting_bloc.dart';
 import '../../features/setting/repo/setting_repo.dart';
 import '../../features/contact_with_us/repo/contact_with_us_repo.dart';
 import '../../features/transactions/repo/transactions_repo.dart';
+import '../../features/vendors/repo/vendors_repo.dart';
 import '../../helpers/pickers/repo/picker_helper_repo.dart';
 import '../../helpers/social_media_login_helper.dart';
 import '../../main_blocs/user_bloc.dart';
@@ -128,6 +131,15 @@ Future<void> init() async {
       sharedPreferences: sl(), dioClient: sl(), socialMediaLoginHelper: sl()));
 
   sl.registerLazySingleton(
+      () => DeactivateAccountRepo(sharedPreferences: sl(), dioClient: sl()));
+
+  sl.registerLazySingleton(
+      () => BestSellerRepo(sharedPreferences: sl(), dioClient: sl()));
+
+  sl.registerLazySingleton(
+      () => VendorsRepo(sharedPreferences: sl(), dioClient: sl()));
+
+  sl.registerLazySingleton(
       () => CategoriesRepo(sharedPreferences: sl(), dioClient: sl()));
 
   sl.registerLazySingleton(
@@ -137,13 +149,13 @@ Future<void> init() async {
       () => ProductDetailsRepo(sharedPreferences: sl(), dioClient: sl()));
 
   sl.registerLazySingleton(
-      () => DeactivateAccountRepo(sharedPreferences: sl(), dioClient: sl()));
-
-  sl.registerLazySingleton(
       () => NotificationsRepo(sharedPreferences: sl(), dioClient: sl()));
 
   sl.registerLazySingleton(
       () => HomeRepo(sharedPreferences: sl(), dioClient: sl()));
+
+  sl.registerLazySingleton(
+      () => CartRepo(sharedPreferences: sl(), dioClient: sl()));
 
   sl.registerLazySingleton(
       () => ChatsRepo(sharedPreferences: sl(), dioClient: sl()));
@@ -153,13 +165,6 @@ Future<void> init() async {
 
   sl.registerLazySingleton(
       () => ContactWithUsRepo(sharedPreferences: sl(), dioClient: sl()));
-
-  ///Check Out
-  sl.registerLazySingleton(
-      () => CheckOutProductRepo(sharedPreferences: sl(), dioClient: sl()));
-
-  sl.registerLazySingleton(
-      () => CheckOutRequestRepo(sharedPreferences: sl(), dioClient: sl()));
 
   ///Feedback
   sl.registerLazySingleton(
@@ -177,6 +182,10 @@ Future<void> init() async {
   sl.registerLazySingleton(() => UserBloc(repo: sl()));
   sl.registerLazySingleton(
       () => HomeAdsBloc(repo: sl(), internetConnection: sl()));
+  sl.registerLazySingleton(
+      () => CategoriesBloc(repo: sl(), internetConnection: sl()));
+  sl.registerLazySingleton(
+      () => CartBloc(repo: sl(), internetConnection: sl()));
   sl.registerLazySingleton(() => ChatsBloc(repo: sl()));
 
   ///Log out
