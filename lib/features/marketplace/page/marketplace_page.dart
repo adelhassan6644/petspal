@@ -5,6 +5,7 @@ import '../../../components/animated_widget.dart';
 import '../../../main_widgets/main_app_bar.dart';
 import '../../brands/widgets/brands_section.dart';
 import '../../categories/view/categories_section.dart';
+import '../../products/widgets/products_section.dart';
 import '../../vendors/widgets/vendors_section.dart';
 import '../widgets/marketplace_search_filter.dart';
 
@@ -23,6 +24,7 @@ class MarketplacePage extends StatelessWidget {
               ///Search Field
               MarketplaceSearchFilter(),
               CategoriesSection(title: getTranslated("categories")),
+              ProductsSection(title: getTranslated("for_you")),
               VendorsSection(title: getTranslated("featured_shops")),
               BrandsSection(title: getTranslated("popular_brands")),
               const SizedBox(height: 24)

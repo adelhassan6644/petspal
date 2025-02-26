@@ -93,7 +93,7 @@ class BestSellerSection extends StatelessWidget {
                         (i) => Padding(
                           padding: EdgeInsets.symmetric(horizontal: 8.w),
                           child: ProductCard(
-                            product: ProductModel(),
+                            product: ProductModel(discount: i == 1 ? 10 : null),
                           ),
                         ),
                       )

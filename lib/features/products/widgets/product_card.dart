@@ -128,7 +128,8 @@ class ProductCard extends StatelessWidget {
             ),
           ),
         ),
-        // if (product.discount != null)
+
+        if (product.discount != null)
         DiscountWidget(discount: product.discount),
       ],
     );

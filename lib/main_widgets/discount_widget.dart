@@ -12,12 +12,12 @@ class DiscountWidget extends StatelessWidget {
   final double? discount;
   @override
   Widget build(BuildContext context) {
-    return RotatedBox(
-      quarterTurns: sl<LanguageBloc>().isLtr ? 0 : 3,
+    return Transform.flip(
+      flipX: !sl<LanguageBloc>().isLtr,
       child: Container(
         width: 55.w,
         height: 65.w,
-        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 6.h),
+        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 10.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(20.w),
@@ -27,13 +27,16 @@ class DiscountWidget extends StatelessWidget {
             fit: BoxFit.contain,
           ),
         ),
-        child: Transform.rotate(
-          angle: 45,
-          child: Text(
-            "- ${discount ?? "10"} %",
-            textAlign: TextAlign.center,
-            style: AppTextStyles.w500
-                .copyWith(fontSize: 14, color: Styles.WHITE_COLOR),
+        child: Transform.flip(
+          flipX: !sl<LanguageBloc>().isLtr,
+          child: Transform.rotate(
+            angle: sl<LanguageBloc>().isLtr ? 0.85 : -0.85,
+            child: Text(
+              "- ${discount ?? "10"} %",
+              textAlign: TextAlign.center,
+              style: AppTextStyles.w500
+                  .copyWith(fontSize: 10, height: 1, color: Styles.WHITE_COLOR),
+            ),
           ),
         ),
       ),
