@@ -7,6 +7,7 @@ import 'package:petspal/components/custom_images.dart';
 import 'package:petspal/components/grid_list_animator.dart';
 
 import '../../../app/core/styles.dart';
+import '../../../main_page/bloc/dashboard_bloc.dart';
 
 class MainServices extends StatelessWidget {
   const MainServices({super.key});
@@ -22,10 +23,12 @@ class MainServices extends StatelessWidget {
           _ServiceCard(
             label: getTranslated("marketplace"),
             icon: SvgImages.marketplaceService,
+            onTap: () => DashboardBloc.instance.updateSelectIndex(1),
           ),
           _ServiceCard(
             label: getTranslated("petsgram"),
             icon: SvgImages.petsgramService,
+            onTap: () => DashboardBloc.instance.updateSelectIndex(2),
           ),
           _ServiceCard(
             label: getTranslated("scanning"),
@@ -55,27 +58,34 @@ class _ServiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          border: Border.all(color: Styles.LIGHT_BORDER_COLOR),
-          color: Styles.WHITE_COLOR,
-          borderRadius: BorderRadius.circular(20.w)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          customImageIconSVG(
-            imageName: icon,
-            width: 50.w,
-            height: 50.h,
-          ),
-          SizedBox(height: 8.h),
-          Text(
-            label,
-            style:
-                AppTextStyles.w600.copyWith(fontSize: 14, color: Styles.HEADER),
-          ),
-        ],
+    return InkWell(
+      onTap: onTap,
+      focusColor: Colors.transparent,
+      hoverColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      child: Container(
+        decoration: BoxDecoration(
+            border: Border.all(color: Styles.LIGHT_BORDER_COLOR),
+            color: Styles.WHITE_COLOR,
+            borderRadius: BorderRadius.circular(20.w)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            customImageIconSVG(
+              imageName: icon,
+              width: 50.w,
+              height: 50.h,
+            ),
+            SizedBox(height: 8.h),
+            Text(
+              label,
+              style: AppTextStyles.w600
+                  .copyWith(fontSize: 14, color: Styles.HEADER),
+            ),
+          ],
+        ),
       ),
     );
   }
