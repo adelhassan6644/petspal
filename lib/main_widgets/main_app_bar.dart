@@ -7,23 +7,22 @@ import 'package:petspal/app/core/styles.dart';
 import 'package:petspal/app/core/svg_images.dart';
 import 'package:petspal/app/localization/language_constant.dart';
 import 'package:petspal/components/custom_images.dart';
-import 'package:petspal/components/custom_text_form_field.dart';
 import 'package:petspal/components/shimmer/custom_shimmer.dart';
 import 'package:petspal/features/maps/bloc/map_bloc.dart';
 import 'package:petspal/features/maps/repo/maps_repo.dart';
 import 'package:petspal/main_blocs/user_bloc.dart';
 import 'package:petspal/main_widgets/custom_cart_icon.dart';
 import 'package:petspal/navigation/custom_navigation.dart';
-import '../../../app/core/app_event.dart';
-import '../../../app/core/text_styles.dart';
-import '../../../data/config/di.dart';
-import '../../../main_widgets/guest_mode.dart';
-import '../../../main_widgets/profile_image_widget.dart';
-import '../../../navigation/routes.dart';
-import '../../maps/models/location_model.dart';
+import '../app/core/app_event.dart';
+import '../app/core/text_styles.dart';
+import '../data/config/di.dart';
+import 'guest_mode.dart';
+import 'profile_image_widget.dart';
+import '../navigation/routes.dart';
+import '../features/maps/models/location_model.dart';
 
-class HomeAppBar extends StatelessWidget {
-  const HomeAppBar({super.key});
+class MainAppBar extends StatelessWidget {
+  const MainAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +109,7 @@ class HomeAppBar extends StatelessWidget {
 
                 ///Current Location
                 Padding(
-                  padding: EdgeInsets.only(top: 12.h, bottom: 4.h),
+                  padding: EdgeInsets.only(top: 12.h),
                   child: BlocProvider(
                     create: (context) =>
                         MapBloc(repo: sl<MapsRepo>())..add(Init()),
@@ -153,15 +152,6 @@ class HomeAppBar extends StatelessWidget {
                     ),
                   ),
                 ),
-
-                ///Search Field
-                CustomTextField(
-                  pSvgIcon: SvgImages.search,
-                  height: 40.h,
-                  hint: "${getTranslated("search")}...",
-                  readOnly: true,
-                  onTap: () => CustomNavigator.push(Routes.search),
-                )
               ],
             ),
           ),

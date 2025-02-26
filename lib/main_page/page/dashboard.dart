@@ -6,6 +6,7 @@ import 'package:petspal/app/core/app_state.dart';
 import 'package:petspal/features/home/page/home.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:petspal/features/marketplace/page/marketplace_page.dart';
 import 'package:petspal/features/more/page/more.dart';
 import 'package:petspal/main_blocs/user_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -90,7 +91,7 @@ class _DashBoardState extends State<DashBoard> {
       case 0:
         return const Home();
       case 1:
-        return const SizedBox();
+        return const MarketplacePage();
       case 2:
         return const SizedBox();
       case 3:

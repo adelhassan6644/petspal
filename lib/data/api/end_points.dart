@@ -34,6 +34,7 @@ class EndPoints {
 
   ///Categories && Products
   static const String vendors = 'vendors';
+  static const String brands = 'brands';
   static const String categories = 'categories';
   static const String products = 'products';
   static const String bestSellers = 'best_sellers';

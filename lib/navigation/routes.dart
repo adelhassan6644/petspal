@@ -14,6 +14,7 @@ class Routes {
   static const editProfile = "EDIT_PROFILE";
   static const addresses = "ADDRESSES";
   static const categories = "CATEGORIES";
+  static const brands = "BRANDS";
   static const vendors = "VENDORS";
   static const bestSeller = "BEST_SELLER";
   static const checkOut = "CHECK_OUT";

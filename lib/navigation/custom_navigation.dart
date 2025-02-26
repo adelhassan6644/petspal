@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:petspal/features/best_seller/page/best_seller_page.dart';
+import 'package:petspal/features/brands/page/brands_page.dart';
 import 'package:petspal/features/cart/page/cart_page.dart';
 import 'package:petspal/features/categories/model/categories_model.dart';
 import 'package:petspal/features/categories/page/categories_page.dart';
@@ -90,6 +91,9 @@ abstract class CustomNavigator {
 
       case Routes.categories:
         return _pageRoute(const CategoriesPage());
+
+      case Routes.brands:
+        return _pageRoute(const BrandsPage());
 
       case Routes.vendors:
         return _pageRoute(const VendorsPage());

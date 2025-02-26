@@ -1,4 +1,3 @@
-import 'package:petspal/app/localization/language_constant.dart';
 import 'package:petspal/features/categories/bloc/categories_bloc.dart';
 import 'package:petspal/features/categories/model/categories_model.dart';
 import 'package:petspal/features/categories/widgets/category_card.dart';
@@ -13,14 +12,14 @@ import '../../../app/core/dimensions.dart';
 import '../../../components/shimmer/custom_shimmer.dart';
 
 class CategoriesSection extends StatelessWidget {
-  const CategoriesSection({super.key});
-
+  const CategoriesSection({super.key, required this.title});
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         SectionTitle(
-          title: getTranslated("shop_by_pets"),
+          title: title,
           withView: true,
           onViewTap: () => CustomNavigator.push(Routes.categories),
         ),

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:petspal/app/core/extensions.dart';
 import 'package:petspal/app/localization/language_constant.dart';
 import 'package:petspal/components/custom_app_bar.dart';
+import 'package:petspal/main_models/search_engine.dart';
 
 import '../../../app/core/app_event.dart';
 import '../../../app/core/app_state.dart';
@@ -15,22 +16,21 @@ import '../../../components/grid_list_animator.dart';
 import '../../../components/shimmer/custom_shimmer.dart';
 import '../../../data/config/di.dart';
 import '../../../data/internet_connection/internet_connection.dart';
-import '../../../main_models/search_engine.dart';
-import '../bloc/vendors_bloc.dart';
-import '../model/vendors_model.dart';
-import '../repo/vendors_repo.dart';
-import '../widgets/vendor_card.dart';
+import '../bloc/brands_bloc.dart';
+import '../model/brands_model.dart';
+import '../repo/brands_repo.dart';
+import '../widgets/brand_card.dart';
 
-class VendorsPage extends StatelessWidget {
-  const VendorsPage({super.key});
+class BrandsPage extends StatelessWidget {
+  const BrandsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: getTranslated("vendors")),
+      appBar: CustomAppBar(title: getTranslated("brands")),
       body: BlocProvider(
-        create: (context) => VendorsBloc(
-            repo: sl<VendorsRepo>(),
+        create: (context) => BrandsBloc(
+            repo: sl<BrandsRepo>(),
             internetConnection: sl<InternetConnection>()),
         // ..add(Click(arguments: SearchEngine())),
         child: SafeArea(
@@ -39,13 +39,14 @@ class VendorsPage extends StatelessWidget {
             children: [
               SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT.h),
               Expanded(
-                child: BlocBuilder<VendorsBloc, AppState>(
+                child: BlocBuilder<BrandsBloc, AppState>(
                   builder: (context, state) {
                     if (state is Loading) {
                       return GridListAnimatorWidget(
                         padding: EdgeInsets.symmetric(
                             horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-                        aspectRatio: 1.1,
+                        aspectRatio: 1,
+                        columnCount: 3,
                         items: List.generate(
                           12,
                           (i) => CustomShimmerContainer(
@@ -57,27 +58,28 @@ class VendorsPage extends StatelessWidget {
                       );
                     }
                     if (state is Done) {
-                      List<VendorModel> list = state.list as List<VendorModel>;
+                      List<BrandModel> list = state.list as List<BrandModel>;
                       return RefreshIndicator(
                         color: Styles.PRIMARY_COLOR,
                         onRefresh: () async {
                           context
-                              .read<VendorsBloc>()
+                              .read<BrandsBloc>()
                               .add(Click(arguments: SearchEngine()));
                         },
                         child: Column(
                           children: [
                             Expanded(
                               child: GridListAnimatorWidget(
-                                controller:
-                                    context.read<VendorsBloc>().controller,
                                 padding: EdgeInsets.symmetric(
                                     horizontal:
                                         Dimensions.PADDING_SIZE_DEFAULT.w),
-                                aspectRatio: 1.1,
+                                aspectRatio: 1,
+                                columnCount: 3,
+                                controller:
+                                    context.read<BrandsBloc>().controller,
                                 items: List.generate(
                                   list.length,
-                                  (i) => VendorCard(
+                                  (i) => BrandCard(
                                     model: list[i],
                                   ),
                                 ),
@@ -93,7 +95,7 @@ class VendorsPage extends StatelessWidget {
                         color: Styles.PRIMARY_COLOR,
                         onRefresh: () async {
                           context
-                              .read<VendorsBloc>()
+                              .read<BrandsBloc>()
                               .add(Click(arguments: SearchEngine()));
                         },
                         child: Column(
@@ -127,11 +129,12 @@ class VendorsPage extends StatelessWidget {
                                 padding: EdgeInsets.symmetric(
                                     horizontal:
                                         Dimensions.PADDING_SIZE_DEFAULT.w),
-                                aspectRatio: 1.1,
+                                aspectRatio: 1,
+                                columnCount: 3,
                                 items: List.generate(
                                   15,
-                                  (i) => VendorCard(
-                                    model: VendorModel(),
+                                  (i) => BrandCard(
+                                    model: BrandModel(),
                                   ),
                                 ),
                               ),

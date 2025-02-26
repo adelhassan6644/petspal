@@ -43,7 +43,7 @@ class BestSellerPage extends StatelessWidget {
                     return GridListAnimatorWidget(
                       padding: EdgeInsets.symmetric(
                           horizontal: Dimensions.PADDING_SIZE_DEFAULT.w),
-                      aspectRatio: 0.8,
+                      aspectRatio: 0.78,
                       items: List.generate(
                         12,
                         (i) => CustomShimmerContainer(
@@ -70,7 +70,7 @@ class BestSellerPage extends StatelessWidget {
                               padding: EdgeInsets.symmetric(
                                   horizontal:
                                       Dimensions.PADDING_SIZE_DEFAULT.w),
-                              aspectRatio: 0.8,
+                              aspectRatio: 0.78,
                               items: List.generate(
                                 list.length,
                                 (i) => ProductCard(
@@ -121,7 +121,7 @@ class BestSellerPage extends StatelessWidget {
                               padding: EdgeInsets.symmetric(
                                   horizontal:
                                       Dimensions.PADDING_SIZE_DEFAULT.w),
-                              aspectRatio: 0.85,
+                              aspectRatio: 0.78,
                               items: List.generate(
                                 15,
                                 (i) => ProductCard(

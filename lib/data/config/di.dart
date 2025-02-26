@@ -15,6 +15,7 @@ import '../../features/auth/reset_password/repo/reset_password_repo.dart';
 import '../../features/auth/social_media_login/repo/social_media_repo.dart';
 import '../../features/auth/verification/repo/verification_repo.dart';
 import '../../features/best_seller/repo/best_seller_repo.dart';
+import '../../features/brands/repo/brands_repo.dart';
 import '../../features/cart/bloc/cart_bloc.dart';
 import '../../features/cart/repo/cart_repo.dart';
 import '../../features/categories/bloc/categories_bloc.dart';
@@ -135,6 +136,9 @@ Future<void> init() async {
 
   sl.registerLazySingleton(
       () => BestSellerRepo(sharedPreferences: sl(), dioClient: sl()));
+
+  sl.registerLazySingleton(
+      () => BrandsRepo(sharedPreferences: sl(), dioClient: sl()));
 
   sl.registerLazySingleton(
       () => VendorsRepo(sharedPreferences: sl(), dioClient: sl()));
