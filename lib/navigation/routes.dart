@@ -17,6 +17,8 @@ class Routes {
   static const brands = "BRANDS";
   static const vendors = "VENDORS";
   static const bestSeller = "BEST_SELLER";
+  static const wishlist = "WISHLIST";
+
   static const checkOut = "CHECK_OUT";
   static const contactWithUs = "CONTACT_WITH_US";
   static const aboutUs = "ABOUT_US";
@@ -41,5 +43,4 @@ class Routes {
   static const products = "PRODUCTS";
   static const productDetails = "PRODUCT_DETAILS";
   static const cart = "CART";
-
 }

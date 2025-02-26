@@ -649,5 +649,6 @@
   "balance": "Balance",
   "request": "Request",
   "support_services": "Support services",
-  "price": "Price"
+  "price": "Price",
+  "you_have_to_login_first": "Oops, you have to login first!"
 }

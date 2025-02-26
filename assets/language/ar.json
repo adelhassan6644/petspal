@@ -657,5 +657,6 @@
   "balance": "الرصيد",
   "request": "الطلب",
   "support_services": "الخدمات المساندة",
-  "price": "السعر"
+  "price": "السعر",
+  "you_have_to_login_first": "عفوًا، يجب عليك تسجيل الدخول أولا!ً"
 }

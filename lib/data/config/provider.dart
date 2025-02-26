@@ -13,7 +13,7 @@ import '../../features/home/bloc/home_ads_bloc.dart';
 import '../../features/language/bloc/language_bloc.dart';
 import '../../features/profile/bloc/profile_bloc.dart';
 import '../../features/setting/bloc/setting_bloc.dart';
-import '../../features/vendors/bloc/vendors_bloc.dart';
+import '../../features/wishlist/bloc/wishlist_bloc.dart';
 
 abstract class ProviderList {
   static List<BlocProvider> providers = [
@@ -24,6 +24,7 @@ abstract class ProviderList {
     BlocProvider<UserBloc>(create: (_) => di.sl<UserBloc>()),
     BlocProvider<HomeAdsBloc>(create: (_) => di.sl<HomeAdsBloc>()),
     BlocProvider<CategoriesBloc>(create: (_) => di.sl<CategoriesBloc>()),
+    BlocProvider<WishlistBloc>(create: (_) => di.sl<WishlistBloc>()),
     BlocProvider<CartBloc>(create: (_) => di.sl<CartBloc>()),
 
 

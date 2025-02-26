@@ -43,6 +43,8 @@ import '../../features/setting/repo/setting_repo.dart';
 import '../../features/contact_with_us/repo/contact_with_us_repo.dart';
 import '../../features/transactions/repo/transactions_repo.dart';
 import '../../features/vendors/repo/vendors_repo.dart';
+import '../../features/wishlist/bloc/wishlist_bloc.dart';
+import '../../features/wishlist/repo/wishlist_repo.dart';
 import '../../helpers/pickers/repo/picker_helper_repo.dart';
 import '../../helpers/social_media_login_helper.dart';
 import '../../main_blocs/user_bloc.dart';
@@ -153,6 +155,9 @@ Future<void> init() async {
       () => ProductDetailsRepo(sharedPreferences: sl(), dioClient: sl()));
 
   sl.registerLazySingleton(
+      () => WishlistRepo(sharedPreferences: sl(), dioClient: sl()));
+
+  sl.registerLazySingleton(
       () => NotificationsRepo(sharedPreferences: sl(), dioClient: sl()));
 
   sl.registerLazySingleton(
@@ -184,12 +189,10 @@ Future<void> init() async {
   sl.registerLazySingleton(() => DashboardBloc());
   sl.registerLazySingleton(() => ProfileBloc(repo: sl()));
   sl.registerLazySingleton(() => UserBloc(repo: sl()));
-  sl.registerLazySingleton(
-      () => HomeAdsBloc(repo: sl(), internetConnection: sl()));
-  sl.registerLazySingleton(
-      () => CategoriesBloc(repo: sl(), internetConnection: sl()));
-  sl.registerLazySingleton(
-      () => CartBloc(repo: sl(), internetConnection: sl()));
+  sl.registerLazySingleton(() => HomeAdsBloc(repo: sl(), internetConnection: sl()));
+  sl.registerLazySingleton(() => CategoriesBloc(repo: sl(), internetConnection: sl()));
+  sl.registerLazySingleton(() => WishlistBloc(repo: sl(), internetConnection: sl()));
+  sl.registerLazySingleton(() => CartBloc(repo: sl(), internetConnection: sl()));
   sl.registerLazySingleton(() => ChatsBloc(repo: sl()));
 
   ///Log out

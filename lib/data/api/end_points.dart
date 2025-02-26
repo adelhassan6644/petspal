@@ -50,6 +50,12 @@ class EndPoints {
   ///Talents
   static const String talents = 'talents';
 
+
+  ///Wishlist
+  static const String wishlist = 'wishlist';
+  static updateWishlist(id) => 'updateWishlist/$id';
+
+
   ///Feedbacks
   static feedbacks(id) => 'users/$id/feedbacks';
   static const String sendFeedback = 'feedbacks';

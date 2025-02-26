@@ -63,7 +63,7 @@ class SvgImages {
   static const String information = 'assets/svgs/information.svg';
   static const String security = 'assets/svgs/security.svg';
   static const String notification = 'assets/svgs/notification.svg';
-  static const String favorite = 'assets/svgs/favorite.svg';
+  static const String fav = 'assets/svgs/fav.svg';
   static const String edit = 'assets/svgs/edit.svg';
   static const String login = 'assets/svgs/login.svg';
   static const String send = 'assets/svgs/send.svg';

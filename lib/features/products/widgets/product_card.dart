@@ -16,6 +16,7 @@ import '../../../main_widgets/discount_widget.dart';
 import '../../../main_widgets/guest_mode.dart';
 import '../../../navigation/custom_navigation.dart';
 import '../../../navigation/routes.dart';
+import '../../wishlist/widgets/wishlist_button.dart';
 import '../model/products_model.dart';
 
 class ProductCard extends StatelessWidget {
@@ -128,9 +129,17 @@ class ProductCard extends StatelessWidget {
             ),
           ),
         ),
-
+        Positioned.directional(
+          top: 12.h,
+          end: sl<LanguageBloc>().isLtr ? 12.w : null,
+          start: !sl<LanguageBloc>().isLtr ? 12.w : null,
+          textDirection: TextDirection.rtl,
+          child: WishlistButton(
+            product: product,
+          ),
+        ),
         if (product.discount != null)
-        DiscountWidget(discount: product.discount),
+          DiscountWidget(discount: product.discount),
       ],
     );
   }

@@ -13,6 +13,7 @@ import 'package:petspal/features/transactions/page/transactions_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:petspal/features/vendors/page/vendors_page.dart';
+import 'package:petspal/features/wishlist/page/wishlist_page.dart';
 import '../features/chat/page/chat_page.dart';
 import '../components/video_preview_page.dart';
 import '../features/contact_with_us/page/contact_with_us_page.dart';
@@ -100,6 +101,9 @@ abstract class CustomNavigator {
 
       case Routes.bestSeller:
         return _pageRoute(const BestSellerPage());
+
+      case Routes.wishlist:
+        return _pageRoute(const WishlistPage());
 
       case Routes.videoPreview:
         return _pageRoute(VideoPreviewPage(data: settings.arguments as Map));
