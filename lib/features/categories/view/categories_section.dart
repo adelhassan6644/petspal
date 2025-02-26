@@ -92,7 +92,7 @@ class CategoriesSection extends StatelessWidget {
                       (i) => Padding(
                         padding: EdgeInsets.symmetric(horizontal: 8.w),
                         child: CategoryCard(
-                          model: CategoryModel(),
+                          model: CategoryModel(isComingSoon: i == 2),
                         ),
                       ),
                     )

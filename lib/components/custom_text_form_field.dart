@@ -132,6 +132,16 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ? Styles.ERORR_COLOR
         : _isFocus
             ? Styles.PRIMARY_COLOR
+            : Styles.HINT_COLOR);
+  }
+
+  activationBorderColor() {
+    return ((widget.customError == true &&
+            widget.errorText != null &&
+            widget.errorText != "")
+        ? Styles.ERORR_COLOR
+        : _isFocus
+            ? Styles.PRIMARY_COLOR
             : Styles.BORDER_COLOR);
   }
 
@@ -146,7 +156,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             decoration: BoxDecoration(
                 color: Styles.WHITE_COLOR,
                 border: Border.all(
-                  color: activationColor(),
+                  color: activationBorderColor(),
                 ),
                 borderRadius: BorderRadius.circular(15.0)),
             height: widget.height ?? 65,
@@ -222,8 +232,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       fontWeight: FontWeight.w600),
                   floatingLabelBehavior: FloatingLabelBehavior.always,
                   hintStyle: AppTextStyles.w600.copyWith(
+                      height: 1.1,
                       color: Styles.HINT_COLOR,
-                      fontSize: 12,
+                      fontSize: 14,
                       fontWeight: FontWeight.w400),
                   prefixIcon: widget.prefixWidget ??
                       (widget.pAssetIcon != null
